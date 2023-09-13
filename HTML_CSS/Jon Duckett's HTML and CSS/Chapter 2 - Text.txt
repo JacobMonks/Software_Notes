@@ -1,0 +1,59 @@
+HTML allows up to 6 levels of headings. (h1,h2,...,h6)
+Each level is a smaller font size than the last.
+
+You can use some tags to adjust how the text appears in a paragraph:
+
+bold <b> - <p>This paragraph contains a letter that is <b>bolded.</b></p>
+italicize <i> - <p>Here's an example of using the <p>italicize</i> tag.</p>
+superscript <sup> - <p>Today is September 13<sup>th</sup> 20023.</p>
+subscript <sub> - <p>The atmosphere consists partly of O<sub>2</sub>.</p>
+
+A handy thing to know: extra whitespace and line breaks in the middle of paragraphs will appear on the browser as single spaces.
+This is useful for when the webpage author needs to break up the text to make it more readable.
+
+If you want to add a line break manually in the middle of a paragraph, you can just type <br />
+If you want to note a transition of topic/scene/etc. between two paragraphs, you can type <hr /> between them.
+
+These are called EMPTY ELEMENTS because they do not contain an opening/closing tag, just a single tag without any words.
+
+There are some other markup options that do not alter the structure of the webpage but do have specific use cases:
+<em> - adds emphasis to a word or phrase, this is useful for text-to-speech screen readers.
+<blockquote> - indicates a block of text is a quotation, useful for getting picked up bby search engines.
+
+<em> and <strong> have a similar purpose, but <em> diplays text in italics while <strong> displays it in bold.
+<blockquote> is usually used for quotes that take up entire paragraphs, while <q> is used for shorterquotes that sit within a paragrph.
+When using <blockquote>, make sure to have it encompass a pair of <p> tags.
+E.g.
+
+<blockquote cite="https://hosting-site.com">This is a quote from the mentioned citation.<blockquote>
+
+<abbr> denotes abbreviations and acronyms. HTML4 used a separate tag for acronyms <acronym> byt HTML5 combined them.
+E.g.
+
+<p><abbr title="Professor">Prof</abbr> Stephen Hawking was a theoretical physicist and cosmologist.</p>
+<p><abbr title="National Aeronautics and Space Administration">NASA</abbr> was inspired by his findings and theories.</p>
+
+<cite> is used when citing a specific work such as a book, film, or research paper. This will render any cited text in italics.
+
+<dfn> is used to specify the first time a piece of terminology has been defined in the text.
+
+<address> denotes the contact information for the webpage author. It can be an email, phone number, or physical location.
+E.g.
+
+<address>
+  <p>(123) 456-7890</p>
+  <p><a href="mailto:homer@sample.org">homer@sample.org</a></p>
+  <p>123 Sample Street, Example City.</p>
+</address>
+
+<ins> and <del> are used to show information that has been inserted or deleted from a document.
+E.g.
+
+<p>This is an example of using the <del>delete</del> <ins>insert</ins> tag.</p>
+
+<s> indicates information that is no longer true but should not be removed.
+E.g.
+
+<p>Laptop:</p>
+<p><s>Was $499.99</s></p>
+<p>Now only $349.99</p>
