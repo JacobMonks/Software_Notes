@@ -1,0 +1,81 @@
+Links allow for the swift and easy transitions from one webpage to another.
+Links can be divided into a few types:
+	1. Links from one website to another.
+	2. Links from one page to another on the same website.
+	3. Links from one part of a webpage to another part of the same page.
+	4. Links that open in a new browser window.
+	5. Links that start up your email program and address a new email to someone.
+
+Links are created using the <a> element. Use the href Attribute to specify the page to link to.
+E.g.
+
+<a href="http://www.imdb.com">IMDB</a>
+
+- Links to other websites:
+	E.g.
+
+	<p>
+	  <ul>
+	    <li><a href="http://www.empireonline.com">Empire</a></li>
+	    <li><a href="http://www.metacritic.com">Metacritic</a></li>
+	    <li><a href="http://www.rottentomatoes.com>Rotten Tomatoes</a></li>
+	    <li><a href="http://www.variety.com>Variety</a></li>
+	  </ul>
+	</p>
+
+- Links to other pages on the same site:
+	This is done the same way, but rather than type the full absolute URL, you can just type the relative URL, also called simply the path.
+	E.g.
+
+	<p>
+	  <ul>
+	    <li><a href="index.html">Home</a></li>
+	    <li><a href="about-us.html">About</a></li>
+	    <li><a href="movies.html">Movies</a></li>
+	    <li><a href="contact.html">Contact</a></li>
+	  </ul>
+	</p>
+
+	It's a good idea to organize your code by palcing the pages for each different section of the site into a new folder (also called directory).
+	The main homepage of any website is typically called "index.html".
+	Web servers are usually set up to return the "index.html" file if no other file is specified by the URL.
+
+- Email links:
+	You can create links that start up the user's email and addresses an email to a specific email address.
+	This is done by starting the "href" attribute with "mailto:" and give the email address.
+	E.g.
+	
+	<a href="mailto:jon@example.org">Email Jon</a>
+
+- Links in a new window:
+	You might want a link to open a new window.
+	For example, this is useful if there is volatile user-inserted information on the current page.
+	This is often done when it links to another website.
+	It is generally good practice to inform users when the link opens in a new window.
+
+	This is performed by setting the "target" attribute in the <a> tag and setting it to "_blank".
+	E.g.
+
+	<p><a href="http://www.imdb.com" target="_blank">Internet Movie Database</a> (Opens in new window)</p>
+
+- Link to a specific part of the same page:
+	At the top of a very long page, you might want to add a list of contents that links to the corresponding sections down below.
+	You might also want to add a link on the bottom that brings you back to the top of the page.
+
+	The first step is identifying which parts of the page that the links can go to.
+	This is done using the "id" attribute. The value should start with a letter or an underscore, no number or special character.
+	Creating the links is done the same way with the "href" attribute, and the value is the # followed by the id values of those sections.
+	E.g.
+
+	<h1 id="Top">Film-Making Terms</h1>
+	  <a href="#arc-shot">Arc Shot</a><br />
+	  <a href="#interlude">Interlude</a><br />
+	  <a href="#prologue">Prologue</a><br /><br />
+	<h2 id="arc-shot"></h2>
+	  <p>A shot in which the subject is photographed by an encircling or moving camera</p>
+	<h2 id="interlude">Interlude</h2>
+	  <p>A brief, intervening film scene or sequence, not specifically tied to the plot, thatappears within a film</p>
+	<h2 id="prologue">Prologue</h2>
+	  <p>A speech, preface, inrtoduction, or brief scene preceeding the main action or plot of a film; contrast to epilogue</p>
+	  <p><a href="#top">Top</a></p>
+
