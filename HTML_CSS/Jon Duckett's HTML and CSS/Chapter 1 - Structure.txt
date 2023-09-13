@@ -1,0 +1,40 @@
+HTML stands for HyperText Markup Language. "HyperText" means that you can
+create links that allow users to move from one page to another.
+
+Here's an example of very basic html structure:
+
+<html>
+  <head>
+    <title>This is the title of the page.</title>
+  </head>
+  <body>
+    <h1>The "h1" denotes the Main heading.</h1>
+    <p>This text might be an introduction to the rest of the page. It might
+       go onto multiple lines as you see here.</p>
+    <h2>The "h2 denotes a sub-heading. You can have multiple sub-headings under a Main heading.</h2>
+    <p>Many pages and articles use sub-headers to structure and organize
+       what is being written. This helps readers follow the ideas more cleanly.</p>
+    <h2>This is another sub-heading.</h2>
+    <p>Here you can read under a second sub-heading.</p>
+  </body>
+</html>
+
+Everything written in <> is html code, specifically these are called ELEMENTS.
+Elements are made up of two TAGS, an opening and a closing tag. Tags act as a sort of container for information.
+Breaking down each tag:
+
+<html> - Denotes that everything between this and </html> is html code.
+<head> - Contains information about the page. This normally contains a title which is what you see on the tab.
+<body> - Everything between this and </body> should be shown inside the main browser window.
+<h1> - This is a Main Heading.
+<h2> - This is a Sub Heading.
+<p> - This is a paragraph.
+
+ATTRIBUTES can be written inside of the tags to provide additional information.
+For example:
+
+<p lang="en-us">This is a paragraph written in English.</p>
+
+Attribute NAMES (lang) should be written in lowercase.
+Attribute VALUES ("en-us") should be written in double quotes.
+Attributes are pre-defined and associated with specific tags, but some like "lang" can be used on any tag.
