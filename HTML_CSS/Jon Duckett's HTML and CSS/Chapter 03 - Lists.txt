@@ -1,0 +1,51 @@
+HTML offers three different types of LISTS:
+- ORDERED LISTS
+	Each item is numbered.
+	Useful for a set of steps in a process or numbered sections in legal documentation.
+
+	Ordered lists are created with the <ol> tag.
+	Each item in the list is marked with <li>
+	E.g.
+	
+	<ol>
+	  <li>Chop potatoes into quarters</li>
+	  <li>Simmer in salted water for 15-20 minutes</li>
+	  <li>heat milk, butter, and nutmeg</li>
+	  <li>Drain potatoes and mash</li>
+	  <li>Mix in milk mixture</li>
+	</ol>
+
+- UNORDERED LISTS
+	Begin with bullet points instead of numbers.
+	This is useful when there is no particular order.
+
+	Created with the <ul> tag.
+
+- DEFINITION LISTS
+	Made up of terms with definitions.
+
+	Created with <dl> tags, with <dt> and <dd> elements inside of them.
+	E.g.
+
+	<dl>
+	  <dt>Atom</dt>
+	  <dd>A fundamental unit of matter belonging to a specific element.</dd>
+	  <dt>Molecule</dt>
+	  <dd>A combination of multple atoms bonded together that has its own set of properties.</dd>
+	</dl>
+
+- These can be used to create NESTED LISTS
+	E.g.
+
+	<ul>
+	  <li>Mousses</li>
+	  <li>Pastries
+	    <ul>
+	      <li>Corissant</li>
+	      <li>Mille-feuille</li>
+	      <li>Palmier</li>
+	      <li>Profiterole</li>
+	    </ul>
+	  </li>
+	  <li>Tarts</li>
+	</ul>
