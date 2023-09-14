@@ -1,0 +1,74 @@
+Images help make your website's presentation more appealing and interesting.
+Images should:
+- Be relevant
+- Convey information
+- Convey the right mood
+- Be instantly recognisable
+- Fit the color palette
+
+You can get stock images from the following sites:
+www.istockphoto.com
+www.gettyimages.com
+www.veer.com
+www.sxc.hu
+www.fotolia.com
+
+Remember that all images are subject to copyright.
+You must pay a subscription fee to gain access to and free use of these images.
+
+It is good practice to keep all images in a separate directory, potentially with multiple subdirectories.
+
+Use the <img> tag to add a new image into your webpage.
+The <img> empty element has several key attributes:
+1. src - tells the browser where the image can be found. This is usually a relative URL to the image in your folders.
+2. alt - provides a text description of the image if you cannot see it, important for visually impaired users and search engines.
+3. (optional) title - contains any additional information about the image.
+4. (optional) height and width - specify the pixel dimensions of the image, this makes the page allocate
+                                 space for an image to appear if it takes a while to load.
+
+In the case where the image is not meant to be descriptive and is just for visual flair, the "alt" attribute should be empty quotes.
+E.g.
+
+<img src="images/quokka.jpg" alt="A family of quokka" title="The quokka is an
+ Australian marsupial that is similar in size to the domestic cat." 
+ width="600" height="450" />
+
+Image placement is important. In HTML4 and earlier, the "align" element was
+used to place the image in specific spots relative to the text on the page.
+Nowadays, this is done mostly with CSS.
+
+The "align" element can take several different values:
+- left
+- right
+- top
+- middle
+- bottom
+
+To make the text wrap around the image, you will need to use CSS.
+
+When creating images, there are 3 basic rules:
+1. Save images in the right format (jpeg, png, gif).
+2. Save images with the right dimensions.
+3. Measure images in pixels.
+
+Image formats:
+JPEG - preferred when an image has many different colors and shades.
+GIF - preferred when there is little color variety or images have large areas of single colors, popular for logos and diagrams.
+PNG - preferred for graphic design, allows transparent backgrounds or gradient filters, but has more data.
+
+Image Dimensions should be how many pixels you want them to appear on the page. This might require using image editing tools.
+Downsizing a large image is more effective than blowing up a small image because image quality usually isn't increased to accomodate.
+When creating images for print, it is best to have at least 300 pixels per inch.
+
+When an image is a line drawing, designers will often create it in vector format. This is done by
+drawing lines on a grid and filling in the space between them. This method allows images to
+be increased or decreased without any loss of quality.
+
+<figure> and <figcaption> is a tag that can be used when you want an image to have a caption.
+E.g.
+
+<figure>
+  <img src="images/otters.jpg" alt="Photograph of two sea otters floating in water" />
+  <br />
+  <figcaption>Sea otters hold hands when they sleep so they don't drift away from each other.</figcaption>
+</figure>
