@@ -1,0 +1,196 @@
+FORMS are what we call documents that have spaces that needs to be filled in by a user.
+In HTML, this idea of a form can be used to create a search bar or have empty fields on an insurance application page.
+Forms can be used for many purposes, including but not limited to:
+- Text input
+- Passwords
+- Text area (Multi-line inputs)
+- Radio Buttons
+- Checkboxes
+- Drop-down boxes
+- Submit buttons
+- Image buttons
+- File uploads
+
+When a user submits a form:
+1. The information they submitted goes to the server.
+2. The server uses some programming language (Java, C#, PHP, etc.) to process the information.
+3. It might also store the inserted information into a database.
+4. The server produces and returns a confirmation message, which may or may not be dependent on the information received.
+
+Information given to the server comes in key-value pairs to differentiate between each piece of inputted data.
+
+Form structure:
+
+Form controls live inside a <form> element.
+This element should always have an "action" attribute, and it will usually also have "method" and "id" attributes.
+"action" - the value of the URL for the page on the server that will receive the form information when submitted.
+"id" - used to identify the form distinctly from other elements on the page.
+"method" - determines what is to be done with the information, can be POST or GET.
+
+Get - values from the form are added to the end of the URL specified in the "action" attribute.
+    - tends to be used for shorter forms like search boxes or if you are simply retrieving data from a web server.
+Post - values are sent in HTTP headers.
+     - use when your form is longer, asks the user to upload files, contains passwords, or adds/deletes from a database.
+
+E.g.
+
+<form action="http://www.example.com/subscribe.php" method="get">
+  <p>This is where the form control will appear.</p>
+</form>
+
+The <input> element is used to create different form controls, and has several important attributes:
+"type" - identifies what kind of input the form is creating.
+       - could be "text", "password", "radio", "checkbox", "file", "submit", "image", "hidden", "date", "email", "search".
+"name" - designates what form control is being used, its value depends on "type".
+"maxlength" - limits the number of characters that can be entered into the field.
+"size" - not used anymore, determined the width of the text box in number of characters. CSS is used for this nowadays.
+
+E.g.
+
+<form action="http://www.example.com/login.php">
+  <p>Username:
+    <input type="text" name="username" szie="15" maxlength="30" />
+  </p>
+</form>
+
+Password input:
+
+<form action="http://www.example.com/login.php">
+  <p>Username:
+    <input type="text" name="username" size="15" maxlength="30" />
+  </p>
+  <p>Password:
+    <input type="password" name="password" size="15" maxlength="30" />
+  </p>
+</form>
+
+Note that passwords may appear concealed but the data is not sent to the server in a secure manner.
+When handling extra sensitive data, you should use Secure Socket Layer (SSL) or some other secure communication protocol.
+
+Text area:
+- Created using <textarea> tag.
+
+<form action="http://www.example.com/comments.php">
+  <p>What did you think of this gig?
+    <textarea name="comments" cols="20" rows="4">Enter your comments...</textbox>
+  </p>
+</form>
+
+The size of the textarea is usually handled with CSS, but "cols" and "rows" may appear in older websites to do the same thing.
+
+Radio Buttons:
+- These allow users to select one from a number of options.
+- Created using "radio" as the value for "type".
+
+<form action="http://www.example.com/profile.php">
+  <p>Please select your favorite genre:
+    <br />
+    <input type="radio" name="genre" value="rock" checked="checked" /> Rock
+    <input type="radio" name="genre" value="pop" /> Pop
+    <input type="radio" name="genre" value="jazz" /> Jazz
+    <input type="radio" name="genre" value="metal" /> Metal
+    <input type="radio" name="genre" value="rap" /> Rap
+  </p>
+</form>
+
+- The "checked" attribute indicates that this option is selected by default when the page loads.
+
+Checkbox:
+- These allow users to select one or more options.
+- These also allow users to unselect and leave all options blank.
+- Created with the "checkbox" as the value for "type".
+
+<form action="http://www.example.com/profile.php">
+  <p>Please select your favorite music service(s):
+    <br />
+    <input type="checkbox" name="service" value="itunes" /> iTunes
+    <input type="checkbox" name="service" value="lastfm" /> last.fm
+    <input type="checkbox" name="service" value="spotify" /> Spotify
+  </p>
+</form>
+
+Drop-Down List Box:
+- Allows users to select one option from a dropdown list.
+- Created using the <select> tag.
+- Can use the "selected" attribute to designate a default selected option when the page loads.
+
+<form action="http://www.example.com/profile.php">
+  <p>What device do you listen to music on?</p>
+    <select name="devices">
+      <option value="No Selection" selected="selected">Please make a Selection</option>
+      <option value="ipod">iPod</option>
+      <option value="radio">Radio</option>
+      <option value="computer">Computer</option>
+    </select>
+  </p>
+</form>
+
+- You can use the "size" attribute to make a dropdown box show more than one option at a time.
+- You can use the "multiple" attribute to allow the user to select multiple options by hitting *ctrl* (*cmd* on Mac)
+    - It is a good idea to let the user know they are able to do this.
+
+File Input Box:
+- Allows users to upload a file.
+- Created using "file" as the value for "type" attribute.
+- The "method" attribute in the <form> tag must have a value of "post".
+- This will also give the user a "browse" button to open their file explorer.
+
+<form action="http://www.example.com/upload.php" method="post">
+  <p>Upload your song in MP3 format:</p>
+  <input type="file" name="user-song" /><br />
+  <input type="submit" value="Upload" />
+</form>
+
+Submit Button:
+- This will send the form to the server.
+- The value of the "name" attribute is the text that appears on the button.
+
+<form action="http://www.example.com/subscribe.php">
+ <p>Subscribe to our email list:</p>
+  <input type="text" name="email" />
+  <input type="submit" name="subscribe" value="Subscribe" />
+</form>
+
+- Controlling the appearance of the "submit" button will require CSS or using a separate image like this:
+
+<form action="http://www.example.com/subscribe.php">
+ <p>Subscribe to our email list:</p>
+  <input type="text" name="email" />
+  <input type="image" src="images/subscribe.jpg" 
+   width="100" height="20" />
+</form>
+
+Buttons:
+- This was added to allow users more control over how their buttons appear, as well as add elements inside the button.
+- Done using the <button> tag.
+- You can also put "hidden" as the value for "type" to add values to a form that the viewer will not be aware of.
+
+<form action="http://www.example.com/subscribe.php">
+  <button><img src="images/add.gif" alt="add" width="10" height="10" /> Add</button>
+  <input type="hidden" name="bookmark" value="lyrics" />
+</form>
+
+Labels:
+- You can add labels to form controls by encompassing the element inside an opening and closing <label> tag.
+
+<label>Age: <input type="text" name="age" /><label>
+<br />
+Sex:
+<input id="female" type="radio" name="sex" value="f"/>
+<label for "female">Female</label>
+<input id="male" type="radio" name="sex" value="m"/>
+<label for "male">Male</label>
+
+Grouping Form Elements:
+- You can group related form controls together inside the <fieldset> element. This gives the form some organization and visual clarity.
+- Add the <legend> element to add a caption to specify the purpose of that group of controls.
+
+<fieldset>
+  <legend>Contact details</legend>
+  <label>Email:<br />
+  <input type="text" name="email" /></label><br />
+  <label>Mobile:<br />
+  <input type="text" name="mobile" /></label><br />
+  <label>Telephone:<br />
+  <input type="text" name="telephone" /></label>
+</fieldset>
