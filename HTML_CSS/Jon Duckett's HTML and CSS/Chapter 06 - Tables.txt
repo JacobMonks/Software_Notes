@@ -1,0 +1,100 @@
+Tables are useful for containing records such as stock reports, timetables, and sports player statistics.
+The data is represented in a grid format with rows and columns.
+
+Create a table using <table> element, then you can use these tags inside of it:
+<tr> - table row, indicates the start of a new row.
+<td> - table data, denotes a single cell of the table, goes inside of <tr>.
+<th> - table heading, defines the header for a column or a row.
+
+When using <th>, you can use the "scope" attribute to indicate whether the heading is for a "row" or "col".
+E.g.
+
+<table>
+  <tr>
+    <-- Create an extra header for the whitespace in the top left corner -->
+    <th></th>
+    <th scope="col">Saturday</th>
+    <th scope="col">Sunday</th>
+  </tr>
+  <tr>
+    <th scope="row">Tickets Sold:</th>
+    <td>120</td>
+    <td>135</td>
+  </tr>
+  <tr>
+    <th scope="row">Total Sales:</th>
+    <td>$600</td>
+    <td>$675</td>
+  </tr>
+</table>
+
+
+Even if you have no data for a specific cell, you should still use <td> or <th> so the table can render correctly.
+
+You might have to insert data that stretches across multiple columns, such as keeping an hourly schedule.
+In those instances, you can use the "colspan" and "rowspan" attributes to have the data look cleaner and less redundant in the grid.
+E.g.
+
+<table>
+  <tr>
+    <th></th>
+    <th scope="col">9am</th>
+    <th scope="col">10am</th>
+    <th scope="col">11am</th>
+    <th scope="col">12pm</th>
+  </tr>
+  <tr>
+    <th scope="row">Monday</th>
+    <td colspan="2">Geography</td>
+    <td>Art</td>
+    <td rowspan="2">Math</td>
+  </tr>
+  <tr>
+    <th scope="row">Tuesday</th>
+    <td colspan="3">Gym</td>
+  </tr>
+</table>
+
+There are three more table elements you can use to distinguish between the top, middle, and bottom rows of the table:
+- <thead>
+- <tbody>
+- <tfoot>
+
+These help people with screen readers and make the data more visually discernible, especially when incorporating CSS.
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Income</th>
+      <th scope="col">Expenditure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1st January</th>
+      <td>250</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>2nd January</th>
+      <td>285</td>
+      <td>48</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <td></td>
+    <td>535</td>
+    <td>84</td>
+  </tfoot>
+</table>
+
+In certain CMS (content management systems), they may provide a <thead> element for you to put column headers.
+This could be useful if the table is bigger than the screen, and you want the table headers to follow the user down the page.
+
+In older HTML code, you might also come across some other attributes:
+"width" - indicates the pixel width of the table or the cell.
+"cellpadding" - adds extra space in each cell.
+"cellspacing" - adds extra space between each cell.
+"border" - indicates the thickness of the borders.
+"bgcolor" - indicates the background color of the table or of individual cells.
