@@ -1,0 +1,160 @@
+This section contains the other fundamentals that don't fit neatly in any category.
+- Comments
+- HTML version differences
+- global attributes like "class" and "id"
+- embedding pages
+- Adding special characters
+
+HTML4:
+- HTML4 released in 1997.
+- HTML4 had some presentational elements that are not recemmended to use anymore.
+    - This should all be relegated to CSS.
+
+XHTML1:
+- Released in 2000.
+- A way to incorporate the functions of XML into HTML
+- Has some extra rules:
+    - Every element needs a closing tag, there are no empty elements.
+    - Attribute names must be in lowercase.
+    - All attributes require a value.
+    - Every element that was opened inside another element should be closed inside that same element.
+- The advantage here is that XHTML works seamlessly with other programs that are written to create and process XML documents.
+
+HTML5:
+- Web page authors do not need to close all tags.
+- New elements and attributes introduced.
+
+DOCTYPE:
+It is good practice for each webpage you create to begin with a DOCTYPE declaration, specifying the HTML version.
+This can help the browser render the page properly.
+E.g.
+
+<!DOCTYPE html>		-- This is for HTML5
+
+<!DOCTYPE html PUBLIC	-- This is for HTML 4
+  "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html PUBLIC	-- This is for Transitional XHTML 1.0
+  "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/
+   xhtml1-transitional.dtd">
+
+<!DOCTYPE html PUBLIC	-- This is for Strict XHTML 1.0
+  "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/
+   xhtml1-strict.dtd">
+
+<?xml version="1.0" ?> 	-- This is for XML
+
+COMMENTS:
+- These will not be visible in the browser.
+	<!-- comment goes here -->
+- Comments are essential for enterprise websites because, no matter how familiar you are with the page when you write it,
+  comments make it easier to understand it when going back to it, or when the code is observed by someone else.
+
+ID ATTRIBUTE:
+- Every HTML element can carry the "id" attribute. The value should start with a letter or underscore and be unique for each element.
+- This is useful when using CSS to refer to specific elements.
+- For example, you may want to style one paragraph on a page differently from the rest.
+- It is also useful for allowing specific interactivity with JavaScript.
+
+CLASS ATTRIBUTE:
+- Every HTML element can carry the "class" attribute.
+- Rather than uniquely identifying individual elements, this allows you to identify several elements as if they were a group.
+- For example, you want certain bits of text to be colored differently to emphasize their importance.
+- You can also have an element belong to multiple classes by separating each value with a space.
+E.g.
+
+<p class="important">This is part of the "important" class, so maybe
+	it will be all capitalized.</p>
+<p class="important admittance">This is part of the "important" class and the "admittance" class.
+	It might be capitalized and highlighted or colored differently.</p>
+
+BLOCK ELEMENTS:
+- Some elements will always appear to start on a new line in the browser window.
+- These include <p>, <h1>, <ul>, and <li>
+
+INLINE ELEMENTS:
+- Some elements will always appear to continue on the same line as neighboring elements.
+- These include <a>, <b>, <em>, and <img>.
+
+GROUPING TEXT AND ELEMENTS IN A BLOCK:
+- <div>
+- This element allows you to group a set of elements together in one block-level box.
+- For example, one block might contain all the elements for the header of the site (logo, navigation, etc.)
+- In a browser, the contents of the <div> element will start on a new line.
+- You can also use "id" and "class" attributes on a <div> element to create
+  CSS style rules to change its appearance or state how much space it takes up on the screen.
+- It is a good idea to add comments to a closing </div> tag to clarify what opening tag it corresopnds to.
+
+- <span>
+- This is basically an inline equivalent to <div>.
+- This is useful if you want to have certain words in a paragraph appear differently.
+
+IFRAMES:
+- <iframe>
+- This is a small window inside of your page thaat can contain another page.
+- Think of when pages have Google Maps in the middle of the page.
+- Some important attributes:
+	"src" - specifies the URL of the page to show in the frame.
+	"height"/"width" - specifies the dimensions of the iframe in pixels.
+	"scrolling" - not supported by HTML5, but gives the iframe a scrollbar.
+	"frameborder" - not supported by HTML5, indicates that the iframe has a border.
+	"seamless" - new attribute for HTML5, apply to an iframe if a scrollbar is not required.
+E.g.
+
+<iframe
+  width="450"
+  height="350"
+  src="http://maps.google.co.uk/maps?q=moma+new+york&amp;output=embed">
+</iframe>
+
+OTHER INFORMATION:
+
+<meta>
+- This element lives inside the <head> and contains information about the page.
+- It is not visible on the browser.
+- Tells search engines key information about the page:
+  - Who wrote it?
+  - Time sensitive?
+- Some important attributes:
+	"name" - indicates the property you are setting.
+	"content" - value that the property will have.
+	"http-equiv" - a way to set rules for the page.
+- "name" has some defined values but can be anything you want.
+	"description" - maximum of 155 characters, tells a search engine what the page is about.
+	"keywords" - comma-separated words that a user might search for to find the page.
+	"robots" - indicates if a search engine should add this page to search results.
+- "http-equiv" also has some important values:
+	"author" - defines the webpage's author.
+	"pragma" - prevents the browser from caching the page.
+	"expires" - indicates when the page should expire and can no longer be cached.
+		  - Requires a specific format: Day, ## Mon YEAR HH:MM:SS ZON
+E.g.
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Information About Your Pages</title>
+    <meta name="description"
+	content="An Essay on Installation Art" />
+    <meta name="keywords"
+	content="installation, art, opinion" />
+    <meta name="robots"
+	content="nofollow" />
+    <meta http-equiv="author"
+	content="Jon Duckett" />
+    <meta http-equiv="pragma"
+	content="no-cache" />
+    <meta http-equiv="expires"
+	content="Fri, 29 Sep 2023 23:59:59 GMT" />
+  </head>
+  <body>
+  </body>
+</html>
+
+Escape Characters:
+- Some characters like <, >, &, and " are reserved by HTML code, so you need to use "escape characters" to write them in text.
+- Be sure to check your webpage to ensure these characters actually show up, because not all fonts support them.
+- These also allow for some special characters like the Copyright symbol, Greek/Latin letters, and math symbols.
