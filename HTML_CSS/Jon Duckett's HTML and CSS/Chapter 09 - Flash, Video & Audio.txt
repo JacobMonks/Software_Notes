@@ -1,0 +1,7 @@
+Flash is used to add video, audio, and animations to websites.
+
+What is Flash?
+- An animation tool that was released in the late 90s by Adobe.
+- To view Flash, browsers require a plugin called the Flash Player.
+- Flash Player stopped being supported in December 2020, and Adobe blocked Flash content from running on Flash Players in 2021.
+- Adobe suggests that all users uninstall Flash Player for security reasons.
