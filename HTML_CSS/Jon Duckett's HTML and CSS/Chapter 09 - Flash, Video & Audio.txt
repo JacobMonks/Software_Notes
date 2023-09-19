@@ -5,3 +5,9 @@ What is Flash?
 - To view Flash, browsers require a plugin called the Flash Player.
 - Flash Player stopped being supported in December 2020, and Adobe blocked Flash content from running on Flash Players in 2021.
 - Adobe suggests that all users uninstall Flash Player for security reasons.
+
+In HTML5, you can embed video and audio with their own elements:
+<video>
+<audio>
+
+For more information, visit https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video

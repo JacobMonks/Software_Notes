@@ -1,0 +1,3 @@
+CSS allows you to create rules that specify how the content of an element should appear.
+You can specify colors, fonts, paragraph layouts, etc.
+CSS is mostly about knowing what rules to apply, since the syntax is very similar for all rules.
