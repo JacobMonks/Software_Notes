@@ -1,3 +1,74 @@
 CSS allows you to create rules that specify how the content of an element should appear.
 You can specify colors, fonts, paragraph layouts, etc.
 CSS is mostly about knowing what rules to apply, since the syntax is very similar for all rules.
+
+Around every HTML element, imagine there is an invisible box. CSS allows you to control the way each box is presented.
+
+You associate rues with HTML elements. A rule has a SELECTOR and a DECLARATION:
+E.g.
+
+p {			- selector
+  font-family: Arial;}	- declaration
+
+This rule indicates that all <p> elements should be shown in Arial typeface.
+In this instance, "font-family" is what is known as a PROPERTY, and "Arial" is the VALUE.
+
+You can specify multiple properties in a single declaration. Simply separate them with semicolons.
+E.g.
+
+h1, h2, h3 {
+	   font-family: Arial;
+	   color: yellow;}
+
+You can apply CSS internally or externally.
+
+EXTERNALLY:
+All external CSS that you wish to apply to a .html file should be kept in a separate .css file.
+In order to apply the CSS, you must link to the .css file in the html code.
+E.g.
+
+<head>
+  <title>Title of webpage</title>
+  <link href="css/example.css" type="text/css" rel="stylesheet" />
+</head>
+
+INTERNALLY:
+You can include CSS rules inside of an html page by using the <style> element.
+E.g.
+<head>
+  <title>Title of webpage</title>
+  <style type="text/css">
+    body {
+	font-family: arial;
+	background-color: rgb(185,179,175)}
+    h1 {
+	color: rgb(255,255,255);}
+  </style>
+</head>
+
+When designing larger websites with multiple pages, it is good practice to
+use the external CSS style sheet so you can apply the same rules to multiple pages with ease.
+
+TYPES OF SELECTORS:
+Universal Selector (e.g. *)
+Type Selector (e.g. p, h1, h2, ...)
+Class Selector (e.g. .note {} targets all elements with a class value of "note"
+		p.note {} targets all <p> elements with a class value of "note")
+ID Selector (e.g. #introduction {} targets the element with an id value of "introduction")
+Child Selector (e.g. li>a {} targets any <a> elements that are direct children of a <li> element)
+Descendant Selector (e.g. p a {} targets any <a> elements that sit inside a <p> element)
+Adjacent Sibling Selector (e.g. h1+p {} targets the first <p> element after any <h1> element)
+General Sibling Selector (e.g. h1~p {} targets all <p> elements that are siblings of an <h1> element)
+
+CASCADING RULES:
+If there are two or more rules that apply to the same element, it is important to know which takes precedence.
+- If you have the same selector twice, the last one in the CSS is the one that takes effect.
+- If one selector is more specific that the other, that one will take effect.
+
+You can add "!important" to any property value to indicate that it should be considered more important than other rules.
+
+INHERITANCE:
+Some properties, like font-family and color, can be inherited by other elements when specified on the <body> element.
+This allows you to write less CSS.
+You can also force properties to inherit values from parent elements by setting the value to "inherit".
+
