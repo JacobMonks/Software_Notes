@@ -1,0 +1,44 @@
+Color adds life to a webpage.
+
+You can specify color in three different ways:
+
+1. RGB VALUES:
+- specify how much Red, Green, and Blue are used to make the color.
+- E.g. 
+	color: rgb(100,100,90);
+
+2. HEX CODES:
+- basically the same as RGB just written in hexadecimal.
+- E.g. 
+	color: #ee3e80;
+
+3. COLOR NAMES:
+- there are 147 pre-defined color names
+- E.g.
+	color: DarkCyan;
+
+BACKGROUND-COLOR sets the color of the background for an element.
+By default, the color is transparent. This usually appears White, but users can set their own default colors,
+so to be sure it is the color you want, specify the color in the <body> element.
+
+CSS3 introduces the "opacity" property, a value from 0.0 to 1.0.
+You can also affect opacoty by using the "rgba" property and setting a 4th value.
+E.g.
+p.one {
+  background-color: rgb(0,0,0);
+  opacity: 0.5;}
+p.two {
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.5);}
+
+CSS3 also gives a new way to specify colors, HSL (hue-saturation-lightness)
+Hue - a way to identify colors as represented by a circle, expressed as an angle between 0 and 360.
+Saturation - the amount of gray in the color, expressed as a percent.
+Lightness - the amount of white/black in a color, expressed as a percent. 0% is black, 100% is white, 50% is normal.
+
+There is also a 4th property called "alpha" which represents transparency, ranging from 0.0 to 1.0.
+E.g.
+body {
+  background-color: hsl(0,0%,78%);}
+p {
+  background-color: hsla(0,100%,100%,0,5);}
