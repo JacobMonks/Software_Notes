@@ -1,0 +1,97 @@
+CSS Properties for Text can be separated into two groups:
+1. Properties that directly affect the font and its appearance.
+	- typeface, bold, italics, size, etc.
+2. Properties that have the same effect on text regardless of font.
+	- color, spacing, etc.
+
+
+TYPEFACE TERMINOLOGY:
+
+Serif - These fonts have added details on the ends of letters.
+      - This style was used in print for many years because it considered easier to read.
+Sans-serif - These fonts have straight ends on letters, so they look cleaner.
+	   - If your webpage is being rendered with low resolution, the simpler look of these letters makes them clearer.
+Monospace - These fonts give every letter the same width.
+	  - This is often used in coding for ease of use.
+Weight - Light, Medium, Bold, or Black.
+       - Font weight can add emphasis and affect the amount of whitespace and contrast on the page.
+Style - Normal, Italic, or Oblique.
+      - Italics gives the font a cursive aspect to some letters. Oblique simply gives the letters an angle.
+Stretch - Condensed, Regular, or Extended.
+	- Describes the spacing between letters, they can be thinner and closer together or thicker and further apart.
+
+Choosing a Typeface:
+- Most computers have a number of typefaces installed on them to render on webpages.
+- Some of the most poopular fonts:
+	Serif: Georgia, Times, Times New Roman
+	Sans-serif: Arial, Verdana, Helvetica
+	Monospace: Courier, Courier New
+	Cursive: Comic Sans MS, Monotype Corsiva
+	Fantasy: Impact, Haettenschweiler (use for titles and headers only, not normal text)
+
+You can specify more than one typeface and create an order of precedence in case the user does not have the first choice.
+	- This is sometimes referred to as a FONT STACK.
+
+Designers suggest having no more than 3 different typefaces on the same page.
+
+E.g.
+p {
+  font-family: Georgia, Times, serif;}
+
+Fonts are subject to copyright, so the techniques you can choose from are limited by their respective licenses.
+
+FONT PROPERTIES:
+
+font-family	: specify the typeface that should be used for any text inside this element.
+font-size	: specify a size of the font. Can be expressed in pixels (16px), percentages (100%), or ems (1.0em).
+		  16px is usually the default size, so 16px = 100% = 1.0em, 12px = 75% = 0.75em
+font-weight	: creates bold text, value can be "normal" or "bold".
+font-style	: allows you to change the slant of the text, value can be "normal", "italic", or "oblique".
+text-transform	: change the case of text, value can be "uppercase", "lowercase", or "capitalize".
+text-decoration	: allows you to add a flair to the text, value can be "none", "underline", "overline", "line-through", or "blink".
+line-height	: sets the height of an entire line of text, includes the font-size and the LEADING (spacing) above the text
+		: should be expressed in ems.
+letter-spacing	: adjust the KERNING (spacing between letters), should be expressed in ems.
+word-spacing	: adjust the spacing between letters, should be expressed in ems.
+text-align	: control the alignment of the text, value can be "left", "right", "center", or "justify".
+vertical-align	: used to control the height of text relative to other inline elements like images.
+		: value can be "baseline", "sub", "super", "top", "text-top", "middle", "bottom", or "text-bottom".
+text-indent	: allows you to indent the first line of text within an element, usually expressed in pixels.
+		: can also take a negative value to push the text off the browser window.
+text-shadow	: adds a drop shadow to the text, takes values for horizontal shadow, vertical shadow, blur, and color.
+		: value is written like so:
+			text-shadow: 1px 1px 3px #111111;
+
+PSUEOD-ELEMENTS:
+
+These are specified at the end of the selector to make the property more specific in its application.
+
+first-letter	: used to specify a different value for the very first letter in an element.
+		: written like so:
+			p.intro:first-letter {
+				...}
+first-line	: same as first-letter but for a whole line.
+link		: allows you to change how links appear.
+visited		: allows you to distinguish links that have already been clicked from those that haven't.
+hover		: allows the link to have a visual change when the user hovers over it with the cursor.
+active		: allows the link to have a visual change when the user is clicking it.
+
+@font-face allows you to use a font not installed on the user's computer by specifying a path to download the font.
+E.g.
+
+@font-face {
+	font-family: 'ChunkFiveRegular';
+	src: url('fonts/chunkfive.eot');}
+h1, h2 {
+	font-family: ChunkFiveRegular, Georgia, serif;}
+
+To test this, you can find open-source fonts at:
+www.fontsquirrel.com
+www.fontex.org
+www.openfontlibrary.org
+
+You can also find licensed fonts that can be used for free at:
+www.typekit.com
+www.kernest.com
+www.fontspring.com
+
