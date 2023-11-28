@@ -6,6 +6,8 @@ This is where I will place any notes and practice activities for learning differ
 ## Tech that I know:
 - Python
 - Scala
+- Java
+- HTML & CSS
 - MySQL
 - PostgreSQL
 - Bash scripting
@@ -18,14 +20,13 @@ This is where I will place any notes and practice activities for learning differ
 - Pyspark
 - Talend Open Studio
 - AWS (S3, EC2, EMR, RDS, DynamoDB, Redshift)
-- GCP (Cloud Storage, Dataproc, Dataflow, BigQuery
+- GCP (Cloud Storage, Dataproc, Dataflow, BigQuery)
+- Some Tensorflow
 
 ## Tech to learn:
-- Java
 - J2EE
 - Javalin
 - Spring
-- HTML & CSS
 - Javascript
 - Typescript
 - REACT
@@ -33,11 +34,13 @@ This is where I will place any notes and practice activities for learning differ
 - Jenkins
 - Docker
 - Kubernetes
-- GCP
-- AWS
+- More GCP
+- More AWS
+- Azure
 - Databricks
 - Snowflake
 - Apache Beam
+- Apache Airflow
 - Tableau
 - Power BI
 - C#
