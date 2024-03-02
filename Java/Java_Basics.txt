@@ -1,0 +1,53 @@
+JAVA INTRO:
+
+Java is a general-purpose, high-level programming language.
+It was created with the basic idea: "Write once, run anywhere."
+
+Indeed, Java is an incredibly versatile programming language that can run virtually anywhere.
+The only thing a system needs to run Java programs is a Java Virtual Machine (JVM).
+- The JVM translates and compiles Java code into Bytecode. This allows a computer to read it.
+
+Before creating programs with Java, you will need to download a Java Development Kit (JDK).
+
+The JDK contains the following:
+1. Java Runtime Environment (JRE)
+2. Java Virtual Machine (JVM)
+3. Standard Java libraries.
+
+FIRST JAVA PROGRAM:
+
+All Java programs must have a file called "Main.java"
+- A Java file is known as a "class."
+- This will be the file that gets executed when you run a program.
+- The skeleton of the "Main.java" file consists of the following code:
+
+public class Main {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+
+Inside the public static void brackets, you can put any executable code and click "run" to execute it.
+
+JAVA DATATYPES:
+
+There are 8 primitive datatypes in Java:
+
+type:		size:		primitive/reference:	value:
+boolean		1 bit		primitive		true or false
+byte		1 byte		primitive		-128 to 127
+short		2 bytes		primitive		-32768 to 32767
+int		4 bytes		primitive		-2 billion to 2 billion
+long		8 bytes		primitive		-9 quintillion to 9 quintillion
+float		4 bytes		primitive		fractional number up to 6-7 digits
+double		8 bytes		primitive		fractional number up to 15 digits
+char		2 bytes		primitive		single character
+string		varies		reference		a sequence of cahracters
+
+Data types are either Primitive or Reference.
+- Primitive datatypes store a value, reference datatypes store a memory address.
+- Primitive datatypes can only hold 1 value, reference datatypes can hold many.
+- Primitive datatypes take up far less memory than reference datatypes.
+- Primitive datatypes are faster to create, modify, and delete than reference datatypes.
