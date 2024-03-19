@@ -193,6 +193,7 @@ Every task you wish to run must be assigned a to DAG.
 ### Default Arguments:
 Operators inside a DAG usually need to be given default arguments. Rather than specify them one by one for each Operator, you can pass "default_args" in a dictionary format that will apply to all Operators.
 
+Ex.
 
     import pendulum
     
@@ -220,6 +221,7 @@ You can make use of branching to tell a DAG not to run all dependent tasks, but 
 
 This is done with the "@task.branch" decorator.
 When a function has this decorator, it must return an ID of a task so it knows which task to branch to. If it returns None, it will skip all downstream tasks.
+
 Ex.
 
     @task.branch
@@ -248,6 +250,7 @@ Ex.
 
 
 To create your own Branching operators, you can inherit from "BaseBranchOperator" and implement the "choose_branch" method to meet your needs.
+
 Ex.
 
     class MyBranchOperator(BaseBranchOperator):
@@ -262,14 +265,124 @@ Ex.
             else:
                 return None
 
+### Latest Only
+Airflow allows you to run tasks on data that is days or even months old. You can run one copy of the DAG for every day to backfill some data.
+
+However, in some situations you might not want some (or all) parts of a DAG to run on previous data. This is where the "LatestOnlyOpeator" comes in handy. This will skip all downstream tasks if you are not on the "latest" DAG Run.
+
+Ex.
+
+    import pendulum
+    import datetime
+    from airflow.operators.latest_only import LatestOnlyOperator
+    from airflow.operators.empty import EmptyOperator
+    from airflow.models.dag import DAG
+    from airflow.utils.trigger import TriggerRule
+
+    with DAG(
+        dag_id = "latest_only_with trigger",
+        schedule = datetime.timedelta(hours = 4),
+        start_date = pendulum.datetime(2025,1,1, tx = "UTC"),
+        catchup = False,
+        tags = {"example3"},
+    ) as dag:
+        latest_only = LatestOnlyOperator(task_id = "latest_only")
+        task1 = EmptyOperator(task_id = "task1")
+        task2 = EmptyOperator(task_id = "task2")
+        task3 = EmptyOperator(task_id = "task3")
+        task4 = EmptyOperator(task_id = "task4", trigger_rule = TriggerRule.ALL_DONE)
+
+        latest_only >> task1 >> [task3, task4]
+        task2 >> [task3, task4]
+        # In this DAG:
+        # task1 will be skipped for all except the latest instance.
+        # task2 is independent of latest_only and will run in all instances.
+        # task3 is downstream from task1, so it will also be skipped for all except the last instance.
+        #         This is because the default trigger rule is "ALL_SUCCESS"
+        # task4 has a trigger rule of "ALL_DONE", so it will run in all instances.
+
+### Depends on Past
+You can set your task to run only if the task in the previous DAG Run was successful.
+
+This is done simply by setting the "depends_on_past" argument to True.
+
+Note: If this is the first ever instance of this DAG, then the task will still run.
 
 ### Trigger Rules
 
+- all_success (default)
+- all_failed
+- all_done
+- all_skipped
+- one_failed
+- one_success
+- one_done
+- none_failed
+- none_failed_min_one_success
+- none_skipped
+- always
+
+Be wary of using these triggers when skipping branches. You almost never want to use the "all_success" or "all_failed" triggers downstream of a branching operation.
+
+Consider the following DAG:
+
+                 / branch_a -> follow_branch_a \
+    branching ->|                               |-> join
+                 \------ skipped_branch -------/
+
+If the trigger on the "join" task is "all_success", it will be skipped always, because skipped_branch is upstream of it, and it did not succeed.
+
+In this case, you may want the trigger to be "none_failed_min_one_success".
 
 ### Setup and Teardown
+In a lot of cases, you might be creating some resources, like a cluster, using it for a purpose, and then getting rid of it.
 
+Airflow supports this setup and teardown workflow:
 
-### Latest Only
+    create_cluster >> run_query >> delete_cluster.as_teardown(setups = create_cluster)
 
+You can also have it written as such:
 
-### Depends on Past
+with delete_cluster.as_teardown(setups = create_cluster()):
+    [RunQueryONe(), RunQuery2()] >> DoStuff()
+    WorkOne() >> [DoMoreStuff(), DoSomeOtherstuff()]
+
+This will create the cluster, use it to run all of the tasks in the context, then delete the cluster afterwards.
+
+## Task Groups
+Purely for UI purposes and removing clutter, Task Groups can be added to your code using the @task_group() decorator.
+
+Ex.
+
+    from airflow.decorators import task_group
+
+    @task_group()
+    def group1():
+        task1 = EmptyOperator(task_id = "task1")
+        task2 = EmptyDecorator(task_id = "task2")
+    
+    task3 = EmptyOperator(task_id = "task3")
+
+    group1() >> task3
+
+Task Groups also support the "default_args" argument like DAG:
+
+Ex.
+
+    from airflow import DAG
+    from airflow.decorators import task_group
+    from airflow.operators.bash import BashOperator
+    from airflow.operators.empty import EmptyOperator
+
+    with DAG(
+        dag_id = "dag1",
+        start_date = datetime.datetime(2025,1,1),
+        schedule = "@daily",
+        default_args = {"retries": 1}
+    ):
+        @task_group(default_args = {"retries":3})
+        def group1():
+            task1 = EmptyOperator(task_id = "task1")
+            task2 = BashOperator(task_id = "task2", bash_command = "echo Hello World!", retries = 2)
+            print(task1.retries) # 3
+            print(task2.retries) # 2
