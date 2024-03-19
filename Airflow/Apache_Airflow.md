@@ -349,7 +349,9 @@ with delete_cluster.as_teardown(setups = create_cluster()):
 
 This will create the cluster, use it to run all of the tasks in the context, then delete the cluster afterwards.
 
-## Task Groups
+## DAG Visualization
+
+### Task Groups
 Purely for UI purposes and removing clutter, Task Groups can be added to your code using the @task_group() decorator.
 
 Ex.
@@ -386,3 +388,13 @@ Ex.
             task2 = BashOperator(task_id = "task2", bash_command = "echo Hello World!", retries = 2)
             print(task1.retries) # 3
             print(task2.retries) # 2
+
+### Edge Labels
+Airflow also allows you to add labels to edges that will appear in the graph.
+
+For example, you have a DAG with two branches, one that executed when errors occur and another that executes when no errors occur. You can make those purposes clear by adding Edge Labels:
+
+    from airflow.utils.edgemodifier import Label
+
+    check >> Label("No Errors") >> save >> report
+    check >> Label("Errors Found") >> describe >> error >> report
