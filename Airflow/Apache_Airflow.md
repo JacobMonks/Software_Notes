@@ -291,7 +291,7 @@ Ex.
 ### Depends on Past
 You can set your task to run only if the task in the previous DAG Run was successful.
 
-This is done simply by setting the "depends_on_past" argument to True.
+This is done simply by setting the "depends_on_past" argument in the "default_args" to True.
 
 Note: If this is the first ever instance of this DAG, then the task will still run.
 
@@ -413,3 +413,95 @@ Within a DAG, the task dependencies can be defined by using the upstream and dow
 2. waiting - ExternalTaskSensor
 
 To view all DAG dependencies on the Airflow dashboard, you can click on the DAG, hover over "Browse", and select "DAG Dependencies".
+
+## Pausing, Deactivation, and Deletion
+Using the UI or API, DAGs can be paused and unpaused. When a DAG is paused, any currently running task is completed and all downstream tasks are put in a state of "Scheduled".
+
+DAGs can also be deactivated by removing them from the DAGS_FOLDER. The metadata and run history for this DAG will be maintained, and it can be added back into the DAGS_FOLDER to be reactivated. This cannot be done using the UI or API.
+
+Using the UI or API, you can also delete DAGs. However, if it is not removed from the DAGS_FOLDER, the scheduler will be able to find it again, so deleting the DAG only deletes its metadata and run history.
+
+So if you wish to fully remove a DAG from the processes, you must do 3 steps:
+
+1. Pause the DAG via UI or API.
+2. Delete the metadata via UI or API.
+3. Remove it from DAGS_FOLDER.
+
+## DAG Runs
+DAG Runs are instances of a DAG being executed. Each DAG Run is separate, so you can have multiple DAG Runs at the same time using the same DAG. This allows for parallelism.
+
+DAG Runs will be given a status after all of its tasks have a finished status (success, failed, or skipped). DAG Runs will have one of two states after completing:
+
+1. Success (if all leaf nodes' states are either "success" or "skipped")
+2. Failed (if any leaf node state is either "failed" or "upstream_failed")
+
+### Data Interval
+Each DAG Run has an assigned "data interval" that reprsents the time range it operates in. A dag with schedule = "@daily" will have a data interval starting from 00:00 and ending at 24:00.
+
+DAG Runs are usually scheduled to run after the data interval has ended to ensure it is able to collect all the associated data. The "logical date" denotes the time that the DAG Run's data interval begins, not when it actually executes.
+
+This means that a DAG will only run after a full interval has passed the "start_date".
+
+### Re-running DAGs
+If you ever need to run a DAG an additional time, or the original run failed, Airflow has options that allow you to get back on track:
+
+1. Catchup
+2. Backfilling
+3. Re-run tasks.
+
+By default, the scheduler will make new DAG Runs for every interval that has not been run since the last data interval (or has been cleared). This is known as CATCHUP.
+
+If your DAG is not limited to specific intervals, you can turn Catchup off when defining the DAG:
+
+    import pendulum
+    import datetime
+    from airflow.models.dag import DAG
+    from airflow.operators.bash import BashOperator
+
+    with DAG(
+        dag_id = "tutorial",
+        default_args = {
+            "depends_on_past" : True,
+            "retries" : 3,
+            "retry_delay" : datetime.timedelta(minutes = 3)
+        },
+        start_date = pendulum.datetime(2025,1,1, tz = "UTC"),
+        schedule = "@daily",
+        description = "A simple tutorial DAG",
+        catchup = False,
+    )
+
+In the above DAG, with Catchup set to False, the scheduler will only execute a DAG Run for the previous day, after midnight on the day it was activated.
+
+If Catchup is set to True, the scheduler will create a DAG Run for each interval since 1/1/2025 that has passed, and they will execute sequentially.
+
+Let's say a DAG start_date is 12/1/2020, but someone wants to execute a DAG Run on data from the previous month. This is called BACKFILLING, and it can be done using CLI commands:
+
+Ex.
+
+    airflow dags backfil \
+        -- start-date START_DATE \
+        -- end-date END_DATE \
+        dag_id
+
+When tasks fail during a scheduled run, you can fix the problem and clear it for the scheduled date. Clearing it will reset the "max_tries" to 0 and set the task instance state to None, prompting the scheduler to re-run it.
+
+Re-run options:
+
+- Past - All instances of the task before the most recent data interval.
+- Future - All instances of the task after the most recent interval.
+- Upstream - The upstream tasks in the current DAG.
+- Downstream - The downstream tasks in the current DAG.
+- Recursive - All the tasks in the parent and child DAGs.
+- Failed - Only the failed tasks in the most recent DAG Run.
+
+You can clear tasks using CLI commands:
+
+Ex.
+
+    airflow tasks clear dag_id \
+        --task-regex task_regex \
+        --start-date START_DATE \
+        --end-date END_DATE
+
+This will clear all tasks that match the regex for the specified dag_id and time interval.
