@@ -9,7 +9,6 @@ Airflow operates using Directed Acyclic Graphing (DAG), which is a way of breaki
 
 A simple example of DAG:
 
-
          / B -> D \
     A ->|          |-> F
          \ C -> E /
@@ -26,6 +25,9 @@ Create and open a new Python project. Using a WSL terminal, navigate to the corr
 
     py -m venv py_env
 
+Activate the virtual environment:
+
+    py_env/bin/activate
 
 Go to: https://github.com/apache/airflow?tab=readme-ov-file
 
@@ -44,23 +46,19 @@ Set the project folder as the Airflow Home directory:
 
     export AIRFLOW_HOME=~/airflow
 
-
 Set up the Airflow database using the following command:
 
     airflow db init
 
-
 Create a new user:
 
     airflow users create --username admin --firstname firstname --lastname lastname --role Admin --email admin@domain.com
-
 
 And create a memorable password.
 
 Then start the Airflow webserver:
 
     airflow webserver -p 8080
-
 
 Now you can see the Airflow dashboard when you go to "http://localhost:8080" and login.
 
@@ -76,7 +74,6 @@ There are 3 main ways to declare a DAG:
 1. Context Manager
 
     This will add the DAG to anything inside it implicitly.
-
     
         import datetime
         from airflow import DAG
@@ -88,8 +85,6 @@ There are 3 main ways to declare a DAG:
             schedule = "@daily",
         ):
             EmptyOperator(task_id = "task")
-
-    
 
 2. Standard Constructor
 
@@ -107,11 +102,9 @@ There are 3 main ways to declare a DAG:
         )
         EmptyOperator(task_id = "task", dag = my_dag)
     
-
 3. Decorator
 
     Using the @dag decorator, you can turn a function into a DAG generator.
-
     
         import datetime
         from airflow import DAG
@@ -123,7 +116,6 @@ There are 3 main ways to declare a DAG:
         
         generate_dag()
     
-
 DAGs are nothing without Tasks, and those usually come in the form of Operators, Sensors, or Taskflows.
 
 Tasks come with dependencies, that is, tasks that must come before it (upstream) and tasks that follow after it (downstream). You can declare task dependencies in a few ways:
@@ -133,13 +125,11 @@ Tasks come with dependencies, that is, tasks that must come before it (upstream)
         first-task >> [second_task, third_task]
         third_task << fourth_task
     
-
 2. Using set_upstream and set_downstream
     
         first_task.set_downstream([second_task, third_task])
         third_task.set_upstream(fourth_task)
     
-
 3. For more complex dependencies, such as having two lists of tasks that depend on all parts of each other, you must use cross_downstream().
     
         from airflow.models.baseoperator import cross_downstream
@@ -149,7 +139,6 @@ Tasks come with dependencies, that is, tasks that must come before it (upstream)
         # [op1, op2] >> op4
         cross_downstream([op1, op2], [op3, op4])
     
-
 4. To chain together dependencies, you can use chain():
     
         from airflow.models.baseoperator import chain
@@ -167,7 +156,6 @@ Tasks come with dependencies, that is, tasks that must come before it (upstream)
         # op1 >> op3 >> op5 >> op6
         chain(op1, [op2, op3], [op4, op5], op6)
     
-
 ## Loading DAGs
 DAGs are loaded from Python source files. You can define multiple DAGs in the same file or have one DAG split across multiple files.
 
@@ -205,7 +193,6 @@ Ex.
     ):
         op = BashOperator(task_id = "hello_world", bash_command = "Hello World!")
         print(op.retries)
-
 
 ## DAG Control Flow
 By default, a DAG will only run a task once all the other tasks it depends on are complete. However, this can be modified in a few ways:
@@ -398,3 +385,31 @@ For example, you have a DAG with two branches, one that executed when errors occ
 
     check >> Label("No Errors") >> save >> report
     check >> Label("Errors Found") >> describe >> error >> report
+
+## Packaging DAGs
+Simpler DAGs are usually confined to a single Python file, but more complex DAGs may be spread across multiple files and have added dependencies that must be shipped along with them.
+
+You can either use the DAG_FOLDER with a standard file system layout, or you can package the Python files as a single zip file.
+
+Ex.
+
+    dag1.py
+    dag2.py
+    package1/__init__.py
+    package1/functions.py
+
+Packaged DAGs come with caveats:
+
+- They cannot be used if you have pickling enabled for serialization.
+- They cannot contain compiled libraries, only pure Python.
+- They will be inserted into Python's 'sys.path' and can be imported by any other project in the Airflow process, so you must ensure that the package names don't clash with other packages on the system.
+
+Generally, for more complex sets of dependencies, it is a good idea to just use a Python virtual environment and install necessary packages with pip.
+
+## DAG Dependencies
+Within a DAG, the task dependencies can be defined by using the upstream and downstream notations, but dependencies between different DAGs require something more nuanced. DAGs can be dependent on each other for a few reasons:
+
+1. triggering - TriggerDagRunOperator
+2. waiting - ExternalTaskSensor
+
+To view all DAG dependencies on the Airflow dashboard, you can click on the DAG, hover over "Browse", and select "DAG Dependencies".
