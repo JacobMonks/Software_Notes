@@ -659,3 +659,42 @@ This is done using the "executor_config" argument in the Operator. The example b
     )
 
 ## Operators
+An Operator is a template for a predefined Task that you can call declaratively in a DAG.
+
+Many Operators are supported, including:
+
+- EmptyOperator
+- BashOperator - executes a bash command.
+- PythonOperator - calls a Python function (it's preferred to use the @task decorator instead)
+- EmailOperator - sends an email.
+
+There are also many community-created Operators you can install:
+
+- HttpOperator
+- MySqlOperator
+- OracleOperator
+- JdbcOperator
+- DockerOperator
+- HiveOperator
+- S3FileTransformOperator
+- SlackAPIOperator
+
+When using certain Operators, the executor will recognize certain suffixes of strings as references to files.
+
+Here's an example of a BashOperator that executes a multi-line bash script from a file.
+
+    run_script = BashOperator(
+        task_id = "run_script",
+        bash_command = "script.sh",
+    )
+
+If you wish to execute a bash command on that script, however, you should use the "literal" wrapper.
+
+    from airflow.utils.template import literal
+
+    print_script = BashOperator(
+        task_id = "print_script",
+        bash_command = literal("cat script.sh"),
+    )
+
+## Sensors
