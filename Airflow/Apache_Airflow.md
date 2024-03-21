@@ -505,3 +505,80 @@ Ex.
         --end-date END_DATE
 
 This will clear all tasks that match the regex for the specified dag_id and time interval.
+
+### External Triggers
+You can create a DAG Run manually using the CLI:
+
+    airflow dags trigger --exec-date logical_date run_id
+
+You can also trigger them using the Airflow UI with: DAGs >> Links >> Trigger DAG.
+
+### Parameterized DAGs
+When triggering a DAG from the UI, API, or CLI, you can pass in configuration as a JSON blob.
+
+Ex.
+
+    import pendulum
+    import datetime
+    from airflow import DAG
+    from airflow.operators.bash import BashOperator
+
+    dag = DAG(
+        dag_id = "example_parameterized_dag",
+        schedule = None,
+        start_date = pendulum.datetime(2025,1,1, tz = "UTC"),
+        catchup - False,
+    )
+
+    parameterized_task = BashOperator(
+        task_id = "parameterized_task",
+        bash_command = "echo value: {{ dag_run.conf['conf1'] }}",
+        dag = dag,
+    )
+
+The parameters from dag_run.conf can only be used in a template of an operator.
+
+Using CLI:
+
+    airflow dags trigger --conf '{ "conf1" : "value1" }' example_parameterized_dag
+
+## Tasks
+Tasks are the basic units of execution in Airflow.
+
+There are 3 basic types of Tasks:
+
+1. Operators - Predefined task templates that you can string together quickly to build most parts of your DAG.
+2. Sensors - A subclass of Operator that waits for specific external events to happen.
+3. TaskFlows - decorated @task, which is a custom Python function packaged up as a task.
+
+Essentially, think of Operators and Sensors as templates that you call in a DAG to create tasks.
+
+Tasks don't pass information to each other and instead run independently. If you wish to pass information from one task to another, you should instead use XComs.
+
+### Task Instances
+Just like a DAG is instantiated into a DAG Run, a Task is instantiated into a Task Instance.
+
+Task Instances have an indicated state:
+
+- none - The task is not queued and its dependencies are not met.
+- scheduled - The scheduler has determined that the dependencies have been met and it should run.
+- queued - The task has been assigned to an executor and is awaiting a worker.
+- running - The task is running on a worker.
+- success - The task completed without errors.
+- restarting - The task was externally requested to restart while it was running.
+- failed - The task encountered errors while executing.
+- skipped - The task was skipped over due to branching, LatestOnly, or some other condition.
+- upstream_failed - An upstream task and the Trigger Rule says we needed it to succeed.
+- up_for_retry - The task failed but it has retries left and is rescheduled.
+- up_for_reschedule - The task is a Sensor that is in "reschedule" mode.
+- deferred - The task has been deferred to a Trigger.
+- removed - The task was removed from the DAG since the Run started.
+
+Task terminology:
+
+- Upstream task: a task that executes before this task.
+- Downstream task: a task that executes after thsi task.
+- Previous task: the task in a previous DAG Run.
+- Next task: the task in a future DAG Run.
+
+### Timeouts
