@@ -582,3 +582,80 @@ Task terminology:
 - Next task: the task in a future DAG Run.
 
 ### Timeouts
+When creating a task from an Operator or Sensor, you can set the "execution_timeout" attribute to set a maximum allotted time for the task to complete. Use datetime.timedelta to specify a value.
+
+Sensors specifically also have a "timeout" attribute for when it is in "reschedule" mode. When in this mode, the sensor is periodically executed and rescheduled until it succeeds.
+
+Ex.
+
+    sensor = SFTPSensor(
+        task_id = "example_sensor",
+        path = "/root",
+        execution_timeout = datetime.timedelta(seconds = 60),
+        timeout = 3600,
+        retries = 2,
+        mode = "reschedule",
+    )
+
+In the above example, the Sensor is given 60 seconds to poke the SFTP server. If it takes longer than 60 seconds, AirflowTaskTimout will be raised, and it will be allowed 2 more attempts. From the time of execution until it succeeds, it is given 3600 seconds, or 60 minutes. If it does not succeed, AirflowSensorTimeout will be raised, and it will not be allowed to retry.
+
+### SLAs
+A Service Level Agreement (SLA) is an expectation for the maximum time to complete a task relative to the DAG start_time. Unlike timeout, SLA parameters do not set a maximum limit for the task to be run, but instead it will send an "SLA miss" notification if it takes longer. Tasks that run over SLA are still allowed to complete.
+
+Tasks that are manually trigger or tasks in an event-driven DAG will not be checked for SLA miss.
+
+You can code your own logic in the case of an SLA miss using "sla_miss_callback".
+
+Ex.
+
+    def sla_callback(dag, task_list, blocking_task_list, slas, blocking_tis):
+        print(
+            "The callback arguments are: ",
+            {
+                "dag" : dag,
+                "task_list" : task_list,
+                "blocking_Task_list" : blocking_task_list,
+                "slas" : slas,
+                "blocking_tis" : blocking_tis,
+            },
+        )
+
+    @dag(
+        schedule = "*/2 * * * *",
+        start_date = pendulum.datetime(2025,1,1, tz = "UTC"),
+        caatchup = False,
+        sla_miss_callback = sla_callback,
+        default_args = { "email" : "email@domain.com" }
+    )
+    def example_sla_dag():
+        @task(sla = datetime.timedelta(seconds = 10))
+        def sleep_20():
+            time.sleep(20)
+        
+        @task
+        def sleep_30():
+            time.sleep(30)
+    
+        sleep_20() >> sleep_30()
+
+    example_dag = example_sla_dag()
+
+### Zombie/Undead Tasks
+Task instances are expected to die every once in a while because no system is perfect.
+
+Zombie Tasks are TaskInstances stuck in a "running" state despite their associated jobs being inactive. Airflow will find these periodically and clean them up to either retry them or fail them.
+
+Undead Tasks are tasks that are not supposed to be running but are, usually as a result of manually editing the Task Instance in the UI. Airflow will find these periodically and terminate them.
+
+### Executor Configuration
+Some Executors allow optional per-task configuration. One example is the KubernetesExecutor, which allows you to set an image for the task to run on.
+
+This is done using the "executor_config" argument in the Operator. The example below sets a Docker image to run a task with the KubernetesExecutor:
+
+    MyOperator(
+        executor_config = {
+            "KubernetesExecutor" : { "image" : "CustomDockerImage" }
+        }
+    )
+
+## Operators
