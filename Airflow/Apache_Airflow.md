@@ -698,3 +698,137 @@ If you wish to execute a bash command on that script, however, you should use th
     )
 
 ## Sensors
+Sensors are Operators that wait for something to happen. This could be a manual trigger, a time-based event, or a file being read. As a result, Sensors are primarily idle.
+
+There are two primary modes for running Sensors:
+
+1. Poke (default) - The Sensor takes up a worker slot for its entire runtime.
+2. Reschedule - The Sensor takes up a worker slot only when it is checking, and then goes to sleep for a set duration between checks.
+
+The main difference is latency. If a task needs to be executed every second, Poke should be the chosen mode. If a task only needs to be run every few minutes, Reschedule is preferred.
+
+Just like Operators, Airflow has many pre-built Sensors.
+
+## TaskFlow
+This is a new feature from Airflow 2.0.
+
+The TaskFlow API allows you to write DAGs much easier with basic Python code using the "@task" decorator.
+
+TaskFlow uses XComs to take care of moving inputs and outputs between tasks and automatically calculating dependencies. Take the below example:
+
+    from airflow.decorators import task
+    from airflow.operators.email import EmailOperator
+
+    @task
+    def get_ip():
+        return my_ip_service.get_main_zip()
+
+    @task(multiple_outputs = True)
+    def compose_email(external_ip):
+        return {
+            'subject' : f'Server connected from {external_ip}',
+            'body' :  f'Your Server executing Airflow is connected from the external ip {external_ip}.<br>'
+        }
+
+    email_info = compose_email(get_ip())
+
+    EmailOperator(
+        task_id = "send_email",
+        to = "email@example.com",
+        subject = email_info["subject"],
+        html_content = email_info["body"]
+    )
+
+The TaskFlow will automatically determine from line 733 that "compose_email" is downstream from "get_ip". And from the EmailOperator, it will also determine that it is upstream from the "send_email" task.
+
+### Context
+You can access TaskFlow context variables by adding them as keyword arguments.
+
+Ex.
+
+    from airflow.models.taskinstance import TaskInstance
+    from airflow.decorators import task
+    from airflow.models.dagrun import DagRun
+
+    @task
+    def print_ti_info(task_instance : TaskInstance | None = None, dag_run = DagRun | None = None):
+        print( f"Run ID: {task_instance.run_id}" )
+        print( f"Duration: {task_instance.duration}" )
+        print( f"DAG Run queued at: {dag_run.queued_at}" )
+
+### Logging
+Python's standard logging package will also work for logging TaskFlows.
+
+    import logging
+
+    logger = logging.getLogger("airflow.task")
+
+### Passing Objects as Arguments
+As mentioned, XComs pass variables into each task. One prerequisite, however, is that the variables used as arguments need to serializable.
+
+Airflow supports all built-in types and any objects decorated with @dataclass or @attr.define. The below example shows a TaskFlow that uses a 'Dataset' object for storing the data from the specified link:
+
+    import json
+    import pendulum
+    import requests
+    from airflow import Dataset
+    from airflow.decorators import task
+
+    SRC = Dataset(
+        "https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/global/time-series/globe/land_ocean/ytd/12/1880-2022.json"
+    )
+    now = pendulum.now()
+
+    @dag(dag_id = now, schedule = "@daily", catchup = False)
+    def etl():
+        @task()
+        def retrieve(src : Dataset) -> dict:
+            resp = requests.get(url = src.url)
+            data = resp.json()
+            return data["data"]
+        
+        @task()
+        def to_fahrenheit(temps: dict[int, float]) -> dict[int, float]:
+            ret: dict[int, float] = {}
+            for year, celsius in temps.items():
+                ret[year] = float(celsius) * 1.8 + 32
+            
+            return ret
+
+        @task()
+        def load(fahrenheit: dict[float, int]) -> Dataset:
+            filename = "/tmp/fahrenheit.json"
+            s = json.dumps(fahrenheit)
+            f = open(filename, 'w')
+            f.write(s)
+            f.close()
+
+            return Dataset(f"file:///{filename}")
+        
+        data = retrieve(SRC)
+        fahrenheit = to_fahrenheit(data)
+        load(fahrenheit)
+    
+    etl()
+
+#### Passing Custom Objects
+Typically, if you want to pass custom objects, you would decorate the class with @dataclasss or @attr.define.
+
+Or, if you'd like to control serialization yourself, you can add the serialize() and deserialize() methods to the class:
+
+    from typing import ClassVar
+
+    class MyCustom:
+        __version__: ClassVar[int] = 1
+
+        def __init__(self, x):
+            self.x = x
+
+        def serialize():
+            return dict({'x': self.x})
+        
+        @staticmethod
+        def deserialize(data: dict, version: int):
+            if version > 1:
+                raise TypeError(f"version > {MyCustom.version}")
+            return MyCustom(data['x'])
