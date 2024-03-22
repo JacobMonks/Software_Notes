@@ -27,7 +27,7 @@ Create and open a new Python project. Using a WSL terminal, navigate to the corr
 
 Activate the virtual environment:
 
-    py_env/bin/activate
+    source py_env/bin/activate
 
 Go to: https://github.com/apache/airflow?tab=readme-ov-file
 
@@ -832,3 +832,70 @@ Or, if you'd like to control serialization yourself, you can add the serialize()
             if version > 1:
                 raise TypeError(f"version > {MyCustom.version}")
             return MyCustom(data['x'])
+
+When diong serialization, it's a good idea to version the objects that will be serialized. Hence the code on line 822:
+
+    __version__: ClassVar[int] = 1
+
+## Executors
+As mentioned previously, executors are what run your DAGs and task instances in Airflow. You can swap Executors based on your installation needs.
+
+Airflow can only have one Executor configured at a time. To check which executor is currently set, you can run the following terminal command:
+
+    airflow config get-value core executor
+
+Airflow has executors for both local work and remote work.
+
+Local:
+
+- Sequential Executor (default executor, does not support parallel tasks)
+- Local Executor (for small, single-machine production installations)
+
+Remote:
+
+- Celery Executor
+- CeleryKubernetes Executor
+- Kubernetes Executor
+- Dask Executor
+- LocalKubernetes Executor
+
+All executors implement a common public interface, "BaseExecutor". If you want to configure a custom executor, inherit BaseExecutor.
+
+BaseExecutor has some fundamental methods that you don't need to override:
+
+- heartbeat
+- queue_command
+- get_event_buffer
+- has_task
+- send_callback
+
+The following methods, however, MUST be implemented to create a custom executor:
+
+- sync - gets called periodically during executor heartbeats
+- execute_async
+
+# Practice DAG:
+
+import pendulum
+from airflow.models.dag import DAG
+from airflow.operators.bash import BashOperator
+
+with DAG(
+    dag_id = "example_dag",
+    start_date = pendulum.now(),
+    schedule = "@daily",
+    catchup = False
+):
+    task1 = BashOperator(
+        task_id = "task1",
+        bash_command = "echo Hello World!",
+        retries = 2,
+    )
+
+    task2 = BashOperator(
+        task_id = "task2",
+        bash_command = "echo My name is Jacob!",
+        retries = 2,
+    )
+
+    task1 >> task2
