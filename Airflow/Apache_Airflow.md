@@ -665,7 +665,7 @@ Many Operators are supported, including:
 
 - EmptyOperator
 - BashOperator - executes a bash command.
-- PythonOperator - calls a Python function (it's preferred to use the @task decorator instead)
+- PythonOperator - calls a Python function (it's preferred to use the @task decorator instead).
 - EmailOperator - sends an email.
 
 There are also many community-created Operators you can install:
@@ -880,9 +880,11 @@ import pendulum
 from airflow.models.dag import DAG
 from airflow.operators.bash import BashOperator
 
+now = pendulum.now()
+
 with DAG(
     dag_id = "example_dag",
-    start_date = pendulum.now(),
+    start_date = now,
     schedule = "@daily",
     catchup = False
 ):
@@ -899,3 +901,42 @@ with DAG(
     )
 
     task1 >> task2
+
+## Running Airflow in a Docker Container:
+1. Open up a new project called 'airflow_docker'.
+
+Note: To ensure you have enough memory (roughly 8 GB), use the following command:
+
+    docker run --rm "debian:bullseye-slim" bash -c 'numfmt --to iec $(echo $(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE))))'
+
+2. If you have docker installed, you can run the following command in a terminal to get the yaml file:
+
+    curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.8.3/docker-compose.yaml'
+
+3. Open up the yaml file and comment out any lines/blocks that apply to the 'CeleryExecutor', 'flower', or 'redis'.
+
+4. Make new directories for keeping the logs, plugins, dags, and config:
+
+    mkdir -p ./dags ./logs ./plugins ./config
+
+5. Set the AIRFLOW_UID and save it in a .env file:
+
+    echo -e "AIRFLOW_UID=$(id -u)" > .env
+
+6. Create the docker container and initialize the database:
+
+    docker compose up airflow-init
+
+7. Start up the airflow processes in the container:
+
+    docker compose up -d
+
+8. Confirm that all the necessary processes are running. There should be a scheduler, webserver, triggerer, and postgres database:
+
+    docker ps
+
+9. Once you have confirmed it is running, you can go to "localhost:8080" and login using the following credentials:
+
+    user: airflow
+    password: airflow
+
