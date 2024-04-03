@@ -874,34 +874,6 @@ The following methods, however, MUST be implemented to create a custom executor:
 - sync - gets called periodically during executor heartbeats
 - execute_async
 
-# Practice DAG:
-
-import pendulum
-from airflow.models.dag import DAG
-from airflow.operators.bash import BashOperator
-
-now = pendulum.now()
-
-with DAG(
-    dag_id = "example_dag",
-    start_date = now,
-    schedule = "@daily",
-    catchup = False
-):
-    task1 = BashOperator(
-        task_id = "task1",
-        bash_command = "echo Hello World!",
-        retries = 2,
-    )
-
-    task2 = BashOperator(
-        task_id = "task2",
-        bash_command = "echo My name is Jacob!",
-        retries = 2,
-    )
-
-    task1 >> task2
-
 ## Running Airflow in a Docker Container:
 1. Open up a new project called 'airflow_docker'.
 
@@ -940,3 +912,23 @@ Note: To ensure you have enough memory (roughly 8 GB), use the following command
     user: airflow
     password: airflow
 
+## Cron Expressions
+Instead of using the datetime library, you can use a Cron Expression for scheduling.
+
+A Cron Expression consists of 5 fields separated by whitespace that represents a set of times. In Airflow's case, a Cron Expression can be used to indicate a schedule for task execution.
+
+Here are some examples:
+
+"@hourly"  = "0 * * * *"
+"@daily"   = "0 0 * * *"
+"@weekly"  = "0 0 * * 0"
+"@monthly" = "0 0 1 * *"
+"@yearly"  = "0 0 1 1 *"
+
+The 5 positions correlate to: minute - hour - day of month - month - day of week
+
+To find out what Cron Expression you need for your time interval, you can go to: crontab.guru
+
+For example, you want a task to run hourly, but only on the 5th of March: "0 * 5 3 *"
+
+Or you want this task to run at 3 PM every Monday and Thursday: "0 15 * * Mon,Thu"
