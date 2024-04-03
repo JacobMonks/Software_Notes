@@ -10,7 +10,8 @@ default_args = {
 }
 
 with DAG(
-    dag_id = "dag_with_cron_expression_v4",
+    dag_id = "dag_with_cron_expression_v5",
+    description = "DAG that uses Cron Expressions",
     start_date = datetime(2024,3,25),
     schedule_interval = "12 * 2 4 *",
     default_args = default_args

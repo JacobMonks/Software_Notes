@@ -1,0 +1,46 @@
+[2024-04-03T04:14:16.965+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=dag_postgres_operator_v4/run_id=scheduled__2024-04-02T00:00:00+00:00/task_id=insert_into_table permission to 509
+[2024-04-03T04:14:16.967+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=dag_postgres_operator_v4/run_id=scheduled__2024-04-02T00:00:00+00:00 permission to 509
+[2024-04-03T04:14:16.968+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=dag_postgres_operator_v4 permission to 509
+[2024-04-03T04:14:16.968+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs permission to 509
+[2024-04-03T04:14:17.003+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=dag_postgres_operator_v4/run_id=scheduled__2024-04-02T00:00:00+00:00/task_id=insert_into_table permission to 509
+[2024-04-03T04:14:17.006+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=dag_postgres_operator_v4/run_id=scheduled__2024-04-02T00:00:00+00:00 permission to 509
+[2024-04-03T04:14:17.009+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=dag_postgres_operator_v4 permission to 509
+[2024-04-03T04:14:17.011+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs permission to 509
+[2024-04-03T04:14:17.053+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_postgres_operator_v4.insert_into_table scheduled__2024-04-02T00:00:00+00:00 [queued]>
+[2024-04-03T04:14:17.063+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_postgres_operator_v4.insert_into_table scheduled__2024-04-02T00:00:00+00:00 [queued]>
+[2024-04-03T04:14:17.065+0000] {taskinstance.py:2193} INFO - Starting attempt 2 of 7
+[2024-04-03T04:14:17.082+0000] {taskinstance.py:2217} INFO - Executing <Task(PostgresOperator): insert_into_table> on 2024-04-02 00:00:00+00:00
+[2024-04-03T04:14:17.086+0000] {standard_task_runner.py:60} INFO - Started process 9229 to run task
+[2024-04-03T04:14:17.089+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'dag_postgres_operator_v4', 'insert_into_table', 'scheduled__2024-04-02T00:00:00+00:00', '--job-id', '259', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_postgres.py', '--cfg-path', '/tmp/tmp59dmj9nk']
+[2024-04-03T04:14:17.091+0000] {standard_task_runner.py:88} INFO - Job 259: Subtask insert_into_table
+[2024-04-03T04:14:17.140+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=dag_postgres_operator_v4/run_id=scheduled__2024-04-02T00:00:00+00:00/task_id=insert_into_table permission to 509
+[2024-04-03T04:14:17.143+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=dag_postgres_operator_v4/run_id=scheduled__2024-04-02T00:00:00+00:00 permission to 509
+[2024-04-03T04:14:17.146+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=dag_postgres_operator_v4 permission to 509
+[2024-04-03T04:14:17.148+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs permission to 509
+[2024-04-03T04:14:17.150+0000] {task_command.py:423} INFO - Running <TaskInstance: dag_postgres_operator_v4.insert_into_table scheduled__2024-04-02T00:00:00+00:00 [running]> on host 46dc445f2ec8
+[2024-04-03T04:14:17.234+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='coder2j' AIRFLOW_CTX_DAG_ID='dag_postgres_operator_v4' AIRFLOW_CTX_TASK_ID='insert_into_table' AIRFLOW_CTX_EXECUTION_DATE='2024-04-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-04-02T00:00:00+00:00'
+[2024-04-03T04:14:17.236+0000] {sql.py:276} INFO - Executing: insert into dag_runs values ( '2024-04-02', 'dag_postgres_operator_v4');
+[2024-04-03T04:14:17.246+0000] {base.py:83} INFO - Using connection ID 'postgres_localhost' for task execution.
+[2024-04-03T04:14:17.256+0000] {base.py:83} INFO - Using connection ID 'postgres_localhost' for task execution.
+[2024-04-03T04:14:17.266+0000] {sql.py:457} INFO - Running statement: insert into dag_runs values ( '2024-04-02', 'dag_postgres_operator_v4');, parameters: None
+[2024-04-03T04:14:17.269+0000] {taskinstance.py:2731} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 444, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 414, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/operators/sql.py", line 282, in execute
+    output = hook.run(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 404, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 462, in _run_command
+    cur.execute(sql_statement)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "dag_runs_pkey"
+DETAIL:  Key (dt, dag_id)=(2024-04-02, dag_postgres_operator_v4) already exists.
+
+[2024-04-03T04:14:17.277+0000] {taskinstance.py:1149} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_postgres_operator_v4, task_id=insert_into_table, execution_date=20240402T000000, start_date=20240403T041417, end_date=20240403T041417
+[2024-04-03T04:14:17.298+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 259 for task insert_into_table (duplicate key value violates unique constraint "dag_runs_pkey"
+DETAIL:  Key (dt, dag_id)=(2024-04-02, dag_postgres_operator_v4) already exists.
+; 9229)
+[2024-04-03T04:14:17.303+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-04-03T04:14:17.319+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check
