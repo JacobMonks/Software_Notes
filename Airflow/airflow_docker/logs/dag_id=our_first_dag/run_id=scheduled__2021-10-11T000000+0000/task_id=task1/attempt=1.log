@@ -1,0 +1,29 @@
+[2024-04-01T23:34:06.876+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=our_first_dag/run_id=scheduled__2021-10-11T00:00:00+00:00/task_id=task1 permission to 509
+[2024-04-01T23:34:06.878+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=our_first_dag/run_id=scheduled__2021-10-11T00:00:00+00:00 permission to 509
+[2024-04-01T23:34:06.880+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=our_first_dag permission to 509
+[2024-04-01T23:34:06.883+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs permission to 509
+[2024-04-01T23:34:06.923+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=our_first_dag/run_id=scheduled__2021-10-11T00:00:00+00:00/task_id=task1 permission to 509
+[2024-04-01T23:34:06.926+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=our_first_dag/run_id=scheduled__2021-10-11T00:00:00+00:00 permission to 509
+[2024-04-01T23:34:06.928+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=our_first_dag permission to 509
+[2024-04-01T23:34:06.930+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs permission to 509
+[2024-04-01T23:34:06.997+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: our_first_dag.task1 scheduled__2021-10-11T00:00:00+00:00 [queued]>
+[2024-04-01T23:34:07.017+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: our_first_dag.task1 scheduled__2021-10-11T00:00:00+00:00 [queued]>
+[2024-04-01T23:34:07.018+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 6
+[2024-04-01T23:34:07.078+0000] {taskinstance.py:2217} INFO - Executing <Task(BashOperator): task1> on 2021-10-11 00:00:00+00:00
+[2024-04-01T23:34:07.083+0000] {standard_task_runner.py:60} INFO - Started process 597 to run task
+[2024-04-01T23:34:07.088+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'our_first_dag', 'task1', 'scheduled__2021-10-11T00:00:00+00:00', '--job-id', '77', '--raw', '--subdir', 'DAGS_FOLDER/our_first_dag.py', '--cfg-path', '/tmp/tmp0ryfuach']
+[2024-04-01T23:34:07.091+0000] {standard_task_runner.py:88} INFO - Job 77: Subtask task1
+[2024-04-01T23:34:07.175+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=our_first_dag/run_id=scheduled__2021-10-11T00:00:00+00:00/task_id=task1 permission to 509
+[2024-04-01T23:34:07.177+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=our_first_dag/run_id=scheduled__2021-10-11T00:00:00+00:00 permission to 509
+[2024-04-01T23:34:07.180+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=our_first_dag permission to 509
+[2024-04-01T23:34:07.183+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs permission to 509
+[2024-04-01T23:34:07.187+0000] {task_command.py:423} INFO - Running <TaskInstance: our_first_dag.task1 scheduled__2021-10-11T00:00:00+00:00 [running]> on host 46dc445f2ec8
+[2024-04-01T23:34:07.370+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='coder2j' AIRFLOW_CTX_DAG_ID='our_first_dag' AIRFLOW_CTX_TASK_ID='task1' AIRFLOW_CTX_EXECUTION_DATE='2021-10-11T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-10-11T00:00:00+00:00'
+[2024-04-01T23:34:07.374+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-04-01T23:34:07.375+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'echo Hello, World!']
+[2024-04-01T23:34:07.386+0000] {subprocess.py:86} INFO - Output:
+[2024-04-01T23:34:07.389+0000] {subprocess.py:93} INFO - Hello, World!
+[2024-04-01T23:34:07.390+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2024-04-01T23:34:07.483+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=our_first_dag, task_id=task1, execution_date=20211011T000000, start_date=20240401T233406, end_date=20240401T233407
+[2024-04-01T23:34:07.545+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-01T23:34:07.669+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

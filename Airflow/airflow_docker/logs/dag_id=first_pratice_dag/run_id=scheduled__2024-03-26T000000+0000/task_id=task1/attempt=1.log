@@ -1,0 +1,29 @@
+[2024-04-02T00:04:16.738+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=first_pratice_dag/run_id=scheduled__2024-03-26T00:00:00+00:00/task_id=task1 permission to 509
+[2024-04-02T00:04:16.740+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=first_pratice_dag/run_id=scheduled__2024-03-26T00:00:00+00:00 permission to 509
+[2024-04-02T00:04:16.742+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=first_pratice_dag permission to 509
+[2024-04-02T00:04:16.744+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs permission to 509
+[2024-04-02T00:04:16.776+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=first_pratice_dag/run_id=scheduled__2024-03-26T00:00:00+00:00/task_id=task1 permission to 509
+[2024-04-02T00:04:16.778+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=first_pratice_dag/run_id=scheduled__2024-03-26T00:00:00+00:00 permission to 509
+[2024-04-02T00:04:16.780+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=first_pratice_dag permission to 509
+[2024-04-02T00:04:16.781+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs permission to 509
+[2024-04-02T00:04:16.842+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: first_pratice_dag.task1 scheduled__2024-03-26T00:00:00+00:00 [queued]>
+[2024-04-02T00:04:16.868+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: first_pratice_dag.task1 scheduled__2024-03-26T00:00:00+00:00 [queued]>
+[2024-04-02T00:04:16.869+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 3
+[2024-04-02T00:04:16.915+0000] {taskinstance.py:2217} INFO - Executing <Task(BashOperator): task1> on 2024-03-26 00:00:00+00:00
+[2024-04-02T00:04:16.920+0000] {standard_task_runner.py:60} INFO - Started process 1490 to run task
+[2024-04-02T00:04:16.925+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'first_pratice_dag', 'task1', 'scheduled__2024-03-26T00:00:00+00:00', '--job-id', '101', '--raw', '--subdir', 'DAGS_FOLDER/first_practice_dag.py', '--cfg-path', '/tmp/tmpbwqo7k4t']
+[2024-04-02T00:04:16.928+0000] {standard_task_runner.py:88} INFO - Job 101: Subtask task1
+[2024-04-02T00:04:17.044+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=first_pratice_dag/run_id=scheduled__2024-03-26T00:00:00+00:00/task_id=task1 permission to 509
+[2024-04-02T00:04:17.052+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=first_pratice_dag/run_id=scheduled__2024-03-26T00:00:00+00:00 permission to 509
+[2024-04-02T00:04:17.058+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=first_pratice_dag permission to 509
+[2024-04-02T00:04:17.062+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs permission to 509
+[2024-04-02T00:04:17.066+0000] {task_command.py:423} INFO - Running <TaskInstance: first_pratice_dag.task1 scheduled__2024-03-26T00:00:00+00:00 [running]> on host 46dc445f2ec8
+[2024-04-02T00:04:17.236+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='first_pratice_dag' AIRFLOW_CTX_TASK_ID='task1' AIRFLOW_CTX_EXECUTION_DATE='2024-03-26T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-26T00:00:00+00:00'
+[2024-04-02T00:04:17.242+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-04-02T00:04:17.244+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'echo Hello World!']
+[2024-04-02T00:04:17.257+0000] {subprocess.py:86} INFO - Output:
+[2024-04-02T00:04:17.260+0000] {subprocess.py:93} INFO - Hello World!
+[2024-04-02T00:04:17.261+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2024-04-02T00:04:17.294+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=first_pratice_dag, task_id=task1, execution_date=20240326T000000, start_date=20240402T000416, end_date=20240402T000417
+[2024-04-02T00:04:17.346+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-02T00:04:17.394+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check
