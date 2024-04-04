@@ -13,6 +13,7 @@ This is where I will place any notes and practice activities for learning differ
 - Bash scripting
 - Git
 - GitHub
+- Docker
 - Apache Hadoop
 - Apache Hive
 - Apache Kafka
@@ -27,6 +28,8 @@ This is where I will place any notes and practice activities for learning differ
 - Power BI
 
 ## Tech to learn:
+- C#
+- C++
 - J2EE
 - Javalin
 - Spring
@@ -35,7 +38,6 @@ This is where I will place any notes and practice activities for learning differ
 - REACT
 - Angular
 - Jenkins
-- Docker
 - Kubernetes
 - More GCP
 - More AWS
@@ -45,6 +47,4 @@ This is where I will place any notes and practice activities for learning differ
 - Apache Beam
 - More Tableau
 - More Power BI
-- C#
-- C++
 - More Tensorflow
