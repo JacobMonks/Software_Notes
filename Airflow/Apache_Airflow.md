@@ -999,3 +999,16 @@ There are two ways to install Python packages for Airflow when using a Docker co
     docker compose up -d --no-deps --build airflow-webserver airflow-scheduler
 
 #### Customize the image
+1. Clone the Airflow source code from the Github. Then go to the directory called 'docker-context-files' and add the requirements.txt.
+
+2. You can build the container with the following command:
+
+    docker build . --build-arg AIRFLOW_VERSION='2.8.3' --tag customizing_airflow:latest
+
+3. Just like extending the image, edit the .yaml file with the new image name:
+
+    image: ${AIRFLOW_IMAGE_NAME:-customizing_airflow:latest}
+
+4. Run the container with the new image:
+
+    docker compose up -d --no-deps --build airflow-webserver airflow-scheduler
