@@ -649,3 +649,136 @@
 [2024-04-05T03:51:05.425+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:51:05.425+0000] {dag.py:3047} INFO - Sync 1 DAGs
 [2024-04-05T03:51:05.498+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:51:05.497+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
 [2024-04-05T03:51:05.568+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.331 seconds
+[2024-04-05T03:51:36.287+0000] {processor.py:161} INFO - Started process (PID=1210) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:51:36.294+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:51:36.295+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:51:36.295+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:51:36.377+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:51:36.475+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:51:36.475+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:51:36.547+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:51:36.547+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:51:36.625+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.349 seconds
+[2024-04-05T03:52:07.033+0000] {processor.py:161} INFO - Started process (PID=1256) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:52:07.035+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:52:07.043+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:52:07.042+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:52:07.123+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:52:07.283+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:52:07.282+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:52:07.414+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:52:07.414+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:52:07.512+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.497 seconds
+[2024-04-05T03:52:38.403+0000] {processor.py:161} INFO - Started process (PID=1309) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:52:38.410+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:52:38.411+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:52:38.411+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:52:38.502+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:52:38.593+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:52:38.592+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:52:38.693+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:52:38.692+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:52:38.781+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.388 seconds
+[2024-04-05T03:53:09.351+0000] {processor.py:161} INFO - Started process (PID=1355) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:53:09.358+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:53:09.360+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:53:09.360+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:53:09.450+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:53:09.589+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:53:09.588+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:53:09.751+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:53:09.750+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:53:09.920+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.581 seconds
+[2024-04-05T03:53:40.177+0000] {processor.py:161} INFO - Started process (PID=1401) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:53:40.185+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:53:40.187+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:53:40.187+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:53:40.286+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:53:40.437+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:53:40.436+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:53:40.546+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:53:40.546+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:53:40.646+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.490 seconds
+[2024-04-05T03:54:11.688+0000] {processor.py:161} INFO - Started process (PID=1447) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:54:11.696+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:54:11.698+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:54:11.698+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:54:11.786+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:54:11.896+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:54:11.895+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:54:12.037+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:54:12.037+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:54:12.127+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.450 seconds
+[2024-04-05T03:54:42.304+0000] {processor.py:161} INFO - Started process (PID=1493) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:54:42.306+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:54:42.314+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:54:42.313+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:54:42.395+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:54:42.506+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:54:42.505+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:54:42.644+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:54:42.644+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:54:42.753+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.460 seconds
+[2024-04-05T03:55:13.061+0000] {processor.py:161} INFO - Started process (PID=1539) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:55:13.069+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:55:13.071+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:55:13.070+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:55:13.141+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:55:13.259+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:55:13.258+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:55:13.338+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:55:13.331+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:55:13.449+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.398 seconds
+[2024-04-05T03:55:44.171+0000] {processor.py:161} INFO - Started process (PID=1585) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:55:44.172+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:55:44.180+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:55:44.180+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:55:44.252+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:55:44.349+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:55:44.343+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:55:44.469+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:55:44.462+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:55:44.560+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.400 seconds
+[2024-04-05T03:56:15.154+0000] {processor.py:161} INFO - Started process (PID=1631) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:56:15.156+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:56:15.175+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:56:15.174+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:56:15.276+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:56:15.384+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:56:15.377+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:56:15.467+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:56:15.467+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:56:15.555+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.419 seconds
+[2024-04-05T03:56:46.578+0000] {processor.py:161} INFO - Started process (PID=1677) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:56:46.585+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:56:46.587+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:56:46.587+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:56:46.686+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:56:46.778+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:56:46.777+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:56:46.867+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:56:46.867+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:56:46.956+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.389 seconds
+[2024-04-05T03:57:17.634+0000] {processor.py:161} INFO - Started process (PID=1723) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:57:17.642+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:57:17.644+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:57:17.643+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:57:17.722+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:57:17.833+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:57:17.832+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:57:17.913+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:57:17.913+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:57:18.002+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.379 seconds
+[2024-04-05T03:57:48.413+0000] {processor.py:161} INFO - Started process (PID=1769) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:57:48.414+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:57:48.416+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:57:48.415+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:57:48.523+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:57:48.634+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:57:48.634+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:57:48.733+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:57:48.733+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:57:48.835+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.441 seconds
+[2024-04-05T03:58:19.473+0000] {processor.py:161} INFO - Started process (PID=1815) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:58:19.481+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:58:19.483+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:58:19.482+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:58:19.591+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:58:19.692+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:58:19.692+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:58:19.823+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:58:19.823+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:58:19.972+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.509 seconds
+[2024-04-05T03:58:50.437+0000] {processor.py:161} INFO - Started process (PID=1861) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:58:50.438+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:58:50.447+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:58:50.446+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:58:50.556+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:58:50.689+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:58:50.689+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:58:50.816+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:58:50.816+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:58:50.919+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.501 seconds
+[2024-04-05T03:59:21.729+0000] {processor.py:161} INFO - Started process (PID=1907) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:59:21.738+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:59:21.740+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:59:21.739+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:59:21.840+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:59:21.978+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:59:21.978+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:59:22.128+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:59:22.128+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:59:22.230+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.530 seconds
+[2024-04-05T03:59:52.697+0000] {processor.py:161} INFO - Started process (PID=1953) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:59:52.708+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T03:59:52.718+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:59:52.717+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:59:52.898+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T03:59:53.048+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:59:53.047+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T03:59:53.176+0000] {logging_mixin.py:188} INFO - [2024-04-05T03:59:53.169+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T03:59:53.307+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.629 seconds
+[2024-04-05T04:00:23.836+0000] {processor.py:161} INFO - Started process (PID=1999) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T04:00:23.844+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T04:00:23.846+0000] {logging_mixin.py:188} INFO - [2024-04-05T04:00:23.845+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T04:00:23.964+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T04:00:24.175+0000] {logging_mixin.py:188} INFO - [2024-04-05T04:00:24.175+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T04:00:24.314+0000] {logging_mixin.py:188} INFO - [2024-04-05T04:00:24.314+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T04:00:24.456+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.631 seconds
+[2024-04-05T04:00:55.592+0000] {processor.py:161} INFO - Started process (PID=2045) to work on /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T04:00:55.601+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/second_practice_dag.py for tasks to queue
+[2024-04-05T04:00:55.611+0000] {logging_mixin.py:188} INFO - [2024-04-05T04:00:55.610+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T04:00:55.751+0000] {processor.py:840} INFO - DAG(s) 'second_practice_dag_v2' retrieved from /opt/airflow/dags/second_practice_dag.py
+[2024-04-05T04:00:55.959+0000] {logging_mixin.py:188} INFO - [2024-04-05T04:00:55.951+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-05T04:00:56.151+0000] {logging_mixin.py:188} INFO - [2024-04-05T04:00:56.150+0000] {dag.py:3834} INFO - Setting next_dagrun for second_practice_dag_v2 to 2024-04-04 00:00:00+00:00, run_after=2024-04-05 00:00:00+00:00
+[2024-04-05T04:00:56.289+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/second_practice_dag.py took 0.728 seconds
