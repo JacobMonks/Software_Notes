@@ -11,34 +11,34 @@ Cloud Composer is a fully managed workflow orchestration service built on top of
 
 1. Composer Administrator
 
-- Provides full cnotrol over all Composer functions and resources.
+    - Provides full control over all Composer functions and resources.
 
 2. Composer User
 
-- Provides the necessary permissions to list and get Composer environments and operations.
+    - Provides the necessary permissions to list and get Composer environments and operations.
 
 ## Create a Composer Environment
 
 1. Select composer type (Composer 1 or Composer 2).
 
-- The only difference is Composer 2 has auto-scaling and Composer 1 does not.
+    - The only difference is Composer 2 has auto-scaling and Composer 1 does not.
 
 2. Give a name and location.
 
 3. Choose the Image version.
 
-- This creates the environment with the designated version of Airflow with pre-installed Python packages.
+    - This creates the environment with the designated version of Airflow with pre-installed Python packages.
 
 4. Select service account.
 
-- By default it will use the Compute Engine service account. This is fine for demos.
-- In production environments, you should use a dedicated service account or create a new one and grant it IAM permissions.
+    - By default it will use the Compute Engine service account. This is fine for demos.
+    - In production environments, you should use a dedicated service account or create a new one and grant it IAM permissions.
 
 5. Give the environment labels (if desired).
 
 6. Select the size of environment resources.
 
-- It will list all the resources below including the number of schedulers, number of workers, and amount of memory.
+    - It will list all the resources below including the number of schedulers, number of workers, and amount of memory.
 
 7. You can optionally customize the VPC configuration, data encryption, and the maintenance schedule.
 
