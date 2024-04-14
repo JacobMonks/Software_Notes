@@ -28,6 +28,7 @@ This is where I will place any notes and practice activities for learning differ
 - Power BI
 
 ## Tech to learn:
+- Flask/FastAPI/Django
 - C#
 - C++
 - J2EE
