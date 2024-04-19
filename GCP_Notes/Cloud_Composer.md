@@ -7,6 +7,7 @@ Cloud Composer is a fully managed workflow orchestration service built on top of
 - Airflow is open-source, offering integration with a wide and ever-expanding variety of platforms.
 - One-click deployment and multiple options for graphical representations, making troubleshooting easy.
 
+For information on Airflow see [Airflow Notes](../Airflow/airflow_notes/Airflow_Intro.md)
 ### IAM Permissions:
 
 1. Composer Administrator
@@ -62,6 +63,8 @@ Here, you can see and edit many details including:
 
 ### DAGs
 This is where you will deploy your finished Python DAG files. There should be one example DAG that exists after your environment is created.
+
+For more information on DAGS, see notes on [Airflow DAGs](../Airflow/airflow_notes/DAGs.md)
 
 ### Webserver
 This is where you can see all your available DAGs and can manually trigger or monitor their execution.
