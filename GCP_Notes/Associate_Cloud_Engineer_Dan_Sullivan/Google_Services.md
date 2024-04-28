@@ -72,3 +72,45 @@ Cloud Functions is not designed to run highly intensive or long-running code, bu
 For more on Cloud Functions, refer to [Chapter 10](./Associate_Cloud_Engineer_Dan_Sullivan/Cloud_Functions.md).
 
 ## Storage Solutions
+Like computing, storage solutions vary in use cases. Some users want to prioritize quick access while others want dependeable long-term archival.
+
+### Cloud Storage
+Cloud Storage is Google's general-purpose object storage system. Objects can be any type of file or binary large object (blob). Objects are organized into buckets which act similar to directories in a filesystem. Cloud Storage is not part of a VM, and it can be accessed by containers, VMs, and any network-connected device with proper privileges.
+
+Any object stored in a bucket is uniquely addressable by a URL. This URL allows users to read and write objects to a bucket if they have been granted permission.
+
+Cloud Storage is useful for storing objects as single units of data, like images or soundclips, and it can be accessed independently of servers that may or may not be running. GCS also has settings for different scopes of availability. Objects with regional availability will be accessible throughout an entire region at low latency.
+
+Multi-region availability means the data will be more widely accessible, but generally at lower latency. One way to decrease latency is when the application that uses the data is distributed across the region.
+
+When you want to store objects for long periods of time, consider nearline (30 days), coldline (90 days), or archive (1 year) storage. The access to these objects is limited, but the cost of storage is considerably lower and it is highly durable.
+
+GCS allows you to create lifecycle management policies that dictate how objects are stored after certain periods of time. For example, you could have objects in a specific bucket automatically enter nearline storage if they are at least 60 days old.
+
+### Persistent Disk
+Persistent Disks are storage services that are attached to VMs that provide block storage on SSDs or HDDs. SSDs are useful for low latency applications where performance is a priority, but HDDs are cheaper.
+
+The advantage of Persistent Disks is that they support multiple readers with no dip in performance, and the Disks can be resized at a moment's notice without restarting the VM.
+
+The storage limit of Disks is typically 64 TB.
+
+### Cloud Storage for Firebase
+Cloud Storage for Firebase is an object storage option that is designed secure transmissions with recovery mechanisms in the case of faulty connections. This makes it a good choice for mobile applications since phones will not always have strong connectivity.
+
+### Cloud Filestore
+Filestore is a storage service that implements the Network File System (NFS) protocol. It provides a shared filesystem for use with Compute Engine and Kubernetes Engine. It is capable of a high amount of input-output operations per second (IOPS) and variable capacity.
+
+### Cloud SQL
+
+
+### Cloud Bigtable
+
+
+### Cloud Spanner
+
+
+### Cloud Firestore
+
+
+### Cloud Memorystore
+
