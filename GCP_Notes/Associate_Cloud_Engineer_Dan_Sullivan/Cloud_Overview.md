@@ -92,5 +92,3 @@ Some examples of specialized services in Google Cloud include:
 - Cloud Composer
 - Vertex AI
 - Speech-to-Text
-
-## Google Cloud Computing Services

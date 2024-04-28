@@ -3,7 +3,7 @@
 ## Dan Sullivan GCP-ACE Notes
 [Chapter 1: Overview of Google Cloud](./Associate_Cloud_Engineer_Dan_Sullivan/Cloud_Overview.md#google-cloud-overview)
 
-[Chapter 2: Google Cloud Computing Services](./Associate_Cloud_Engineer_Dan_Sullivan/Cloud_Overview.md#google-cloud-computing-services)
+[Chapter 2: Google Cloud Computing Services](./Associate_Cloud_Engineer_Dan_Sullivan/Google_Services.md)
 
 [Chapter 3: Projects, Service Accounts, and Billing](./Associate_Cloud_Engineer_Dan_Sullivan/Projects_Service_Accounts_Billing.md)
 
