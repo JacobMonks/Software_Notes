@@ -122,3 +122,73 @@ Despite being non-relational, Firestore supports transactions, indexes, and SQL-
 
 ### Cloud Memorystore
 Memorystore is an in-memory cache service. It is used for caching frequently used data in memory, but is not ideal for large volumes of data. It is primarily intended to reduce the runtime of queries on the most accessed information.
+
+## Networking
+Google Cloud provides several means configuring virtual networks, link with on-premise data centers, and secure your resources.
+
+Networking will be discussed more in depth in [Chapter 14](./Associate_Cloud_Engineer_Dan_Sullivan/Networking.md) and [Chapter 15](./Associate_Cloud_Engineer_Dan_Sullivan/Networking.md#dns).
+
+### Virtual Private Cloud
+Virtual Private Clouds (VPC) are a way to ensure that an enterprise's resources are logically isolated from those of another enterprise usinng the same cloud service. An advantage of VPCs is that they can span the globe without relying on the public Internet. This allows back-end servers to access Google services with no need for a public IP address.
+
+Using Internet Protocol Security (IPSec), you can link your VPC to on-premises VPNs.
+
+### Load Balancing
+Load balancing is a way to distribute workloads across your cloud infrastructure. Cloud Load Balancing can manage HTTP, HTTPS, TCP, SSL, and UDP traffic.
+
+### Cloud CDN
+Content Delivery Networks (CDN) allow users to request content from distributed systems with low-latency responses. There are more than 100 CDN endpoint locations globally. They are used effectively when you have large amounts of static content that must be globally accessible, such as news sites.
+
+### Cloud Interconnect
+Cloud Interconnect is a convenient way to connect your existing networks to the Google network, and it can do this via interconnects and peering.
+
+1. Interconnects
+
+    - A direct network connection is maintained between an on-premises data center and one of Google's colocation facilities.
+    - This can also be done through a third party, known as Partner Interconnect, and it is the recommended way of establishing a network conenction.
+
+2. Peering
+
+    - Does not use Google Cloud resources and gives access to Google Workspace applications.
+
+### DNS
+Cloud DNS is a domain name service in Google Cloud. It is a low-latency and highly available service for mapping domain names to IP addresses. It scales automatically, so customers can have thousands of addresses without needing to worry about infrastructure.
+
+### Identity Management and Security
+Google Cloud Identity and Access Managenet (IAM) gives users the ability to create restrictions on access to cloud resources.
+
+Users are individuals who have specific permissions. To grant permissions to many users at once in a convenient way, you can create roles. Roles will have a selection of permissions, such as creating, updating, and deleting VMs.
+
+### Development Tools
+There are also a multitude of general-purpose development tools.
+
+- Cloud SDK for command-line interface.
+- Container Registry for deploying applications to containers.
+- Cloud Tools for IntelliJ, Powershell, Visual Studio, Eclipse
+- App Engine Plugins for Gradle and Maven.
+
+## Additional Tools
+
+### Management and Observability
+
+- Cloud Monitoring
+- Cloud Logging
+- Error Reporting
+- Cloud Trace
+- Cloud Debugger
+- Cloud Profiler
+
+### Data Analytics
+
+- BigQuery
+- Dataflow
+- Dataproc
+- Dataprep
+
+### AI and ML
+
+- AutoML
+- Translation AI
+- Natural Language
+- Vision AI
+- Recommendations AI
