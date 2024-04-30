@@ -101,16 +101,24 @@ Cloud Storage for Firebase is an object storage option that is designed secure t
 Filestore is a storage service that implements the Network File System (NFS) protocol. It provides a shared filesystem for use with Compute Engine and Kubernetes Engine. It is capable of a high amount of input-output operations per second (IOPS) and variable capacity.
 
 ### Cloud SQL
-
+Cloud SQL is Google's Relational Database that allows users to set up MySQL, PostgreSQL, and SQL Server databases on VMs. Replication management and automatic failover makes this option highly available. Being a relational database also makes it the ideal solution for applications that require very consistent data structure requirements.
 
 ### Cloud Bigtable
+Bigtable is a highly scalable NoSQL database that is built with the wide-column data model. It has incredibly low latency reads and writes, allowing for millions of operations per second and managing billions of rows.
 
+It integrates well with other Google services and APIs like HBase for Hadoop and other open-source tools.
 
 ### Cloud Spanner
-
+Cloud Spanner is a globally distributed storage solution. It has the consistency of a relational database with the scalability of a NoSQL database. It is ideal for enterprise applications that demand highly scalable and available services and strong security encryption.
 
 ### Cloud Firestore
+Firestore, formerly known as Datastore, is a document-based NoSQL database. Documents are collections of key-value pairs that allow schemas to be highly flexible. Keys do not have to be defined prior to use, which makes document-based NoSQL databases appealing for applications that must accomodate a wide range of attributes.
 
+Firestore can be accessed by applications in Compute Engine, Kubernetes Engine, and App Engine via REST API.
+
+Firestore scales automatically and shards its data into partitions for performance. It is a managed service, meaning the user does not need to keep track of replication, backups, or general administration.
+
+Despite being non-relational, Firestore supports transactions, indexes, and SQL-like queries.
 
 ### Cloud Memorystore
-
+Memorystore is an in-memory cache service. It is used for caching frequently used data in memory, but is not ideal for large volumes of data. It is primarily intended to reduce the runtime of queries on the most accessed information.
