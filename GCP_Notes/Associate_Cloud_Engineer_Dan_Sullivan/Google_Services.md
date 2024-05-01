@@ -136,6 +136,14 @@ Using Internet Protocol Security (IPSec), you can link your VPC to on-premises V
 ### Load Balancing
 Load balancing is a way to distribute workloads across your cloud infrastructure. Cloud Load Balancing can manage HTTP, HTTPS, TCP, SSL, and UDP traffic.
 
+### Cloud Armor
+When exposing a service to the public Internet, it can be targeted by distributed denial-of-service (DDoS) attacks. Cloud Armor is a network security product with severla useful security features that can help with preventing these attacks:
+
+1. Allowing and restricting access based on IP address or geolocation.
+2. Setting rules for countering cross-site scripting attacks.
+3. Countering SQL Injection.
+4. Defining rules on the network and application level.
+
 ### Cloud CDN
 Content Delivery Networks (CDN) allow users to request content from distributed systems with low-latency responses. There are more than 100 CDN endpoint locations globally. They are used effectively when you have large amounts of static content that must be globally accessible, such as news sites.
 
