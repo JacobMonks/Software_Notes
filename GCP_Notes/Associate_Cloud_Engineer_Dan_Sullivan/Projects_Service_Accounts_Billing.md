@@ -50,7 +50,7 @@ A role is a collection of permissions granted to users. There are 3 types of rol
 
     - Includes Owner, Editor, and Viewer privileges, which provide a broad range of privileges that may not always be needed.
 
-2. Predefeined role
+2. Predefined role
 
     - Provides more specific access to resources, such as appengine.appAdmin, appengine.ServiceAdmin, or appengine.appViewer.
 
@@ -75,3 +75,42 @@ Users can create up to 100 service accounts per project.
 Service accounts are created automatically when resources are created, such as VMs.
 
 ## Billing
+Using Google Cloud resources usually incurs a fee, so it would be wise to set up a Billing Account using the Google Cloud Billing API.
+
+A Billing Account stores all the information for making payments for any resources you use in a project or group of projects. All projects must be associated with a Billing Account unless they only use free services.
+
+You can set up one or multiple Billing Accounts in an organization, and they can be structured similarly to ther resource hierarchy. If your company has finance, legal, and marketing departments that pull from the same budget, they can be covered under one Billing Account, while the software department can have their own Billing Account.
+
+There are two types of Billing Accounts:
+
+1. Self-service
+
+    - Paid for using a credit/debit card associated with a bank account.
+    - Charged automatically.
+
+2. Invoiced
+
+    - Bills are sent to customers to be paid.
+    - Good for large enterprises.
+
+There are 4 Billing Roles to be familiar with:
+
+1. Billing Account Creator can create new self-service accounts. Very few people will have this role.
+2. Billing Account Administrator managed accounts but can't create them. Cloud admins will likely have this role.
+3. Billing Account User enables a user to link projcets to accounts. Any user who creates projects will have this role.
+4. Billing Account Viewer enables a user to view account cost and transactions. This is useful for auditors who need to be able to read billing information without changing it.
+
+### Billing Budgets and Alerts
+Google Cloud Billing allows you to define a budget and set billing alerts. You can do this by going to the main console menu, selecting 'Billing', then selecting 'Budgets and Alerts.'
+
+When filling out the billing form, you can specify which billing account to monitor, and it will notify you when certain percentages of your defined budget has been spent in a given period of time. By default, it will send notifications at 50, 90, and 100 percent, but you can change those thresholds and the number of alerts.
+
+A neat feature is that the billing alerts can be sent in Pub/Sub, so you can respond to the alerts programmatically.
+
+### Exporting Billing Data
+Billing data can also be exported to BigQuery for analysis. You will need to create a data set in BigQuery.
+
+Previously, you could also export billing information to Cloud Storage, but that is no longer supported.
+
+## Enabling APIs
+Google Cloud uses APIs to make their services programmatically accessible. By default, most services have their APIs disabled, and you will need to actively enable them. To do so, you can select 'APIs & Services' in the main console menu, which will display a dashboard and a list of services that you can enable.
