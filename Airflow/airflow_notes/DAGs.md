@@ -123,7 +123,7 @@ There are multiple valid values for the "schedule" property when defining a DAG:
 
 When you run a DAG, you are creating a new instance of that DAG, which Airflow calls a "DAG Run". DAG Runs can run in parallel using the same DAG, and you can specify a data interval for the tasks to operate on.
 
-Every task you wish to run must be assigned a to DAG.
+Every task you wish to run must be assigned to a DAG.
 
 ### Default Arguments:
 Operators inside a DAG usually need to be given default arguments. Rather than specify them one by one for each Operator, you can pass "default_args" in a dictionary format that will apply to all Operators.

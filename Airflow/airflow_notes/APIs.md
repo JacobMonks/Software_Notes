@@ -18,21 +18,21 @@ In this case, let us create a new Postgres connection.
 
 3. Install the airflow postgres provider:
 
-    pip install apache-airflow-providers-postgres
+        pip install apache-airflow-providers-postgres
 
 4. Create a new DAG with the dollowing import:
 
-    from airflow.providers.postgres.operators.postgres import PostgresOperator
+        from airflow.providers.postgres.operators.postgres import PostgresOperator
 
 5. Create a new task with the PostgresOperator:
 
-    task1 - PostgresOperator(
-        task_id = "create_postgres_table",
-        postgres_conn_id = "postgres_localhost",
-        sql = "create table if not exists dag_runs (
-            dt date,
-            dag_run character varying,
-            primary key(dt, dag_run)
+        task1 - PostgresOperator(
+            task_id = "create_postgres_table",
+            postgres_conn_id = "postgres_localhost",
+            sql = "create table if not exists dag_runs (
+                dt date,
+                dag_run character varying,
+                primary key(dt, dag_run)
+            )
         )
-    )
 
