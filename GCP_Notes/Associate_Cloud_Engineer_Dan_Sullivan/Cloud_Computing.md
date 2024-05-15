@@ -162,8 +162,33 @@ Kubernetes is a good choice for large-scale applications that require high avail
 Anthos is a managed service for centrally configuring and managing deployed services. You can manage multiple GKE clusters and clusters running in other clouds or on-premises. It also allows you to enforce policies across multiple environments.
 
 ## Cloud Run
+Cloud Run is a managed service for deploying and running stateless containers. A stateless container is one that requires no persistent data when it is created. Any instance of a container running a service can respond to reqeusts from that service, regardless of the connection or user of the service.
+
+When you depoy a service to Cloud Run, you specify a container image, service name, region, CPU, autoscaling, and traffic configuration.
+
+### Cloud Run Use Cases
+Cloud Run is useful for running code in containers without needing to manage infrastructure like with Kubernetes.
 
 ## Cloud Function
+Cloud Functions is a serverless computing platform intended for single-purposes pieces of code that trigger from events in the cloud. The user does not need to configure VMs, containers, or clusters.
+
+Unlike Compute Engine or App Engine, Cloud Functions is not general-purpose. Instead, it is used to connect independent services together, such as one service that uploads a file to Cloud Storage and another service that reads and processes data from files in storage.
+
+Some features of Cloud Functions:
+
+- Functions execute in an isolated environment.
+- Scaling is done automatically according to need.
+- The Life Cycles of functions are independent of each other.
+- Cloud Functions may be running in multiple instances at the same time without conflicts.
+
+### Cloud Functions Use Cases
+Cloud Functions works best when you need to run short-lived, event-based processes, and it can be useful for tying together independent processes.
+
+It is particularly useful for specific applications:
+
+- Internet of Things (IoT)
+- Mobile Applications
+- Asynchronous workflows
 
 ## Compute Engine Virtual Machines
 
