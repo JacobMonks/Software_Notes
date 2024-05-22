@@ -9,9 +9,9 @@
 
 [Chapter 4: Introduction to Computing in Google Cloud](./Associate_Cloud_Engineer_Dan_Sullivan/Cloud_Computing.md)
 
-[Chapter 5: Computing with Compute Engine Virtual Machines](./Associate_Cloud_Engineer_Dan_Sullivan/Cloud_Computing.md#compute-engine-virtual-machines)
+[Chapter 5: Computing with Compute Engine Virtual Machines](./Associate_Cloud_Engineer_Dan_Sullivan/Compute_Engine.md)
 
-[Chapter 6: Managing Virtual Machines](./Associate_Cloud_Engineer_Dan_Sullivan/Cloud_Computing.md#managing-virtual-machines)
+[Chapter 6: Managing Virtual Machines](./Associate_Cloud_Engineer_Dan_Sullivan/Compute_Engine.md#managing-virtual-machines)
 
 [Chapter 7: Computing with Kubernetes](./Associate_Cloud_Engineer_Dan_Sullivan/Kubernetes.md)
 
