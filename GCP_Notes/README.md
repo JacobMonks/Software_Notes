@@ -38,4 +38,6 @@
 [Chapter 18: Monitoring, Logging, and Cost Estimating](./Associate_Cloud_Engineer_Dan_Sullivan/Monitoring_Logging_Cost_Estimating.md)
 
 ## Other GCP Notes
+[GCloud Commands](./GCloud_Commands.md)
+
 [Cloud Composer](./Cloud_Composer.md)
