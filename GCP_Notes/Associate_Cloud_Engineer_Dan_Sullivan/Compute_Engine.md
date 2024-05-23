@@ -69,14 +69,12 @@ This is an alternative to using `gcloud` commands locally.
 
 ## Managing Virtual Machines
 
-### Basics
-
-#### VM Inventory
+### VM Inventory
 You can see all VM instances in the Compute Engine dashboard, and next to each one is an indicator for if it is running or if it is stopped.
 
 When you have a large number of instances, you can use the Filter VM Instances box. You can filter by name, labels, Internal/External IP, Status Zone, Network, and Deletion Protection.
 
-#### Starting and Stopping
+### Starting and Stopping
 VMs can be manually started and stopped in several ways.
 
 In Cloud Console, you can see a list of instances when navigating to the Instances tab in the left-hand menu. You can check the box next to the instance you are interested and select Start if it is dormant or Stop if it is running.
@@ -88,12 +86,12 @@ In Cloud SDk or Cloud Shell, you can enter the following start and stop commands
 
 You are not charged for an instance that isn't running.
 
-#### Resetting and Deleting
+### Resetting and Deleting
 Resetting an instance will restart the VM and purge all memory, but the VM properties will not change.
 
 Deleting an instance removes it from the Cloud Console and releases all resources that were necessary to run it, such as the storage used to keep its image.
 
-#### Attaching a GPU
+### Attaching a GPU
 GPUs are used for math-intensive operations like machine learning and visualization. Attaching a GPU can offload some work from the CPU to the GPU.
 
 When creating a VM, Compute Engine has a machine family designed for VMs with GPUs that you can select. You will need to install GPU drivers or use an image with GPU drivers installed.
@@ -105,7 +103,7 @@ Add GPU to Instance:
 3. Create and start the instance.
 4. Note that GPUs cannot be attached to shared memory machines. You can see other restrictions in the [Docs](https://cloud.google.com/compute/docs/gpus).
 
-#### Snapshots
+### Snapshots
 Snapshots are copies of data on a persistent disk. This is done usually for backup and restore purposes. This also makes it convenient to make multiplle persistent disks with the same data.
 
 When first creating a snapshot, Google will make a full copy, but for proceding snapshots, they will only copy the data that has been changed. This is done to optimize storage.
@@ -114,7 +112,7 @@ When running an application that buffers data in memory before writing to disk, 
 
 To work with snapshots, the user must have the Compute Engine Admin role. When you have the permissions, you can see the Snapshots option in the options on the left-hand panel. Here you can create a snapshot by specifying name, description, and labels.
 
-#### Images
+### Images
 Images are similar to snapshots, but instead of making data available on disks, they are used to create VMs. Snapshots offer incremental backups, while images are a single complete backup that can be created from a disk, a snapshot or another image.
 
 Creating an image:
@@ -127,7 +125,7 @@ Once you've created the image, you can create instances from that image by selec
 
 After an image is done being used, you can delete or deprecate it. Deprecating an image marks it as 'no longer supported' and allows you to specify a replacement image.
 
-#### Instance Groups
+### Instance Groups
 Instace groups are sets of VMs that are managed as a single entity.
 
 There are two types of instance groups: managed and unmanaged.
@@ -138,21 +136,20 @@ Unmanaged instance groups should be used only when you need different configurat
 
 Instance groups can be spread across zones or regions. Spreading across regions will increase resiliency.
 
-
-#### Network Access to VMs
+### Network Access to VMs
 As an engineer, you might need to log into a VM to perform administration tasks. This can be done via SSH for a Linux server or RDP with a Windows server.
 
 In the Compute Engine dashboard, next to the Instances is an SSH dropdown menu. This allows you to open a terminal in browser, custom port, or use a separate SSH client.
 
-#### Monitoring a VM
+### Monitoring a VM
 By going to the Monitoring tab on the VM Instance Details page, you can observe the CPU, disk, and network load of a running VM.
 
-#### VM Cost
+### VM Cost
 Tracking costs is an essential and basic management procedure.
 
 To track costs automatically, you can enable Cloud Billing and set up Billing Export to produce daily reports on VM usage and cost.
 
-#### General Guidelines
+### General Guidelines
 When working with a small number of VMs, keep these good practices in mind:
 
 - Choose a machine type with the fewest CPUs and smallest amount of memory that still meets your requirements. VMs are billed based on what type machine is being used.
