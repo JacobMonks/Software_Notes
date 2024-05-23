@@ -17,7 +17,13 @@ These are flags that can be added to any gcloud command if applicable.
 | --zone          | Specifies a zone to override the default zone.                      |
 
 ## Compute Engine Commands
-All Compute Engine instance commands start with:
+All Compute Engine commands start with:
+
+    gcloud compute
+
+
+### Instance Commands
+For making commands regarding instances:
 
     gcloud compute instances
 
@@ -35,3 +41,31 @@ All Compute Engine instance commands start with:
 | --limit                     | Limit the number of VMs listed.                                     |
 | --sort-by                   | Reorder the list of VMs by specifying a resource field.             |
 | describe                    | See all resource fields.                                            |
+
+
+### Disk/Snapshot/Image commands:
+
+| Command/Flag                                            | Function                                |
+| :------------------------------------------------------ | :-------------------------------------- |
+| disks snapshot DISK_NAME --snapshot-names NAMES         | Create a snapshot of a disk.            |
+| snapshots list                                          | View list of snapshots.                 |
+| snapshots describe SNAPSHOT_NAME                        | View details about a snapshot.          |
+| disks create DISK_NAME --source-snapshot=SNAPSHOT_NAME  | Create a disk.                          |
+| --size=SIZE                                             | Specify disk size.                      |
+| --type=TYPE                                             | Specify disk type.                      |
+| images create IMAGE_NAME                                | Create a new image.                     |
+| --source-disk/image/image-family/snapshot/uri=SOURCE    | Specify a source file for the image.    |
+| images delete IMAGE_NAME                                | Delete an image.                        |
+| images export --destination-uri=URI --image=IMAGE_NAME  | Store an image to Cloud Storage.        |
+
+
+### Instance Group Commands
+
+| Command/Flag                                      | Function                                                                 |
+| :------------------------------------------------ | :----------------------------------------------------------------------- |
+| instance-templates create INSTANCE                | Create an instance template.                                             |
+| --source-instance=NAME                            | Use an existing Instance as a source for creating an instance template.  |
+| instance-templates delete NAME                    | Delete an instance template.                                             |
+| instance-templates list                           | List all instance templates.                                             |
+| instance-groups managed list-instances            | Lists all instance groups.                                               |
+| instance-groups managed list-instances GROUP_NAME | List all instances in an instance group.                                 |

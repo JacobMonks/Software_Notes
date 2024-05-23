@@ -127,6 +127,18 @@ Once you've created the image, you can create instances from that image by selec
 
 After an image is done being used, you can delete or deprecate it. Deprecating an image marks it as 'no longer supported' and allows you to specify a replacement image.
 
+#### Instance Groups
+Instace groups are sets of VMs that are managed as a single entity.
+
+There are two types of instance groups: managed and unmanaged.
+
+Managed groups are groups of identical VMs. They are created using an instance template so they have identical configurations. Managed groups can automatically scale the number of instances in a group and integrate load balancing to distribute the workload across the instance group.
+
+Unmanaged instance groups should be used only when you need different configurations.
+
+Instance groups can be spread across zones or regions. Spreading across regions will increase resiliency.
+
+
 #### Network Access to VMs
 As an engineer, you might need to log into a VM to perform administration tasks. This can be done via SSH for a Linux server or RDP with a Windows server.
 
@@ -151,3 +163,9 @@ When working with a small number of VMs, keep these good practices in mind:
 - Use SSH or RDP for operating-system level tasks.
 - Use Cloud Console, Cloud SDK, or Cloud Shell for VM-level tasks.
 
+For Managing larger numbers of VMs, these practices become essential:
+
+- Use labels and descriptions.
+- Use managed instance groups to enable auto-scaling and load balancing.
+- Use GPUs for numeric-intensive processing.
+- Use snapshots to save the state of a disk or make copies.
