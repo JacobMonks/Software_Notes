@@ -110,7 +110,7 @@ When first creating a snapshot, Google will make a full copy, but for proceding 
 
 When running an application that buffers data in memory before writing to disk, it is a good idea to flush the disk before ceating a snapshot. Otherwise, data in memory may be lost.
 
-To work with snapshots, the user must have the Compute Engine Admin role. When you have the permissions, you can see the Snapshots option in the options on the left-hand panel. Here you can create a snapshot by specifying name, description, and labels.
+To work with snapshots, the user must have the Compute Storage Admin role. When you have the permissions, you can see the Snapshots option in the options on the left-hand panel. Here you can create a snapshot by specifying name, description, and labels.
 
 ### Images
 Images are similar to snapshots, but instead of making data available on disks, they are used to create VMs. Snapshots offer incremental backups, while images are a single complete backup that can be created from a disk, a snapshot or another image.
