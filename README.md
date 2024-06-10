@@ -22,7 +22,7 @@ This is where I will place any notes and practice activities for learning differ
 - Pyspark
 - Talend Open Studio
 - AWS (S3, EC2, EMR, RDS, DynamoDB, Redshift)
-- GCP (Cloud Storage, Dataproc, Dataflow, BigQuery, Composer)
+- GCP (Cloud Storage, Dataproc, Dataflow, BigQuery, Composer, Vertex AI, Compute Engine)
 - Tensorflow
 - Tableau
 - Power BI
