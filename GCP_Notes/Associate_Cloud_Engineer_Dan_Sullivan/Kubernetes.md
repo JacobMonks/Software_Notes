@@ -1,14 +1,14 @@
 # Kubernetes
 Kubernetes is an open-source container orchestration system created by Google. Kubernetes Engine (sometimes abbreviated GKE) is a managed Kubernetes service in Google Cloud where users can create and maintain their own clusters without needing to manage the Kubernetes platform.
 
-Kubernetes runs containers on clusters of VMs, monitors the health of containers, and maanges the lifecycle of VM instances.
+Kubernetes runs containers on clusters of VMs, monitors the health of containers, and manages the lifecycle of VM instances.
 
 A GKE cluster is similar to an Instance Group in Compute Engine, but there are some differences, mostly by virtue of the fact that Kubernetes manages containers. Containers offer a portable and lightweight means of distributing and scaling workloads. They have much smaller start/stop times and use fewer resources than a VM. You can configure Instance Group monitoring, but Kubernetes is generally more flexible with maintenance.
 
 ## Kubernetes Architecture
 A cluster consists of a control plane and one or more worker nodes. The control plane can be replicated and distributed for purposes of availability and fault tolerance.
 
-The control plane manages controllers, schedulers, and the Kubernetes API which handles all cluster interactions. The control plane is what issues commands to perform an action on a node. Users can interact with a cluster using hte 'kubectl' command.
+The control plane manages controllers, schedulers, and the Kubernetes API which handles all cluster interactions. The control plane is what issues commands to perform an action on a node. Users can interact with a cluster using the 'kubectl' command.
 
 Kubernetes has several fundamental components:
 
@@ -54,7 +54,7 @@ Deployments are sets of identical pods all running the same application. These p
 A ReplicaSet is a controller used by a deployment that ensures the correct number of identical pods are running. When a pod gets terminated, the ReplicaSet will notice if not enough pods for that workload are running and will create another. ReplicaSets also update and delete pods. It is generally recommended to use deployments and not ReplicaSets unless you require custom update orchestration or do not expect to update at all.
 
 ### StatefulSets
-Deployments are well suited to stateless applications. An application that calls an API to perform some operation on its input may reach a different pod each time it makes a call. But there are times when it is better to have a single pod respond to all calls for a client during a single session. StatefulSets are like deployments, but they assign unique identifiers to pods. This enables Kubernetes track which pod is used by which client and keep them together. StatefulSets are used when an application needs a unique network identifier ot stable persistent storage.
+Deployments are well suited to stateless applications. An application that calls an API to perform some operation on its input may reach a different pod each time it makes a call. But there are times when it is better to have a single pod respond to all calls for a client during a single session. StatefulSets are like deployments, but they assign unique identifiers to pods. This enables Kubernetes to track which pod is used by which client and keep them together. StatefulSets are used when an application needs a unique network identifier or stable persistent storage.
 
 ### Jobs
 A job is an abstraction about a workload. Jobs create pods and run them until the application completes a workload.
@@ -63,7 +63,7 @@ A job is an abstraction about a workload. Jobs create pods and run them until th
 Volumes are storage mechanisms that store data independent of the pod's lifecycle. If a pod fails and is restarted, the contents of a volume attached to that pod will continue to exist.
 
 ### Namespaces
-A namespace is a logical abstraction for separating groups of resources in a cluster. They are used when clusters host a variety of projects, teams, or other groups that may use different policies for using cluster resoruces. GKE includes a default namespace to be used for objects with no other namespace defined.
+A namespace is a logical abstraction for separating groups of resources in a cluster. They are used when clusters host a variety of projects, teams, or other groups that may use different policies for using cluster resources. GKE includes a default namespace to be used for objects with no other namespace defined.
 
 ### Node Pools
 A node pool is a collection of nodes in a cluster that all have the same configuration. When a cluster is first created, all nodes are in the same node pool. Node pools are useful for grouping nodes with similar features.
