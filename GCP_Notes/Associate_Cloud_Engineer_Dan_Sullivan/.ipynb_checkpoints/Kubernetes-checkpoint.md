@@ -174,7 +174,9 @@ Steps:
                       name: "cpu"
                       targetAverageUtilization: 80
 
-
+    - At minimum, a YAML configuration for Kubernetes requires apiVersion, kind, metadata, and spec
+    
+    
 4. Ensure both Cloud SDK and kubectl is installed:
 
         gcloud components install kubectl
