@@ -114,7 +114,7 @@ If your application is written in one of the supported languages, the standard e
 
 If the services that make up your application can be containerized, the flexible environment is preferred.
 
-### Kubernetes Engine
+## Kubernetes Engine
 Kubernetes is an open-source container orchestration service created by Google that allows users to do the following:
 
 - Create clusters of VMs that run Kubernetes software for containers.
