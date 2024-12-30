@@ -84,4 +84,112 @@ Using Cloud Console:
         - Same as Cloud Run Service
 
 ## App Engine
-App Engine is a PaaS offering that provides a platform for running scalable applications in language-specific frameworks.
+App Engine is a PaaS offering that provides a platform for running scalable applications in language-specific frameworks. When using App Engine, both a Standard and Flexible environment are available.
+
+Standard applications have 4 components:
+
+- Application
+
+    - An application is a high-level resource tied to the project (1 application per project), and it is specified within a region.
+    
+- Service
+
+    - An app has one or multiple services. Services are comprised of the code that gets executed in the App Engine environment.
+
+- Version
+
+    - A service may exist in multiple versions, with newer versions having new features or bug fixes.
+
+- Instance
+
+    - When a version executes, an instance of that app gets created.
+    
+Complex applications typically have multiple atomic services, usually referred to as microservices. Services are defined by their source code and their configuration file. The combination of those files constitutes a version of the app. Having multiple versions of an app allows you to migrate and split traffic.
+
+### Deploying an App Engine Application
+Using Cloud Shell and Cloud SDK:
+1. Ensure gcloud is configured to operate App Engine.
+    
+        gcloud components install app-engine-python
+        
+2. Download a sample Hello World app.
+
+        git clone https://github.com/GoogleCloudPlatform/python-docs-samples
+        
+3. Change to the directory with the Hello World app.
+
+        cd python-docs-samples/appengine/standard_python3/hello_world
+        
+4. These files should appear in the directory:
+
+        app.yaml
+        main.py
+        main_test.py
+        requirements.txt
+        requirements-test.txt
+        
+5. Look at the YAML file.
+
+        runtime: python27
+        api_version: 1
+        threadsafe: true
+        
+        handlers:
+        - url: /.*
+          script: main.app
+          
+6. Deploy the app.
+
+        gcloud app deploy app.yaml
+        
+    - This command has some optional parameters:
+        - version (specify a version ID)
+        - project
+        - no-promote (deploy without routing traffic)
+        
+7. See the output of the app by going to https://gcpace-project.appspot.com. The project URL is the project name followed by "appspot.com".
+
+8. To stop serving versions of the app:
+
+        gcloud app versions stop v1 v2
+        
+### Scaling App Engine Applications
+App Engine can automatically add or remove instances based on the load to the App Engine-managed server. Instances that scale based on load are called *dynamic* instances, and they are preferable for saving on cost. To make a dynamic instance, configure scaling to "autoscaling" or "basic scaling."
+
+You can also opt for instances that run all the time, also called *resident* instances. These are more optimal if you want to ensure users spend less time waiting. To make a resident instance, configure scaling to "manual scaling."
+
+Scaling is done with the app.yaml file using the term "automatic_scaling." This term can have key-value pairs with multiple config options:
+
+- target_cpu_utilization (threshold to meet before new instances are started)
+- target_throughput_utilization (a number between 0.5 and 0.95)
+- max_concurrent_requests (a max on concurrent requests on an instance before new insances are started. Default 10, max 80)
+- max_instances
+- min_instances
+- max_pending_latency (maximum time a request will be in queue before being processed)
+- min_pending_latency
+
+To do basic scaling, use these parameters instead:
+
+- idle_timeout
+- max_instances
+
+### Splitting Traffic
+App Engine provides three ways to split traffic:
+1. By IP address
+    - A client is always routed to the same instance as long as the IP address is static.
+    - This option is not always best for stateful applications because the same user might try to access from two different IP addresses.
+2. By HTTP cookie
+    - Useful when you want to assign users to versions.
+    - A cookie named GOOGAPPUID is given a hash value as the request header.
+3. By random selection
+    - Creates a generally even workload distribution.
+    - If there is no GOOGAPPUID cookie, traffic gets routed randomly.
+    
+To route traffic, use the following command:
+
+    gcloud app services set-traffic [service-name] --splits v1=0.3,v2=0.7
+    
+This will split the traffic for the service between two versions, with v1 getting 30% of traffic and v2 getting 70%. The *set-traffic* command also takes these parameters:
+
+    --migrate (migrate traffic from previous version to new version)
+    --split-by (how to split traffic: ip, cookie, or random)
