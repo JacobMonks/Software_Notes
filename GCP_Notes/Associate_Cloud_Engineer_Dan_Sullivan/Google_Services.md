@@ -28,7 +28,7 @@ When configuring a VM, you are given many options, including, but not limited to
 - Whether to use GPUs
 - Whether to make it preemptible
 
-For more on Compute Engine, refer to [Chapter 4](./Associate_Cloud_Engineer_Dan_Sullivan/Cloud_Computing.md).
+For more on Compute Engine, refer to [Chapter 4](./Cloud_Computing.md).
 
 ### Kubernetes Engine
 Kubernetes Engine is a computing service that allows users to easily manage and run containerized applications on a cluster. Like a VM, a container is a way to isolate computing processing and resources. Unlike a VM, a container does not use a hypervisor, but instead uses a container manager. The container manager uses the functionality of the host OS to coordinate containers and isolate services.
@@ -44,7 +44,7 @@ Anthos clusters extend GKE for hybrid and multi-cloud environments. Some advanta
 - Instrumentation of code.
 - Anthos Service Mesh for authorization and routing.
 
-For more on Kubernetes Engine, refer to [Chapter 7](./Associate_Cloud_Engineer_Dan_Sullivan/Kubernetes.md).
+For more on Kubernetes Engine, refer to [Chapter 7](./Kubernetes.md).
 
 ### App Engine
 App Engine is a PaaS product that allows developers to create applications in popular programming language and deploy it them to a serverless environment. It is well-suited for web and mobile back-end applications.
@@ -59,7 +59,7 @@ App Engine has two different environments:
 
     - Run containerized applications in the App Engine environment. This works well when your application relies on additional libraries or 3rd-party software. This configuration also allows you to write to a local disk.
 
-For more on App Engine, refer to [Chapter 9](./Associate_Cloud_Engineer_Dan_Sullivan/Cloud_Run_App_Engine.md).
+For more on App Engine, refer to [Chapter 9](./Cloud_Run_App_Engine.md).
 
 ### Cloud Run
 Cloud Run is a service for running stateless containers and it does not restrict what programming languages you can use. Cloud Run services have regional availability.
@@ -69,7 +69,7 @@ Cloud Functions is a lightweight computing option that works well with event-dri
 
 Cloud Functions is not designed to run highly intensive or long-running code, but it can call other services such as third-party applications or other Google Cloud services.
 
-For more on Cloud Functions, refer to [Chapter 10](./Associate_Cloud_Engineer_Dan_Sullivan/Cloud_Functions.md).
+For more on Cloud Functions, refer to [Chapter 10](./Cloud_Functions.md).
 
 ## Storage Solutions
 Like computing, storage solutions vary in use cases. Some users want to prioritize quick access while others want dependeable long-term archival.
@@ -126,7 +126,7 @@ Memorystore is an in-memory cache service. It is used for caching frequently use
 ## Networking
 Google Cloud provides several means configuring virtual networks, link with on-premise data centers, and secure your resources.
 
-Networking will be discussed more in depth in [Chapter 14](./Associate_Cloud_Engineer_Dan_Sullivan/Networking.md) and [Chapter 15](./Associate_Cloud_Engineer_Dan_Sullivan/Networking.md#dns).
+Networking will be discussed more in depth in [Chapter 14](./Networking.md) and [Chapter 15](./Networking.md#dns).
 
 ### Virtual Private Cloud
 Virtual Private Clouds (VPC) are a way to ensure that an enterprise's resources are logically isolated from those of another enterprise usinng the same cloud service. An advantage of VPCs is that they can span the globe without relying on the public Internet. This allows back-end servers to access Google services with no need for a public IP address.
