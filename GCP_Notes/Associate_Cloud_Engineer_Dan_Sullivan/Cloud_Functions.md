@@ -37,6 +37,74 @@ Google supports these runtime environments:
 - .NET
 - PHP
 
-See [the docs](https://cloud.google.com/functions) for more information on supported languages and versions.
+See the [docs](https://cloud.google.com/functions) for more information on supported languages and versions.
 
 ## Receiving Events from Storage
+Several actions in Cloud Storage can be used as a trigger for running functions. These include files being finalized, deleted, archived, or having updated metadata.
+
+### Deploying in Cloud Console
+Steps:
+1. Enable Cloud Functions API if not done already.
+2. Go to Cloud Functions console, select "Create Function," and enter the following information:
+    - Function Name
+    - Region
+    - Trigger (Cloud Storage)
+    - Bucket
+3. Continue down and fill in these settings:
+    - Memory Allocated (128 MB to 16 GB)
+    - Source Code
+    - Runtime
+    - Function
+    - Encryption
+4. View your created fucntion in the console.
+
+### Deploying in Cloud SDK and Cloud Shell
+Steps:
+1. Ensure you have the latest *gcloud* commands installed:
+
+        gcloud components update
+        gcloud components install beta (optional)
+    
+2. Enter the function you want to create using *gcloud functions deploy* command:
+
+        gcloud functions deploy storage_test \
+                --runtime python39 \
+                --trigger-resource [bucket_name] \
+                --trigger-event google.storage.object.[finalize, delete, archive, metadataUpdate]
+                
+3. When finished, delete the function:
+
+        gcloud functions delete storage_test
+
+## Receiving Events from Pub/Sub
+You can also create Functions that respond to messages being published to a Pub/Sub queue. When messages are sent via Pub/Sub, they are encoded to allow for binary data in place of text. As a result, when your function reads these messages in, you should use binary decoding before reading the message. E.g.
+
+    def pub_sub_reader(event_data, event_context):
+        import base64
+        print(f'Event Type: {event_context.event_type}')
+        if 'name' in event_data:
+            name = base64.b64decode(event_data['name']).decode('utf-8')
+            print(f'Message Name: {event_data[name]}')
+            
+
+### Deploying in Cloud Console
+Steps:
+1. Navigate to Cloud Functions console and select "Create Function."
+2. Enter the following information:
+    - Function Name
+    - Region
+    - Trigger (Pub/Sub)
+    - Topic (select or create a new one)
+    - Encryption
+
+### Deploying in Cloud SDK and Cloud Shell
+Steps:
+1. Enter the command:
+
+        gcloud functions deploy pub_sub_reader \
+                -- runtime python39 \
+                --trigger-topic [topic_name]
+                
+2. When finished with the function, delete it.
+
+        gcloud functions delete pub_sub_reader
