@@ -101,6 +101,25 @@ You can also apply Lifecycle Management Policies to automatically move objects i
 If a live version of a file is deleted, the object instead gets archived. If the archived version is deleted, the file is gone permanently.
 
 ### Data Models
+There are 4 main categories for modeling data:
+1. Object storage (Cloud Storage)
+2. Relational (Cloud SQL and Cloud Spanner)
+3. Analytical (BigQuery)
+4. NoSQL (Cloud Firestore and Bigtable)
+
+#### Object Storage
+Object Storage is a good solution when you don't need fine-grained access to data within the objects being stored.
+
+#### Relational
+Relational databases support frequent querying transactions, and they are ideal for when users need a consistent view of the data. The primary GCP services for relational databases are Cloud SQL and Cloud Spanner.
+
+Cloud SQL is a managed database service that provides MySQL, SQL Server, and PostgreSQL databases. These databases do not scale horizontally, but vertically.
+
+Cloud Spanner is a service for storing large volumes of relational data and ensuring it is widely available and consistent. This would be useful for global supply chains and financial service applications, whereas Cloud SQL is better for web applications and e-commerce.
+
+#### Analytical
+
+#### NoSQL
 
 ## Deploying Storage
 
