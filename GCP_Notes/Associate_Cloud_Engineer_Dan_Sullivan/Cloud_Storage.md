@@ -108,7 +108,7 @@ There are 4 main categories for modeling data:
 4. NoSQL (Cloud Firestore and Bigtable)
 
 #### Object Storage
-Object Storage is a good solution when you don't need fine-grained access to data within the objects being stored.
+Object Storage is a good solution when you don't need fine-grained access to data within the objects being stored. The way to do this in Google Cloud is Cloud Storage.
 
 #### Relational
 Relational databases support frequent querying transactions, and they are ideal for when users need a consistent view of the data. The primary GCP services for relational databases are Cloud SQL and Cloud Spanner.
@@ -117,9 +117,41 @@ Cloud SQL is a managed database service that provides MySQL, SQL Server, and Pos
 
 Cloud Spanner is a service for storing large volumes of relational data and ensuring it is widely available and consistent. This would be useful for global supply chains and financial service applications, whereas Cloud SQL is better for web applications and e-commerce.
 
+*Configuring Cloud SQL*
+1. Navigate to Cloud SQL in the console and select "Create Instance."
+2. Select the desired version of SQL (MySQL, PostgreSQL, SQL Server).
+3. Input setup information: name, root password, region, zone.
+4. Input instance configs: connectivity (public or private), machine type, automatic backups, failover replicas, database flags, maintenance windows.
+
+*Configuring Cloud Spanner*
+1. Navigate to Cloud Spanner in the console and select "Create Instance."
+2. Provide instance name and instance ID.
+3. Determine if regional or multi-regional.
+4. Input the number of nodes.
+
 #### Analytical
+Google Cloud's service for Analytical data storage is Google BigQuery (GBQ). It is designed for data warehouse and analytical applications that can store petabytes of data, but it is not meant to be used for transaction-oriented applications like e-commerce or interactive web apps.
+
+BigQuery is serverless and provides storage, querying, statistical, and machine learning analysis tools.
+
+*Configuring BigQuery*
+1. Navigate to Bigquery in the console.
+2. Select "Create Dataset."
+3. Specify the name and region.
 
 #### NoSQL
+NoSQL databases are ideal for storing data that doesn't have a defined or consistent structure. GCP has two types of NoSQL databases:
+- Document-based (Cloud Firestore or Cloud Datastore)
+- Wide-column (Bigtable)
+
+Firestore is a document-based NoSQL database. Data is stored and organized into a structure called a document, which is made up of key-value pairs. A set of key-value pairs that makes up one entry is called an *entity*. Entities may have common properties, but because Firestore is schema-less, that doesn't have to be the case.
+
+Firestore is a managed database that automatically partitions and scales data. It is used for nonanalytic, nonrelational storage, such as product catalogs, user profiles, etc. It supports transactions and indexing like a relational database, but does not have joining or aggregating data from multiple tables.
+
+*Configuring Firestore*
+
+
+*Configuring Bigtable*
 
 ## Deploying Storage
 
