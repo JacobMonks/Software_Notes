@@ -47,7 +47,7 @@ Anthos clusters extend GKE for hybrid and multi-cloud environments. Some advanta
 For more on Kubernetes Engine, refer to [Chapter 7](./Kubernetes.md).
 
 ### App Engine
-App Engine is a PaaS product that allows developers to create applications in popular programming language and deploy it them to a serverless environment. It is well-suited for web and mobile back-end applications.
+App Engine is a PaaS product that allows developers to create applications in popular programming languages and deploy them to a serverless environment. It is well-suited for web and mobile back-end applications.
 
 App Engine has two different environments:
 
@@ -62,7 +62,9 @@ App Engine has two different environments:
 For more on App Engine, refer to [Chapter 9](./Cloud_Run_App_Engine.md).
 
 ### Cloud Run
-Cloud Run is a service for running stateless containers and it does not restrict what programming languages you can use. Cloud Run services have regional availability.
+Cloud Run is a service for running stateless containers, and it does not restrict what programming languages you can use. Cloud Run services have regional availability.
+
+For more on Cloud Run, refer to [Chapter 9](./Cloud_Run_App_Engine.md).
 
 ### Cloud Functions
 Cloud Functions is a lightweight computing option that works well with event-driven processing. It can run code in response to specific actions, such as files being uploaded to a bucket in Cloud Storage or a message being written to a messaging queue. It is serverless and supports auto-scaling.
@@ -72,18 +74,21 @@ Cloud Functions is not designed to run highly intensive or long-running code, bu
 For more on Cloud Functions, refer to [Chapter 10](./Cloud_Functions.md).
 
 ## Storage Solutions
-Like computing, storage solutions vary in use cases. Some users want to prioritize quick access while others want dependeable long-term archival.
+Like computing, storage solutions vary in use cases. Some users want to prioritize quick access while others want dependable long-term archival.
 
 ### Cloud Storage
 Cloud Storage is Google's general-purpose object storage system. Objects can be any type of file or binary large object (blob). Objects are organized into buckets which act similar to directories in a filesystem. Cloud Storage is not part of a VM, and it can be accessed by containers, VMs, and any network-connected device with proper privileges.
 
 Any object stored in a bucket is uniquely addressable by a URL. This URL allows users to read and write objects to a bucket if they have been granted permission.
 
-Cloud Storage is useful for storing objects as single units of data, like images or soundclips, and it can be accessed independently of servers that may or may not be running. GCS also has settings for different scopes of availability. Objects with regional availability will be accessible throughout an entire region at low latency.
+Cloud Storage is useful for storing objects as single units of data, like images or soundclips, and it can be accessed independently of servers that may or may not be running.
 
-Multi-region availability means the data will be more widely accessible, but generally at lower latency. One way to decrease latency is when the application that uses the data is distributed across the region.
+GCS also has settings for different scopes of availability: 
 
-When you want to store objects for long periods of time, consider nearline (30 days), coldline (90 days), or archive (1 year) storage. The access to these objects is limited, but the cost of storage is considerably lower and it is highly durable.
+- Regionally available objects will be accessible throughout an entire region at low latency.
+- Multi-region availability means the data will be more widely accessible, but it typically comes with added latency. One way to decrease latency is when the application that uses the data is distributed across the region.
+
+When you want to store objects for long periods of time, consider nearline (30 days), coldline (90 days), or archive (1 year) storage. The access to these objects is limited and incurs a higher fee when done within the restricted period, but the cost of storage is considerably lower and it is highly durable.
 
 GCS allows you to create lifecycle management policies that dictate how objects are stored after certain periods of time. For example, you could have objects in a specific bucket automatically enter nearline storage if they are at least 60 days old.
 
@@ -95,7 +100,7 @@ The advantage of Persistent Disks is that they support multiple readers with no 
 The storage limit of Disks is typically 64 TB.
 
 ### Cloud Storage for Firebase
-Cloud Storage for Firebase is an object storage option that is designed secure transmissions with recovery mechanisms in the case of faulty connections. This makes it a good choice for mobile applications since phones will not always have strong connectivity.
+Cloud Storage for Firebase is an object storage option that is designed for secure transmissions with recovery mechanisms in the case of faulty connections. This makes it a good choice for mobile applications since phones will not always have strong connectivity.
 
 ### Cloud Filestore
 Filestore is a storage service that implements the Network File System (NFS) protocol. It provides a shared filesystem for use with Compute Engine and Kubernetes Engine. It is capable of a high amount of input-output operations per second (IOPS) and variable capacity.
@@ -109,10 +114,10 @@ Bigtable is a highly scalable NoSQL database that is built with the wide-column 
 It integrates well with other Google services and APIs like HBase for Hadoop and other open-source tools.
 
 ### Cloud Spanner
-Cloud Spanner is a globally distributed storage solution. It has the consistency of a relational database with the scalability of a NoSQL database. It is ideal for enterprise applications that demand highly scalable and available services and strong security encryption.
+Cloud Spanner is a globally distributed storage solution. It has the consistency of a relational database with the scalability of a NoSQL database. It is ideal for enterprise applications that demand highly scalable and available services and strong security encryption. Some use cases for Cloud Spanner include financial services, retail, and online gaming.
 
 ### Cloud Firestore
-Firestore, formerly known as Datastore, is a document-based NoSQL database. Documents are collections of key-value pairs that allow schemas to be highly flexible. Keys do not have to be defined prior to use, which makes document-based NoSQL databases appealing for applications that must accomodate a wide range of attributes.
+Firestore, formerly known as Datastore, is a document-based NoSQL database. Documents are collections of key-value pairs that allow schema to be highly flexible. Keys do not have to be defined prior to use, which makes document-based NoSQL databases appealing for applications that must accommodate a wide range of attributes.
 
 Firestore can be accessed by applications in Compute Engine, Kubernetes Engine, and App Engine via REST API.
 
@@ -124,12 +129,12 @@ Despite being non-relational, Firestore supports transactions, indexes, and SQL-
 Memorystore is an in-memory cache service. It is used for caching frequently used data in memory, but is not ideal for large volumes of data. It is primarily intended to reduce the runtime of queries on the most accessed information.
 
 ## Networking
-Google Cloud provides several means configuring virtual networks, link with on-premise data centers, and secure your resources.
+Google Cloud provides several means of configuring virtual networks, link with on-premise data centers, and secure your resources.
 
 Networking will be discussed more in depth in [Chapter 14](./Networking.md) and [Chapter 15](./Networking.md#dns).
 
 ### Virtual Private Cloud
-Virtual Private Clouds (VPC) are a way to ensure that an enterprise's resources are logically isolated from those of another enterprise usinng the same cloud service. An advantage of VPCs is that they can span the globe without relying on the public Internet. This allows back-end servers to access Google services with no need for a public IP address.
+Virtual Private Clouds (VPC) are a way to ensure that an enterprise's resources are logically isolated from those of another enterprise using the same cloud service. An advantage of VPCs is that they can span the globe without relying on the public Internet. This allows back-end servers to access Google services with no need for a public IP address.
 
 Using Internet Protocol Security (IPSec), you can link your VPC to on-premises VPNs.
 
@@ -137,7 +142,7 @@ Using Internet Protocol Security (IPSec), you can link your VPC to on-premises V
 Load balancing is a way to distribute workloads across your cloud infrastructure. Cloud Load Balancing can manage HTTP, HTTPS, TCP, SSL, and UDP traffic.
 
 ### Cloud Armor
-When exposing a service to the public Internet, it can be targeted by distributed denial-of-service (DDoS) attacks. Cloud Armor is a network security product with severla useful security features that can help with preventing these attacks:
+When exposing a service to the public Internet, it can be targeted by distributed denial-of-service (DDoS) attacks. Cloud Armor is a network security product with several useful security features that can help with preventing these attacks:
 
 1. Allowing and restricting access based on IP address or geolocation.
 2. Setting rules for countering cross-site scripting attacks.
@@ -153,7 +158,7 @@ Cloud Interconnect is a convenient way to connect your existing networks to the 
 1. Interconnects
 
     - A direct network connection is maintained between an on-premises data center and one of Google's colocation facilities.
-    - This can also be done through a third party, known as Partner Interconnect, and it is the recommended way of establishing a network conenction.
+    - This can also be done through a third party, known as Partner Interconnect, and it is the recommended way of establishing a network connection.
 
 2. Peering
 
