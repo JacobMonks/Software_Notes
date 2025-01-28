@@ -34,7 +34,7 @@ As mentioned, when an Organization is created, all users in that domain are give
 In addition to IAM, Google also provides an Organization Policy Service. While IAM manages the permissions of users to work with resources, Organization Policy puts restrictions on how those resources can be used. It does this using Constraints, which can come in List form or Boolean form.
 
 - List Constraints are lists of values that are allowed or denied for a resource.
-- Boolean Constraints True or False values, and they determine whether or not a constraint is applied.
+- Boolean Constraints are True or False values, and they determine whether or not a constraint is applied.
 
 Organization Policies can be applied individually to each resource, like denying serial port access on all VMs, but a more convenient method is to set the policy on the whole organization, since all folders and projects in the organization will inherit that policy by default.
 
@@ -79,7 +79,7 @@ Using Google Cloud resources usually incurs a fee, so it would be wise to set up
 
 A Billing Account stores all the information for making payments for any resources you use in a project or group of projects. All projects must be associated with a Billing Account unless they only use free services.
 
-You can set up one or multiple Billing Accounts in an organization, and they can be structured similarly to ther resource hierarchy. If your company has finance, legal, and marketing departments that pull from the same budget, they can be covered under one Billing Account, while the software department can have their own Billing Account.
+You can set up one or multiple Billing Accounts in an organization, and they can be structured similarly to the resource hierarchy. If your company has finance, legal, and marketing departments that pull from the same budget, they can be covered under one Billing Account, while the software department can have their own Billing Account.
 
 There are two types of Billing Accounts:
 
@@ -96,8 +96,8 @@ There are two types of Billing Accounts:
 There are 4 Billing Roles to be familiar with:
 
 1. Billing Account Creator can create new self-service accounts. Very few people will have this role.
-2. Billing Account Administrator managed accounts but can't create them. Cloud admins will likely have this role.
-3. Billing Account User enables a user to link projcets to accounts. Any user who creates projects will have this role.
+2. Billing Account Administrator manages accounts but can't create them. Cloud admins will likely have this role.
+3. Billing Account User enables a user to link projects to accounts. Any user who creates projects will have this role.
 4. Billing Account Viewer enables a user to view account cost and transactions. This is useful for auditors who need to be able to read billing information without changing it.
 
 ### Billing Budgets and Alerts

@@ -43,7 +43,7 @@ For users to create and access VM instances, they must be a member of the projec
 - Compute Admin : full control over Compute Engine instances
 - Compute Network Admin : create, modify, and delete networking resources with read-only access to firewall rules and SSL certifications.
 - Compute Security Admin : create, modify, and delete SSL certifications and firewall rules.
-- Compute Viewer : get and list data from Compute engine resources but cannot read data from those resources.
+- Compute Viewer : get and list data from Compute Engine resources but cannot read data from those resources.
 
 You can also apply IAM policies to resources directly, meaning you don't have to create new permissions with each new VM.
 
@@ -82,7 +82,7 @@ App Engine provides a managed PaaS for running applications. Rather than configu
 App Engine is for users who want to worry less about managing and more about running their applications, but it offers less control as a result.
 
 ### App Engine Structure
-App Engine applications consist of services, and each service proveides a specific function. Services can have different versions running on different instances at the same time. Those instances are managed by App Engine.
+App Engine applications consist of services, and each service provides a specific function. Services can have different versions running on different instances at the same time. Those instances are managed by App Engine.
 
 With dynamic instances, Google can add or shut down instances depending on the need. This can make it difficult to keep track of costs, so Google Cloud gives the user the ability to set spending limits and alarms.
 
@@ -162,15 +162,15 @@ Kubernetes is a good choice for large-scale applications that require high avail
 Anthos is a managed service for centrally configuring and managing deployed services. You can manage multiple GKE clusters and clusters running in other clouds or on-premises. It also allows you to enforce policies across multiple environments.
 
 ## Cloud Run
-Cloud Run is a managed service for deploying and running stateless containers. A stateless container is one that requires no persistent data when it is created. Any instance of a container running a service can respond to reqeusts from that service, regardless of the connection or user of the service.
+Cloud Run is a managed service for deploying and running stateless containers. A stateless container is one that requires no persistent data when it is created. Any instance of a container running a service can respond to requests from that service, regardless of the connection or user of the service.
 
-When you depoy a service to Cloud Run, you specify a container image, service name, region, CPU, autoscaling, and traffic configuration.
+When you deploy a service to Cloud Run, you specify a container image, service name, region, CPU, autoscaling, and traffic configuration.
 
 ### Cloud Run Use Cases
 Cloud Run is useful for running code in containers without needing to manage infrastructure like with Kubernetes.
 
-## Cloud Function
-Cloud Functions is a serverless computing platform intended for single-purposes pieces of code that trigger from events in the cloud. The user does not need to configure VMs, containers, or clusters.
+## Cloud Functions
+Cloud Functions is a serverless computing platform intended for single-purpose pieces of code that trigger from events in the cloud. The user does not need to configure VMs, containers, or clusters.
 
 Unlike Compute Engine or App Engine, Cloud Functions is not general-purpose. Instead, it is used to connect independent services together, such as one service that uploads a file to Cloud Storage and another service that reads and processes data from files in storage.
 
@@ -178,7 +178,7 @@ Some features of Cloud Functions:
 
 - Functions execute in an isolated environment.
 - Scaling is done automatically according to need.
-- The Life Cycles of functions are independent of each other.
+- The lifecycles of functions are independent of each other.
 - Cloud Functions may be running in multiple instances at the same time without conflicts.
 
 ### Cloud Functions Use Cases

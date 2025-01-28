@@ -14,7 +14,7 @@ Google Cloud Console is a GUI for creating and managing GCP resources. It can be
 2. Create a billing account if one doesn't exist, and enable billing.
 3. Navigate to Compute Engine either in the menu on the left-hand side or via the search bar.
 4. Click 'Create Instance' to bring up VM configuration.
-5. Specify all necessary configurations (name, region and zone, machine type, opoerating system, boot disk, etc.)
+5. Specify all necessary configurations (name, region and zone, machine type, operating system, boot disk, etc.)
 
     - Not all zones have the same machine types available.
     - A machine family is a set of hardware configurations designed for particular workloads (general purpose, compute optimized, memory optimized, storage optimized).
@@ -25,7 +25,7 @@ Google Cloud Console is a GUI for creating and managing GCP resources. It can be
 
         - Standard - HDD
         - SSD
-        - Balanced - SSD with balannce of performance and cost
+        - Balanced - SSD with balance of performance and cost
         - Extreme - SSD with high performance
 
 6. Specify a Service Account and API access.

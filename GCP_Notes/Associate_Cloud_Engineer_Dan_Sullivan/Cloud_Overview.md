@@ -81,7 +81,7 @@ You may also want to set Firewall rules to determine what devices and servicecs 
 These services have more specific functions as a part of your workflow or a building block of a larger application. They have some common characteristics:
 
 - They are usually serverless.
-- They provide a very specific fucntion.
+- They provide a very specific function.
 - They provide an API to access its functionality.
 - You are charged based on your usage.
 
