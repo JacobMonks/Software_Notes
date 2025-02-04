@@ -149,9 +149,42 @@ Firestore is a document-based NoSQL database. Data is stored and organized into 
 Firestore is a managed database that automatically partitions and scales data. It is used for nonanalytic, nonrelational storage, such as product catalogs, user profiles, etc. It supports transactions and indexing like a relational database, but does not have joining or aggregating data from multiple tables.
 
 *Configuring Firestore*
+1. Choose between Native Mode and Datastore Mode.
+    - Native automatically scales to millions of clients and provides document-based storage.
+    - Datastore automatically scales to millions of writes per second.
+2. Choose storage location (single or multi-region).
+3. After configuring, create entities.
+    - Specify namespace (like a dataset), kind (like a table), and a key.
+    - Add one or more properties that have names, types, and values.
 
+Bigtable is another NoSQL database, but it is wide-column based instead of document-based. You can store tables with a large number of columns, but not all rows need to use every column, so the schemas are not fixed. It is designed for petabyte-scale databases for use cases like IoT data storage, data science applications, and analytics. High-volume and high-velocity are key features, and it has a latency in the range of low-milliseconds. It runs in clusters and scales horizontally.
 
 *Configuring Bigtable*
+1. Provide an instance name and instance ID.
+2. Choose Production Mode or Development Mode.
+    - Production clusters are highly avaialble and must be minimum 3 nodes.
+    - Development clusters are low-cost without replication or high availability.
+3. Choose SSD or HDD persistent disk.
+
+### Choosing a Storage Solution
+Different solutions are best for different use cases, and a full enterprise application may need multiple storage products to support everything it needs to accomplish.
+
+Key Considerations:
+1. Read and Write Patterns
+    - Applications with frequent reads and writes of structured data should use Cloud SQL or Cloud Spanner if global.
+    - Applications with large volumes of writes shold use Bigtable.
+    - Applications that store data in files should use Cloud Storage.
+2. Consistency
+    - Applications that require strong consistency should use Cloud SQL or Cloud Spanner.
+    - Applications that focus less on consistency should consider a NoSQL solution like Firestore and Bigtable.
+3. Transaction Support
+    - Applications that need atomic transactions should use Cloud SQL, Cloud Spanner, and Firestore.
+    - Applications that don't need transactions can use Cloud Storage, Bigquery, or Bigtable.
+4. Cost
+    - Consider storage solutions that require VMs, since those also incur a cost.
+5. Latency
+    - Low-latency applications might use Bigtable.
+    - Applications that can tolerate latency might use Cloud Spanner.
 
 ## Deploying Storage
 
