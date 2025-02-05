@@ -75,6 +75,16 @@ You can also create a shared VPC within an organization. This shared VPC is host
     
     - This will allow private traffic to flow between VPCs.
 
+### CIDR Notation
+Classless Interdomain Routing (CIDR) is a notation for specifying a range of IP addresses. It consists of a network address for identifying a subnet and a network mask. Example:
+- 10.0.0.0 - 10.255.255.255 (/8)
+- 172.16.0.0 - 172.31.255.255 (/12)
+- 192.168.0.0 - 192.168.255.255 (/16)
+
+The network mask is a number of bits from the start of the IP address that denote the network host. Every bit that is not masked represents the total node capacity of the network.
+
+The CIDR expression `0.0.0.0/0` denotes a network with hosts with IP addresses 0.0.0.0 - 255.255.255.255, whereas the expression `0.0.0.0/16` denotes a network with hosts with IP addresses 0.0.0.0 - 0.0.255.255.
+
 ### Deploy Compute Engine with a Custom Network
 
 *Using Cloud Console*
