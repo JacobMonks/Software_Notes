@@ -75,6 +75,16 @@ You can also create a shared VPC within an organization. This shared VPC is host
     
     - This will allow private traffic to flow between VPCs.
 
+### CIDR Notation
+Classless Interdomain Routing (CIDR) is a notation for specifying a range of IP addresses. It consists of a network address for identifying a subnet and a network mask. Example:
+- 10.0.0.0 - 10.255.255.255 (/8)
+- 172.16.0.0 - 172.31.255.255 (/12)
+- 192.168.0.0 - 192.168.255.255 (/16)
+
+The network mask is a number of bits from the start of the IP address that denote the network host. Every bit that is not masked represents the total node capacity of the network.
+
+The CIDR expression `0.0.0.0/0` denotes a network with hosts with IP addresses 0.0.0.0 - 255.255.255.255, whereas the expression `0.0.0.0/16` denotes a network with hosts with IP addresses 0.0.0.0 - 0.0.255.255.
+
 ### Deploy Compute Engine with a Custom Network
 
 *Using Cloud Console*
@@ -158,8 +168,31 @@ A Virtual Private Network (VPN) allows you to securely send network traffic from
         gcloud compute vpn-tunnels create NAME --peer-address=PEER_ADDRESS \
             --shared_secret=SHARED_SECRET --target-vpn-gateway=TARGET_VPN_GATEWAY
 
-## DNS
+## Cloud DNS
+DNS stands for "Domain Name System" and is a way to map domain names to IP addresses. Google has a maanged service called "Cloud DNS" for providing this service with high availability, low latency, and scalability.
 
+Using Cloud DNS, you can create a managed zone which contains records associated with a DNS name suffix and also contains details about the zone.
+
+*Create a Zone*
+1. Navigate to `Network Services` in Cloud Console and select `Cloud DNS`.
+2. Click `Create Zone` and specify some information:
+    - Zone type (Public/Private)
+        - Public zones are accessible via the public Internet.
+        - Private zones provide name services to GCP resoruces like VMs or load balancers and are only accessible from within the project.
+    - Zone name (unique within project)
+    - DNS name (myzone.example.com)
+    - Description
+    - DNSSEC
+        - Security measure that provides strong authentication and protects against spoofing and cache poisoning.
+    - If making a Private zone, choose the networks that will have access.
+    - Enable Cloud Logging
+    
+When you create a zone, some records are added automatically:
+- `NS` is a name server records that has the address of an authoritative server that manages the zone info.
+- `SOA` is a start-of-authority record which has authoritative info about the zone.
+
+You can add other records such as `CNAME`, `A`, and `AAAA` records.
+    
 ## Load Balancing
 
 ## Google Private Access
