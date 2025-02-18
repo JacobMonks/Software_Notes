@@ -173,7 +173,7 @@ DNS stands for "Domain Name System" and is a way to map domain names to IP addre
 
 Using Cloud DNS, you can create a managed zone which contains records associated with a DNS name suffix and also contains details about the zone.
 
-*Create a Zone*
+*Create a Zone with Cloud Console*
 1. Navigate to `Network Services` in Cloud Console and select `Cloud DNS`.
 2. Click `Create Zone` and specify some information:
     - Zone type (Public/Private)
@@ -187,13 +187,78 @@ Using Cloud DNS, you can create a managed zone which contains records associated
     - If making a Private zone, choose the networks that will have access.
     - Enable Cloud Logging
     
+*Create a Zone with Cloud SDK*
+1. Create a Public DNS Zone:
+
+        gcloud dns managed-zones create ace-exam-zone1 --description="A sample zone" --dns-name=aceexamzone.com.
+    
+2. Create a Private Zone:
+
+        gcloud dns managed-zones create ace-exam-zone1 --description="A sample private zone" \
+                --dns-name=aceexamzone.com. --visibility=private --networks=default
+        
+3. Add an `A` and a `CNAME` record:
+
+        gcloud dns record-sets transaction start --zone=ace-exam-zone1
+        gcloud dns record-sets transaction add 192.0.2.91 --name=aceexamezone.com. \
+                --ttl=300 --type=A --zone=ace-exam-zone1
+        gcloud dns record-sets transaction add server1.aceexamzone.com. \
+        --name=www2.aceexamzone1.com. --ttl=300 --type=CNAME --zone=ace-exam-zone1
+        gcloud dns record-sets transaction execute --zone=ace-exam-zone1
+        
 When you create a zone, some records are added automatically:
 - `NS` is a name server records that has the address of an authoritative server that manages the zone info.
 - `SOA` is a start-of-authority record which has authoritative info about the zone.
 
-You can add other records such as `CNAME`, `A`, and `AAAA` records.
+You can add other records such as `CNAME` (Canonical name), `A`, and `AAAA` records. When creating a record, you can specify TTL (time to live) parameters to denote how long the record can live in cache before DNS resolvers query for the value again. DNS does this by performing lookup operations that map domains to IP addresses, and you can configure it to map a domain to multiple IP addresses.
     
 ## Load Balancing
+Load Balancers distribute workload to servers running an application. They can distribute load within a single region or multiple regions. Google Cloud offers different load balancers that are characterized by key features:
+- Global vs regional load balancing.
+- External vs internal load balancing.
+- Type of traffic (HTTP, TCP, etc.)
+
+For Global balancers, there are 4 options:
+1. Global External HTTP(S) for balancing HTTP and HTTPS loads across back-end instances globally on a Premium network service tier.
+2. Global External HTTP(S) (classic) for balancing HTTP and HTTPS loads across back-end instances globally on Premium tier networking and regionally on Standard tier networking.
+3. SSL Proxy which terminates SSL/TLS connections, used for non-HTTPS traffic.
+4. TCP Proxy which terminates TCP sessions at the load balancer and then forwards traffic to back-end servers.
+
+Regional load balancers are for when an application only needs to be distribute in a single region. There are 4 options:
+1. Regional External HTTP(S) for balancing HTTP and HTTPS regionally on Standard tier networking.
+2. Internal HTTP(S) for balancing HTTP and HTTPS regionally on Premium tier networking.
+3. Internal TCP/UDP for balacning TCP/UDP regionally on Premium tier networking.
+4. External TCP/UDP for balancing TCP, UDP, and other protocols regionally on Standard or Premium tier networking.
+
+Load balancing is incredibly important for services that need to be highly available because it allows you to distribute traffic and monitor the health of VMs. For example, if you are providing API access to customer data, you must consider how to scale up and down in response to changes in load and how to ensure HA.
+- Combining Instance Groups and Load Balancing solves both problems. Instance Groups manage auto-scaling while load balancing monitors the health of VMs.
+
+*Configuring Load Balancers in Cloud Console*
+1. Navigate to `Network Services` and select `Load Balancing`.
+2. Choose which type of load balancer to create; for example, a TCP load balancer.
+3. Select "Only Between My VMs" for private load balancing.
+4. Select single-region or multi-region.
+5. Specify backend type.
+    - Backend Service allows has support for connection draining, TCP health checks, managed instance groups, and failover groups.
+    - Target Pools are instances in a region that are identified by a list of URLs that specify what VMs can receive traffic.
+6. Configure Health Check for the back end.
+    - Specify name, protocol, port, and health criteria.
+7. Configure the front end.
+    - Specify name, subnetwork, internal IP configuration, and the port that will have its traffic forwarded to the backend (for example, port 80).
+    
+*Configuring Load Balancers with Cloud SDK*
+1. Use this command to create a Target Pool:
+
+        gcloud compute target-pools create ace-exam-pool --description="example target pool" \
+                --region=us-central1
+                
+2. Use this command to add instances to the Target Pool:
+
+        gcloud compute target-pools add-instances ace-exam-pool --instances ex1 ex2
+
+3. Use this command to forward traffic from any VM in the ace-exam-pool to the load balancer:
+
+        gcloud compute forwarding-rules create ace-exam-lb --port=80 --target-pool ace-exam-pool
 
 ## Google Private Access
 
