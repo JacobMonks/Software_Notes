@@ -261,5 +261,48 @@ Load balancing is incredibly important for services that need to be highly avail
         gcloud compute forwarding-rules create ace-exam-lb --port=80 --target-pool ace-exam-pool
 
 ## Google Private Access
+Private Google Access is used to reach Google Cloud resources without using an external IP address. This allows you to connect to Google APIs through the VPC's default network gateway.
+- Traffic to Google APIs from on-premises systems need to be sent to either `private.googleapis.com` or `restricted.googleapis.com`.
+- Routes must be in place for traffic to flow from on-premises systems to `private.googleapis.com` or `restricted.googleapis.com`.
+
+Private Service Access is used to access a Google or third-party managed VPC network through VPC Peering.
+
+Private Service Connect is used with Google Cloud resources that may or may not have external IP addresses as well as on-premises systems.
+- This allows you to connect to a Private Service Connect endpoint in your VPC network and that endpoint will forward rquests to Google APIs and services.
 
 ## IP Addressing
+One thing to remember about IP addresses is the difference between a static and an ephemeral address.
+- Static: assigned to a project until they are released. Used for making a fixed IP address for some service like a website.
+- Ephemeral: exists only as long as the resource is using it. Used when running an application on a VM that can only be accessed by other VMs in the same project. When the VM is deleted or stopped, the address is released.
+
+### Exanding CIDR Blocks
+As mentioned earlier. CIDR Blocks denote a range of IP addresses in a subnet. As your service grows, you might want to expand your subnet.
+
+The following command will increase the number of addresses in ace-exam-subnet1 to 65,536 (i.e. 16 bits).
+
+    gcloud compute networks subnets expand-ip-range ace-exam-subnet1 --prefix-length 16
+    
+A larger prefix length will mean a larger network mask, which means fewer IP addresses are on the subnet.
+
+To decrease the number of IP addresses, you will have to create a new subnet and use a smaller number of addresses.
+
+### Reserving IP Addresses
+Static IP addresses can be reserved. Reserved addresses stay attached to a VM even when it is not in use. This can be done using Cloud Console or Cloud SDK.
+
+*Using Cloud Console*
+1. Navigate to the VPC section and select `IP Addresses`.
+2. Click `Reserve External Static Address` and fill out the following fields:
+    - Name
+    - Description
+    - Network Service Tier (Premium or Standard)
+        - Standard is lower-cost, uses the Inernet for some data transfer.
+        - Premium is higher-cost, routes all traffic over Google's global network.
+    - IPv4 or IPv6
+    - Regional or Global
+        - If regional, specify region.
+    - Attached resource (if any)
+    
+*Using Cloud SDK*
+1. Create a static IP address in Premium tier:
+    
+        gcloud compute addresses create ace-exam-reserved-static1 --region=us-central1 --network-tier=PREMIUM
