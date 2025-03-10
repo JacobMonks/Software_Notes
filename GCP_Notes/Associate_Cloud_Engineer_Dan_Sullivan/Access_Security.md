@@ -87,4 +87,65 @@ Example:
             
 
 ## Managing Service Accounts
+Sercice Accounts provide an identity independent of human users. They can be granted roles and be associated with VMs that will have those permissions.
 
+Cloud Engineers will be expected to know how to:
+1. Work with scopes.
+2. Assign Service Accounts to a VM.
+3. Grant access to a service account to another project.
+
+### Service Accounts and Scopes
+Scopes are permissions granted to a VM to perform specific operations. They authorize access to API methods. To configure access controls for a VM, you must configure both IAM roles and scopes.
+
+A scope is identified by a URL starting with 'www.googleapis.com/auth' and followed by a permission on a resource.
+- For example: 
+    - This scope allows a VM to insert data into BigQuery: `www.googleapis.com/auth/bigquery.insertdata`
+    - This scope allows a VM to view Cloud Storage data: `www.googleapis.com/auth/devstorage.read_only`
+    - This scope allows a VM to write to Compute Engine logs: `www.googleapis/auth/logging.write`
+    
+An instance can only perform an operation if it is allowed by both the assigned IAM roles and the scopes defined on the instance.
+
+#### Setting Scopes
+
+*Cloud Console*
+1. Navigate to the VM Instance page Cloud Console.
+2. Stop the instance (if it is running), go to Instance Details and click `Edit`.
+3. Scroll down to the `Access Scopes` section and select a scope:
+    - Allow Default Access
+    - Allow Full Access to All Cloud APIs
+    - Set Access for Each API
+
+*Cloud SDK*
+This command will set a scope on a VM:
+
+    gcloud compute instances set-service-account [INSTANCE_NAME] \
+            [--service-account [SERVICE_ACCOUNT_EMAIL] | --no-service-account] \
+            [--scopes [SCOPES,...] | --no-scopes]
+            
+Example:
+
+    gcloud compute instances set-service-account ace-instance \
+            --service-acount examadmin@ace-exam-project.iam.gserviceaccount.com \
+            --scopes compute-rw,storage-ro
+            
+### Assigning a Service Account to a VM
+
+*Cloud Console*
+1. Navigate to the Service Accounts section of `IAM & Admin` in the Console.
+2. Click `Create Service Account`.
+3. Specify the name, ID, and a description then click `Create and Continue`.
+4. Assign roles using either Cloud Console or SDK.
+5. Navigate to the VM Instances page in Compute Engine, select a VM Instance and click `Edit`.
+6. Scroll down to `Service Account` and select the newly created Service Account.
+
+*Cloud SDK*
+You can assign a service account when you create a VM:
+
+    gcloud compute instances create [INSTANCE_NAME] \
+            --service-account [SERVICE_ACCOUNT_EMAIL]
+            
+### Grant Access to Projects
+Navigate to the IAM page of Cloud Console and add a member and supply the service account email.
+
+### Audit Logs
+Navigate to Cloud Logging in Cloud Console. Here you can select the resources, types of logs to diplay, the log level, and period of time.
