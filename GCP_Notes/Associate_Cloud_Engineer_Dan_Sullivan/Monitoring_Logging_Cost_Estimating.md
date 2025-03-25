@@ -6,7 +6,7 @@ Google has a service called Cloud Operations Suite, which provides monitoring, l
 - Price Calculator for estimating costs.
 
 ## Cloud Monitoring
-This is a service for collecting performance metrics, logs, and event data from cloud resources.
+Cloud Monitoring is a service for collecting performance metrics, logs, and event data from cloud resources.
 - CPU utilization
 - Number of bytes written
 - Execution times
@@ -54,3 +54,33 @@ To set an alert, create a policy for a metric:
 Do not create too many alerts, this can create *alert fatigue*, where engineers receive so many alerts they stop responding to them. Use Alerts for incidents that are not likely to resolve on their own, and set thresholds that are long enough to ignore small spikes that go away quickly.
 
 ## Cloud Logging
+Cloud Logging is a service for collecing, storing, filtering, and viewing log and event data. It is a managed service, so no server configuration is necessary.
+- Configure log routers
+- Configure log sinks
+- View and filter logs
+- view message details
+
+### Log Routers and Sinks
+Log data ingested by Logging API is routed to one of three types of sinks:
+1. Required Log Sink
+    - Holds admin activity, system events, and access transparency logs and stores them for 400 days (not configurable).
+2. Default Log Sink
+    - Holds any log messages that don't get sent to Required log sink, messages are stored for 30 days by default.
+3. User-Defined Log Sink
+    - Can be created in a Cloud Storage bucket, and the retention policy is customizable
+
+Sinks are associated to a billing account, project, folder, or organization. Each of these resource has a Required and a Default log sink created automatically by Google.
+
+Log Router is a service that applies filters to incoming logs to direct them to the proper log sink(s).
+
+Cloud Logging also supports log metrics. If a log message meets some log metric pattern, it can be reflected in Cloud Monitoring.
+
+You can also send logs to Cloud Storage, Pub/Sub, and BigQuery for analysis or gaining insights.
+
+### Viewing and Filtering Logs
+Navigate to Cloud Logging in the console and use the Log Explorer. This allows you to view messages and filter them based on time, resource type, severity level, and log query.
+
+When viewing message details, each log appears as a single line that can be expanded to show *insertId*, *logName*, *receiveTimestamp*, *protoPayload*, and *resource*.
+- The protoPayload can be expanded to view *authenticationInfo*, *authorizationInfo*, *requestMetadata*, *methodName*, *resourceName*, *response*, etc.
+
+## Cloud Trace
