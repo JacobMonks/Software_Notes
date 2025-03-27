@@ -84,3 +84,15 @@ When viewing message details, each log appears as a single line that can be expa
 - The protoPayload can be expanded to view *authenticationInfo*, *authorizationInfo*, *requestMetadata*, *methodName*, *resourceName*, *response*, etc.
 
 ## Cloud Trace
+Cloud Trace is a distributed system for collecting latency data from a running application. This is good for finding performance degradation.
+
+A "trace" is generated when developers specifically call Cloud Trace from their applications. You can see all traces in a project and create reports using the Cloud Trace console.
+
+## Google Cloud Status
+The [Google Cloud Status Dashboard](https://status.cloud.google.com) allows you to see the status of Google Cloud services in different regions. It will show 3 states:
+1. Available
+2. Service Disruption
+3. Service Outage
+
+## Price Calculator
+To get an idea of the cost of configuring different Google Cloud services, you can use the [Price Calculator](https://cloud.google.com/products/calculator). You can select which service you'd like to evaluate and enter the configuration details like storage capacity, number of instances, machine type, average use time, and OS. Different services will require different parameters to come to an estimate.
