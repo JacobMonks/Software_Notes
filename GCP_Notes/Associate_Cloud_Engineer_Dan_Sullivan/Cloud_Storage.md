@@ -188,4 +188,92 @@ Key Considerations:
 
 ## Deploying Storage
 
+### Cloud SQL
+Create data in Cloud SQL:
+1. Create a MySQL instance of Cloud SQL.
+2. Start a Cloud Shell and connect to the database:
+
+        gcloud sql connect ace-exam-mysql -user=root
+        
+3. From here, you can use MySQL commands to create databases and tables or to load and query data.
+
+        CREATE DATABASE ace_exam_book;
+        USE ace_exam_book;
+        CREATE TABLE books (entity_id INT NOT NULL AUTO_INCREMENT, title VARCHAR(255), author VARCHAR(255), PRIMARY KEY(entity_id));
+        INSERT INTO books (title, author) VALUES ('The Hobbit', 'J.R.R. Tolkien');
+        INSERT INTO books (title, author) VALUES ('A Tale of Two Cities', 'Charles Dickens');
+        INSERT INTO books (title, author) VALUES ('The Adventures of Huckleberry Finn', 'Mark Twain');
+        SELECT * FROM books;
+
+You can backup Cloud SQL data automatically or on-demand. To create an on-demand backup, go to the Instances page of Cloud SQL Console, select the instance, then click on the Backups menu to see options. You can also use the command:
+
+    gcloud sql backups create --async --instance ace-exam-mysql
+    
+To have Cloud SQL create backups automatically, select the instance on the Instances page and click `Edit Instance`. There is an option called `Enable Auto Backups` where you can fill in details for when backups will be created and whether to enable binary logging (used for point-in-time recovery). You can also do this via command:
+
+    gcloud sql instances patch ace-exam-mysql -backup-start-time 06:00
+    
+### Firestore
+Firestore has two modes: Native and Datastore mode. Native mode has the benefits of real-time updates and mobile and webclient libraries. Datastore mode supports GQL (Graph Query Language) and can scale to millions of writes per second, so it is a good option when you don't need real-time or mobile features.
+
+To add data to Firestore in Native Mode:
+1. Go to Firestore Console and select `Start Collection`.
+2. Create entities by filling in the form that appears.
+    - provide entity IDs and documents (key-value pairs).
+
+To back up a Firestore database:
+1. Create a Cloud Storage bucket to hold the file.
+2. Grant appropriate permissions to users performing the backup.
+    - datastore.databases.export
+    - datastore.databases.import
+3. Create a backup with this command:
+
+        gcloud firestore export gs://ace-exam-backups
+
+4. To import a backup file:
+
+        gcloud firestore import gs://ace-exam-backups
+        
+### BigQuery
+BigQuery is a fully managed service, so a Cloud Engineer only has a few basic administrative tasks: estimating the cost of queries and checking job status.
+
+To estimate the cost of a query:
+1. Go to BigQuery in the console and enter a query in the Query Editor.
+2. In the upper-right corner, BigQuery shows how much data will be scanned.
+    - You can also do this in the command line:
+
+            bq --location=[LOCATION] query --use_legacy_sql=false --dry-run [SQL_QUERY]
+
+3. Go to the [Pricing Calculator](https://cloud.google.com/products/calculator), select BigQuery, and enter the name of the table, set the storage size to 0, and give the size of the query.
+
+You can also view the status of jobs in BigQuery by going to the console and clicking `Personal History` or `Project History`. A job that has been completed will have a check mark next to it. A job that failed will have an exclamation point. You can also check job status in the command line:
+
+    bq --location=US show -j gcpace-project:[JOB_ID]
+    
+### Cloud Spanner
+Create and use a Cloud Spanner Instance:
+1. Navigate to Cloud Spanner page in console and click `Create Instance`.
+2. Click `Create Database` in the instance and give it a name.
+3. Define the schema of the database:
+    - Use DDL to define table structures.
+4. Click `Create`.
+
+### Cloud Pub/Sub
+Deploy a Pub/Sub message queue:
+1. Navigate to Pub/Sub page in console and click `Create a Topic`.
+2. Go to the Topics page and select the three dots next to the topic and select `Create Subscription`.
+3. Specify a subscription name and the delivery type (pull for reading, push for writing)
+
+Once a message is read, the application readnig the message acknowledges that it received the message, and Pub/Sub will wait for a period of time specified in the Acknowledgement Deadline (10-600 seconds).
+
+You can also specify a retention period for messages that couldn't be delivered.
+
+Creating topics and subscriptions can also be done with gcloud commands:
+
+    gcloud pubsub topics create [TOPIC_NAME]
+    gcloud pubsub subscriptions create [SUBCRIPTION_NAME] --topic [TOPIC_NAME]
+    
+### Bigtable
+
+
 ## Loading Into Storage
