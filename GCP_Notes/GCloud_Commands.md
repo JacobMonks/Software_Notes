@@ -1,6 +1,12 @@
 # GCloud Commands
 These are for using Google Cloud SDK or the Cloud Shell.
 
+There are four maain command-line tools to use with GCP:
+1. `gcloud` - used for most products, but not all.
+2. `gsutil` - used for Cloud Storage, can also use `gcloud storage`.
+3. `bq` - used for BigQuery.
+4. `cbt` - used for Bigtable.
+
 ## GCloud-Wide Flags
 These are flags that can be added to any gcloud command if applicable.
 
@@ -69,3 +75,13 @@ For making commands regarding instances:
 | instance-templates list                           | List all instance templates.                                             |
 | instance-groups managed list-instances            | Lists all instance groups.                                               |
 | instance-groups managed list-instances GROUP_NAME | List all instances in an instance group.                                 |
+
+## Bigtable Commands:
+
+| Command                                    | Function               |
+|:-------------------------------------------|:-----------------------|
+| cbt createtable [NAME]                     | Create a table         |
+| cbt ls                                     | List tables            |
+| cbt createfamily [NAME]                    | Create a column family |
+| cbt set [TABLE] row1 [COLFAM]:col1=[VALUE] | Set a cell value       |
+| cbt read [TABLE]                           | Display table contents |
