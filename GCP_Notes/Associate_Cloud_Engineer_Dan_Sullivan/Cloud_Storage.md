@@ -96,7 +96,9 @@ For availability, a bucket can be single-region, dual-region, or multi-region. S
 
 Buckets can be configured to retain versions of objects when they are deleted or changed. The latest version of an object is called the *live* version. This feature is useful when you want to minimize risk of changes and keep a history of changes.
 
-You can also apply Lifecycle Management Policies to automatically move objects in a bucket from one storage class to another (standard > nearline > coldline > archive). Once an object reaches a certain age, you can move it to a lower-cost storage class. You can also set conditions for the number of versions, whether the object is the live version, or for the date it was created. You choose a lifecycle policy when you create a bucket.
+You can also apply Lifecycle Management Policies to automatically move objects in a bucket from one storage class to another (standard > nearline > coldline > archive). Once an object reaches a certain age, you can move it to a lower-cost storage class. You can also set conditions for the number of versions, whether the object is the live version, or for the date it was created. You choose a lifecycle policy when you create a bucket. You can also manually change a bucket's storage class:
+
+    gsutil rewrite -s [STORAGE_CLASS] gs://[PATH_TO_OBJECT]
 
 If a live version of a file is deleted, the object instead gets archived. If the archived version is deleted, the file is gone permanently.
 
@@ -258,6 +260,8 @@ Create and use a Cloud Spanner Instance:
     - Use DDL to define table structures.
 4. Click `Create`.
 
+Cloud Spanner databases are queried with SQL.
+
 ### Cloud Pub/Sub
 Deploy a Pub/Sub message queue:
 1. Navigate to Pub/Sub page in console and click `Create a Topic`.
@@ -274,6 +278,57 @@ Creating topics and subscriptions can also be done with gcloud commands:
     gcloud pubsub subscriptions create [SUBCRIPTION_NAME] --topic [TOPIC_NAME]
     
 ### Bigtable
+Deploy to Bigtable cluster:
+1. Navigate to Bigtable console and click `Create Instance`.
+2. After creating an instance, you can view performance from the Instance Details page.
+3. Open up a Cloud Shell and install the `cbt` command:
+    
+        gcloud components update
+        gcloud components install cbt
+        
+4. Set the insance to ace-exam-bigtable:
 
+        echo instance = ace-exam-bigtable >> ~/.cbtrc
+        
+5. Bigtable commands:
+
+| Command                                    | Function               |
+|:-------------------------------------------|:-----------------------|
+| cbt createtable [NAME]                     | Create a table         |
+| cbt ls                                     | List tables            |
+| cbt createfamily [NAME]                    | Create a column family |
+| cbt set [TABLE] row1 [COLFAM]:col1=[VALUE] | Set a cell value       |
+| cbt read [TABLE]                           | Display table contents |
+
+### Cloud Dataproc
+Dataproc is Google Cloud's managed Spark and Hadoop service designed for Big Data applications.
+- Spark supports analysis and machine learning.
+- Hadoop is suited for batch operations on big data.
+
+Create a cluster:
+1. Navigate to Dataproc in Cloud Console and select `Create Cluster`.
+2. Choose the underlying infrastructure (Compute Engine/Kubernetes).
+3. Specify the cluster name, region, zone, and mode:
+    - Standard - has one master node, inaccessible if node fails.
+    - Single Node - good for development.
+    - High Availability - uses 3 master nodes.
+4. Specify machine configuration for master and worker nodes.
+    - CPU
+    - memory
+    - disk information
+    - number of worker nodes
+    - preemptible VMs
+5. Once the cluster is created, go to the `Submit a Job` page.
+    - Specify the cluster and type of job (Spark, PySpark, SparkR, Hive, Spark SQL, Pig, Hadoop)
+    - The file with the job to execute (JAR file for Spark, python program for Pyspark, query file for Hive or Spark SQL, etc.)
+
+Dataproc allows you to create workflow templates for you to define and execute workflows specified as a directed graph of jobs. You can specify a managed cluster which would make the job create a new cluster, execute, and then terminate the cluster automatically. This is a useful feature when you have complex jobs.
+
+Dataproc supports Serverless Spark, so you do not have to configure a cluster. Just go to the `Batches` option on the left-hand side.
+
+Create a cluster and submit jobs in Cloud Shell:
+
+    gcloud dataproc clusters create cluster-bc3d --zone us-west2-a
+    gcloud dataproc jobs submit spark --cluster cluster-bc3d --jar ace_exam_jar.jar
 
 ## Loading Into Storage
