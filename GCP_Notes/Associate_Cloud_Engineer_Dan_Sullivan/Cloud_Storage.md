@@ -332,3 +332,92 @@ Create a cluster and submit jobs in Cloud Shell:
     gcloud dataproc jobs submit spark --cluster cluster-bc3d --jar ace_exam_jar.jar
 
 ## Loading Into Storage
+
+### Cloud Storage
+When creating a bucket, specify a name, location, storage class, and access control.
+- The name must be globally unique.
+- You can choose the Enforce Public Access Prevention On This Bucket option.
+
+Commands for Cloud Storage:
+
+| Command                                                   | Function                                    |
+|:----------------------------------------------------------|:--------------------------------------------|
+| gsutil mb [NAME]                                          | Create a bucket                             |
+| gsutil cp [LOCAL_OBJECT] gs://[DESTINATION_BUCKET]/       | Copy object from local device to bucket     |
+| gsutil cp gs://[OBJECT_LOCATION] [LOCAL_DESTINATION]/     | Copy file from bucket to local spot (or VM) |
+| gsutil mv gs://[OBJECT_LOCATION] gs://[DESTINATION]/      | Move object from one bucket/location to another |
+| gsutil acl get gs://[BUCKET]/[FILE]                       | Get the permissions on a bucket or object |
+| gsutil acl set gs://[BUCKET]/[FILE]                       | Set the permissions on a bucket or object |
+| gsutil acl ch -u [USER]:[PERMISSION] gs://[BUCKET]/[FILE] | Change permissions on a bucket or object  |
+
+### Cloud SQL
+Commands for Cloud SQL:
+
+| Command                                                                     | Function                    |
+|:----------------------------------------------------------------------------|:----------------------------|
+| gcloud sql instances describe [INSTANCE]                                    | Show details about instance |
+| gcloud sql export [INSTANCE] gs://[BUCKET]/[FILE].sql --database=[DATABASE] | Export a database to a file |
+| gcloud sql import sql [INSTANCE] gs://[BUCEKT]/[FILE] --database=[DATABASE] | Import data from a file     |
+
+To import/export to a Cloud Storage bucket, you must ensure that the service account tied to the Cloud SQL instance has access to the bucket. You can choose .csv or .sql output.
+
+### Cloud Firestore
+Commands for Firestore:
+
+| Command                                                                      | Function                   |
+|:-----------------------------------------------------------------------------|:---------------------------|
+| gcloud firestore export gs://$[BUCKET]                                       | Export data in Native Mode |
+| gcloud datastore export --namespace=[NAME] gs://$[BUCKET]                    | Export in Datastore Mode   |
+| gcloud datastore import gs://$[BUCKET]/[PATH]/[FILE].overall_export_metadata | Import data into Firestore |
+
+### BigQuery
+In BigQuery, you can export to four locations:
+1. Google Sheets
+2. Cloud Storage
+3. Looker Studio
+4. Scanning with Data Loss Prevention service
+
+You can also export in different formats: CSV, JSON, Avro (good for large data sets), and Gzip (lossless compression utility).
+
+BigQuery commands:
+
+| Command | Function |
+|:--------|:---------|
+| bq extract --destination_format [FORMAT] --compression [TYPE] --field_delimiter [DELIMTIER] --print_header [BOOLEAN] [PROJECT]:[DATASET].[TABLE] gs://[BUCKET]/[FILENAME] | Export data from BQ |
+| bq load --autodetect --source_format=[FORMAT] [DATASET].[TABLE] [PATH_TO_SOURCE] | Load data from source file |
+
+### Cloud Spanner
+Cloud Spanner does not have a gcloud command for exporting data, but it can be done in the Cloud Console.
+1. Navigate to Cloud Spanner in Cloud Console and select the Instance you wish to export.
+2. Click `Export` and specify a destination bucket, database, and region for running the job.
+3. Check the box that says you understand charges will be incurred for exporting and possibly egress charges for data sent between regions.
+    - Cloud Spanner uses Cloud Dataflow, another Google Cloud service.
+
+To import, click `Import` and specify a source bucket, destination database, and region.
+
+### Bigtable
+Export from Bigtable:
+1. Navigate to Bigtable in Cloud Console and select `Tables`.
+2. Under the dialog box, click `Export`.
+
+Bigtable exports support multiple file formats: SequenceFile, Avro, and Parquet.
+
+### Cloud Dataproc
+Unlike the other services mentioned, Dataproc is not designed to be persistent storage but is instead meant for machine learning, statistical analysis, and data manipulation. Import and Export commands in Dataproc are used to save and restore cluster information.
+
+Dataproc Commands:
+
+| Command                                                                     | Function                     |
+|:----------------------------------------------------------------------------|:-----------------------------|
+| gcloud dataproc clusters export [CLUSTER_NAME] --destination=[PATH_TO_FILE] | Export cluster configuration |
+| gcloud dataproc clusters import gs://[SOURCE_FILE]                          | Import cluster configuration |
+
+### Pub/Sub Streaming
+Pub/Sub Commands:
+
+| Command                                                                     | Function               |
+|:----------------------------------------------------------------------------|:-----------------------|
+| gcloud pubsub topics create                                                 | Create a new topic     |
+| gcloud pubsub subscriptions create [SUBSCRIPTION_NAME] --topic [TOPIC_NAME] | Create a subscription  |
+| gcloud pubsub topics publish [TOPIC_NAME] --message [MESSAGE]               | Send data to a topic   |
+| gcloud pubsub topics pull --auto-ack [SUBSCRIPTION_NAME]                    | Read data from a topic |
