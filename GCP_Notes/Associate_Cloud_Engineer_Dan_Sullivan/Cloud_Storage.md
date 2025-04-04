@@ -421,3 +421,5 @@ Pub/Sub Commands:
 | gcloud pubsub subscriptions create [SUBSCRIPTION_NAME] --topic [TOPIC_NAME] | Create a subscription  |
 | gcloud pubsub topics publish [TOPIC_NAME] --message [MESSAGE]               | Send data to a topic   |
 | gcloud pubsub topics pull --auto-ack [SUBSCRIPTION_NAME]                    | Read data from a topic |
+
+Pub/Sub is a good tool for services that have load fluctuations. When an application services requests sequentially, it has a tendency to get backed up and laggy when requests come in fast. Instead, the requests can accumulate in a Pub/Sub queue without forcing the service making the requests to wait.
