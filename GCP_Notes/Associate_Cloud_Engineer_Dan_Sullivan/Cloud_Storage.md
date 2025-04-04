@@ -356,7 +356,7 @@ Commands for Cloud SQL:
 | Command                                                                     | Function                    |
 |:----------------------------------------------------------------------------|:----------------------------|
 | gcloud sql instances describe [INSTANCE]                                    | Show details about instance |
-| gcloud sql export [INSTANCE] gs://[BUCKET]/[FILE].sql --database=[DATABASE] | Export a database to a file |
+| gcloud sql export sql [INSTANCE] gs://[BUCKET]/[FILE].sql --database=[DATABASE] | Export a database to a file |
 | gcloud sql import sql [INSTANCE] gs://[BUCEKT]/[FILE] --database=[DATABASE] | Import data from a file     |
 
 To import/export to a Cloud Storage bucket, you must ensure that the service account tied to the Cloud SQL instance has access to the bucket. You can choose .csv or .sql output.
