@@ -21,7 +21,7 @@ There are 3 Basic roles: 'Owner', 'Editor', and 'Viewer'.
 
 IAM roles are collections of permissions tailored to provide identities with just the permissions they need to perform their tasks and nothing more. To see a list of users assigned a role, click the `Roles` tab on the IAM page. To do this in Cloud SDK, use the following command:
 
-    gcloud project get-iam-policy ace-exam-project
+    gcloud projects get-iam-policy ace-exam-project
     
 
 Each service in Google Cloud will have predefined roles. For example, App Engine has 5 predefined roles:
@@ -72,6 +72,7 @@ Define custom roles when the predefined roles do not suit your specific needs.
     
 Note: Not all permissions are available for custom roles.
 
+Custom roles can have a maximum of 3000 permissions, and the total size of the title, description, and permission names must be no more than 64 KB.
 *Cloud SDK*
 Define custom role:
 
@@ -87,7 +88,7 @@ Example:
             
 
 ## Managing Service Accounts
-Sercice Accounts provide an identity independent of human users. They can be granted roles and be associated with VMs that will have those permissions.
+Sercice Accounts provide an identity independent of human users. They are assigned to VMs, and those VMs can use the permissions associated with that service account.
 
 Cloud Engineers will be expected to know how to:
 1. Work with scopes.
