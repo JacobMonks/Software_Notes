@@ -18,12 +18,12 @@ jobs:
     steps:
 
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@main
       with:
         fetch-depth: 0
 
     - name: Linting
-      uses: github/super-linter@main
+      uses: super-linter/super-linter@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         VALIDATE_ALL_CODEBASE: false
