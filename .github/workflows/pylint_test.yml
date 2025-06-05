@@ -23,7 +23,7 @@ jobs:
 
     - name: Linting
       uses: github/super-linter@v4
-      with:
+      env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         VALIDATE_ALL_CODEBASE: false
         VALIDATE_PYTHON_FLAKE8: true
