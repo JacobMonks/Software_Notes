@@ -24,7 +24,8 @@ jobs:
     - name: Linting
       uses: github/super-linter@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        validate_all_codebase: false
-        ignore_gitignored_files: true
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VALIDATE_ALL_CODEBASE: false
+        VALIDATE_PYTHON_FLAKE8: true
+        IGNORE_GITIGNORED_FILES: true
         
