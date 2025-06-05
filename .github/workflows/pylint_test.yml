@@ -1,0 +1,30 @@
+on:
+  push:
+    branches-ignore: ["main"]
+  pull_request:
+    branches: ["work_branch", "personal_branch"]
+
+jobs:
+  build:
+    name: Pylint Check
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
+
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Linting
+      uses: github/super-linter@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        validate_all_codebase: false
+        ignore_gitignored_files: true
+        
