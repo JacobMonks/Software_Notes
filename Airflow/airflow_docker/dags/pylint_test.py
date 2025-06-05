@@ -6,6 +6,9 @@ import math
 
 
 def get_sqrt(num):
+    """
+    This function returns the square root of the number given.
+    """
     return math.sqrt(num)
 
 
