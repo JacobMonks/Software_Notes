@@ -29,4 +29,5 @@ jobs:
         VALIDATE_ALL_CODEBASE: false
         VALIDATE_PYTHON_FLAKE8: true
         IGNORE_GITIGNORED_FILES: true
+        LINTER_RULES_PATH: .github/linters
         
