@@ -9,6 +9,8 @@ def get_sqrt(num):
     """
     This function returns the square root of the number given.
     """
+    print("Hello Square Root!")
+    
     return math.sqrt(num)
 
 
