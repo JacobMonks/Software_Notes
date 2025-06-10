@@ -2,8 +2,6 @@ name: Lint Codebase on Push and PR
 on:
   push:
     branches-ignore: ["main"]
-  pull_request:
-    branches: ["work_branch", "personal_branch"]
 
 jobs:
   build:
