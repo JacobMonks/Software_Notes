@@ -3,7 +3,7 @@ on:
   push:
     branches-ignore: ["main"]
   pull_request:
-    branches: ["work_branch", "personal_branch"]
+    branches: ["main"]
 
 jobs:
   build:
