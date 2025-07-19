@@ -25,8 +25,8 @@ Airflow operates using Directed Acyclic Graphing (DAG), which is a way of breaki
 
 5. Copy the command:
 
-        sudo pip install 'apache-airflow==2.8.3' \
-        --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.8.3/constraints-3.8.txt"
+        sudo pip install 'apache-airflow==3.0.3' \
+        --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-3.0.3/constraints-3.8.txt"
 
 6. Change the name of the constraints text file so that it matches your version of Python.
 
@@ -60,7 +60,7 @@ https://docs.docker.com/desktop/install/windows-install/
 
 2. If you have docker installed, you can run the following command in a terminal to get the yaml file:
 
-        curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.8.3/docker-compose.yaml'
+        curl -LfO 'https://airflow.apache.org/docs/apache-airflow/3.0.3/docker-compose.yaml'
 
 Note: To ensure you have enough memory (roughly 8 GB), use the following command:
 
@@ -93,3 +93,6 @@ Note: To ensure you have enough memory (roughly 8 GB), use the following command
         user: airflow
         password: airflow
 
+10. When you are finished using your containerized application, you can stop all processes via the UI or the following command:
+
+        docker stop [CONTAINER_ID]
