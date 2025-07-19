@@ -96,3 +96,7 @@ Note: To ensure you have enough memory (roughly 8 GB), use the following command
 10. When you are finished using your containerized application, you can stop all processes via the UI or the following command:
 
         docker stop [CONTAINER_ID]
+
+Note: This command will stop all running containers:
+
+        docker stop $(docker ps -a -q)
