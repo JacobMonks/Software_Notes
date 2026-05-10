@@ -37,6 +37,31 @@
 
 [Chapter 18: Monitoring, Logging, and Cost Estimating](./Associate_Cloud_Engineer_Dan_Sullivan/Monitoring_Logging_Cost_Estimating.md)
 
+## Dan Sullivan Data Engineer Notes
+[Chapter 1: Selecting Appropriate Storage Technologies](./Professional_Data_Engineer_Dan_Sullivan/Storage_Technologies.md)
+
+[Chapter 2: Building and Operationalizing Storage Systems](./Professional_Data_Engineer_Dan_Sullivan/Storage_Technologies.md)
+
+[Chapter 3: Designing Data Pipelines](./Professional_Data_Engineer_Dan_Sullivan/Data_Pipelines.md)
+
+[Chapter 4: Designing a Data Processing Solution](./Professional_Data_Engineer_Dan_Sullivan/Data_Pipelines.md)
+
+[Chapter 5: Building and Operationalizing Processing Infrastructure](./Professional_Data_Engineer_Dan_Sullivan/Data_Pipelines.md)
+
+[Chapter 6: Designing for Security and Compliance](./Professional_Data_Engineer_Dan_Sullivan/Design_Specifications.md)
+
+[Chapter 7: Designing Databases for Reliability, Scalability, and Availability](./Professional_Data_Engineer_Dan_Sullivan/Design_Specifications.md)
+
+[Chapter 8: Understanding Data Operations for Flexibility and Portability](./Professional_Data_Engineer_Dan_Sullivan/Design_Specifications.md)
+
+[Chapter 9: Deploying Machine Learning Pipelines](./Professional_Data_Engineer_Dan_Sullivan/Machine_Learning.md)
+
+[Chapter 10: Choosing Training and Serving Infrastructure](./Professional_Data_Engineer_Dan_Sullivan/Machine_Learning.md)
+
+[Chapter 11: Measuring, Monitoring, and Troubleshooting Machine Learning Models](./Professional_Data_Engineer_Dan_Sullivan/Machine_Learning.md)
+
+[Chapter 12: Leveraging Prebuilt Models as a Service](./Professional_Data_Engineer_Dan_Sullivan/Machine_Learning.md)
+
 ## Other GCP Notes
 [GCloud Commands](./GCloud_Commands.md)
 
